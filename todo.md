@@ -23,6 +23,7 @@
   - the use bit is essentially a user guide
 - Lighthouse reports!
   - accessibility etc
+- move react-scripts to dev deps
 
 # Next Commit
 
