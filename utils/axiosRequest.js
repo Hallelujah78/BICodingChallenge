@@ -21,4 +21,4 @@ const getData = async (country) => {
   }
 };
 
-export { getData };
+export default getData;

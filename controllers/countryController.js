@@ -1,6 +1,6 @@
 import { StatusCodes } from "http-status-codes";
 import * as CustomError from "../errors/index.js";
-import { getData } from "../utils/axios.js";
+import getData from "../utils/axiosRequest.js";
 const getAllCountries = async (req, res) => {
   res.status(StatusCodes.OK).json({ status: "getAllCountries" });
 };
