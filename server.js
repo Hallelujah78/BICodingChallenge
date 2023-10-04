@@ -10,7 +10,7 @@ import xss from "xss-clean";
 
 dotenv.config();
 
-// import authRouter from "./routes/authRoutes.js";
+import countryRouter from "./routes/countryRoutes.js";
 
 import notFoundMiddleware from "./middleware/not-found.js";
 import errorHandlerMiddleware from "./middleware/error-handler.js";
@@ -32,7 +32,7 @@ app.get("/", (req, res) => {
   res.json({ msg: "welcome!" });
 });
 
-// app.use("/api/v1/jobs", jobsRouter);
+app.use("/api/v1/country", countryRouter);
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
 });

@@ -1,7 +1,22 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+
 const Landing = () => {
   const [country, setCountry] = useState("");
+  const [countryData, setCountryData] = useState(null);
+
+  const fetchCountryData = async (country) => {
+    try {
+      const { data: result } = await axios.post("/api/v1/country", { country });
+      if (result) {
+        console.log(result.name.common);
+        setCountryData(result);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleChange = (e) => {
     setCountry(e.target.value);
@@ -17,9 +32,17 @@ const Landing = () => {
       // toastify warn please enter info
       return;
     }
+    fetchCountryData(country);
     clearValues();
-    // fetch country
   };
+
+  useEffect(() => {
+    if (countryData) {
+      const myPara = document.querySelector("p");
+      myPara.innerText = `The population of ${countryData.name.common} is ${countryData.population}`;
+    }
+  }, [countryData]);
+
   return (
     <Wrapper>
       <div className="search-container">
@@ -57,6 +80,7 @@ const Landing = () => {
           </div>
         </form>
       </div>
+      <p></p>
     </Wrapper>
   );
 };
