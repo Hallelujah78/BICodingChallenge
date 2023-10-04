@@ -1,0 +1,10 @@
+- create icons
+- initial ideas
+  - name: kntripedia
+  - tags:
+    - the world at your fingertips
+    - the world is only a click away
+- styles
+  - style it like the potential employers website, cute?
+- validate the input on the frontend
+- fetch a list of countries from Node->countries api on refresh?

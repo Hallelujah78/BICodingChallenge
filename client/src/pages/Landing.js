@@ -1,37 +1,101 @@
-import main from "../assets/images/main.svg";
-import Wrapper from "../assets/wrappers/LandingPage";
-import { useAppContext } from "../context/appContext";
-import { Logo } from "../components";
-import { Link, Navigate } from "react-router-dom";
+import styled from "styled-components";
+import { useState } from "react";
 const Landing = () => {
-  const { user } = useAppContext();
+  const [country, setCountry] = useState("");
 
+  const handleChange = (e) => {
+    setCountry(e.target.value);
+  };
+  const clearValues = () => {
+    setCountry("");
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!country) {
+      alert("please enter values");
+      // toastify warn please enter info
+      return;
+    }
+    clearValues();
+    // fetch country
+  };
   return (
-    <>
-      {user && <Navigate to="/" />}
-      <Wrapper>
-        <nav>
-          <Logo />
-        </nav>
-        <div className="container page">
-          <div className="info">
-            <h1>
-              job <span>tracking</span> app
-            </h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Similique, id blanditiis repellat atque nobis corporis fuga
-              asperiores eius reiciendis recusandae.
-            </p>
-            <Link to="/register" className="btn btn-hero">
-              login/register
-            </Link>
+    <Wrapper>
+      <div className="search-container">
+        <form action="">
+          <label htmlFor="country name" className="form-label">
+            Enter a country
+            <input
+              id="country name"
+              type="text"
+              value={country}
+              name="country name"
+              className="form-input"
+              onChange={(e) => handleChange(e)}
+            />{" "}
+          </label>
+          <div className="btn-container">
+            <button
+              // disabled={isLoading}
+              className="btn submit-btn"
+              type="submit"
+              onClick={handleSubmit}
+            >
+              submit
+            </button>
+            <button
+              // disabled={isLoading}
+              onClick={(e) => {
+                e.preventDefault();
+                clearValues();
+              }}
+              className="btn clear-btn"
+            >
+              clear
+            </button>
           </div>
-          <img src={main} alt="job hunt" className="img main-img" />
-        </div>
-      </Wrapper>
-    </>
+        </form>
+      </div>
+    </Wrapper>
   );
 };
 
 export default Landing;
+
+const Wrapper = styled.section`
+  header {
+    text-align: center;
+    height: 6rem;
+  }
+  h1 {
+    margin: auto;
+    padding: 1rem 0;
+    font-weight: 400;
+  }
+  .search-container {
+    width: 100%;
+    height: calc(100vh - 6rem);
+    display: grid;
+    place-content: center;
+    .btn-container {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+    input {
+      display: block;
+    }
+  }
+  button {
+    border-radius: 35px;
+    background: #e14ed2;
+    color: white;
+    text-transform: uppercase;
+    padding: 15px 45px;
+    transition: all 0.3s;
+    &:hover {
+      background: #ed96e5;
+    }
+  }
+`;

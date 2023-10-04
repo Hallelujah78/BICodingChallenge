@@ -1,0 +1,240 @@
+.elementor-kit-5432 {
+    --e-global-color-primary: #020101;
+    --e-global-color-secondary: #020101;
+    --e-global-color-text: #54595F;
+    --e-global-color-accent: #E14ED2;
+    --e-global-color-5648ec3: #ED96E5;
+    --e-global-color-236fef7: #222D39;
+    --e-global-color-73fb46c: #8A93AD;
+    --e-global-color-d936843: #3EDADA;
+    --e-global-color-a8c2097: #FBFDFC;
+    --e-global-color-0acf378: #230621;
+    --e-global-color-f4be0b5: #FFC000;
+    --e-global-color-268b4a0: #24BB68;
+    --e-global-color-1ffa939: #E1554E;
+    --e-global-color-d9ca41c: #70D715;
+    --e-global-color-fef6018: #f93e5e;
+    --e-global-color-b8cb09b: #F3BA0E;
+    --e-global-color-c7a0944: #17D2D4;
+    --e-global-color-228b565: #3E89F9;
+    --e-global-color-7e69557: #D02CFF;
+    --e-global-color-8b6a142: #1E1E1E;
+    --e-global-color-3a07120: #2A3036;
+    --e-global-typography-primary-font-family: "Poppins";
+    --e-global-typography-primary-font-size: 30px;
+    --e-global-typography-primary-font-weight: 600;
+    --e-global-typography-secondary-font-family: "Poppins";
+    --e-global-typography-secondary-font-size: 30px;
+    --e-global-typography-secondary-font-weight: 400;
+    --e-global-typography-text-font-family: "Poppins";
+    --e-global-typography-text-font-size: 16px;
+    --e-global-typography-text-font-weight: 400;
+    --e-global-typography-accent-font-family: "Poppins";
+    --e-global-typography-accent-font-size: 25px;
+    --e-global-typography-625de03-font-family: "Poppins";
+    --e-global-typography-625de03-font-size: 17px;
+    --e-global-typography-625de03-font-weight: 400;
+    color: #54595F;
+    font-family: "Poppins", Poppin;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.8em;
+}
+
+.elementor-kit-5432 a {
+    color: #E14ED2;
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.3em;
+}
+
+.elementor-kit-5432 a:hover {
+    color: var(--e-global-color-5648ec3);
+}
+
+.elementor-kit-5432 h1 {
+    color: #020101;
+    font-size: 55px;
+    font-weight: 400;
+    line-height: 1.3em;
+}
+
+.elementor-kit-5432 h2 {
+    color: var(--e-global-color-secondary);
+    font-family: "Poppins", Poppin;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 1.3em;
+}
+
+.elementor-kit-5432 h3 {
+    color: var(--e-global-color-secondary);
+    font-size: 35px;
+    font-weight: 400;
+    line-height: 1.3em;
+}
+
+.elementor-kit-5432 h4 {
+    color: var(--e-global-color-secondary);
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 1.3em;
+}
+
+.elementor-kit-5432 h5 {
+    color: var(--e-global-color-secondary);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.3em;
+}
+
+.elementor-kit-5432 h6 {
+    color: var(--e-global-color-secondary);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.3em;
+}
+
+.elementor-kit-5432 button,
+.elementor-kit-5432 input[type="button"],
+.elementor-kit-5432 input[type="submit"],
+.elementor-kit-5432 .elementor-button {
+    color: var(--e-global-color-a8c2097);
+    background-color: var(--e-global-color-accent);
+}
+
+.elementor-kit-5432 button:hover,
+.elementor-kit-5432 button:focus,
+.elementor-kit-5432 input[type="button"]:hover,
+.elementor-kit-5432 input[type="button"]:focus,
+.elementor-kit-5432 input[type="submit"]:hover,
+.elementor-kit-5432 input[type="submit"]:focus,
+.elementor-kit-5432 .elementor-button:hover,
+.elementor-kit-5432 .elementor-button:focus {
+    color: var(--e-global-color-a8c2097);
+    background-color: var(--e-global-color-5648ec3);
+}
+
+.elementor-section.elementor-section-boxed>.elementor-container {
+    max-width: 1140px;
+}
+
+.e-con {
+    --container-max-width: 1140px;
+}
+
+.elementor-widget:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.elementor-element {
+    --widgets-spacing: 20px;
+}
+
+.breadcrumb_area_two {
+    display: var(--page-title-display);
+}
+
+.elementor-kit-5432 e-page-transition {
+    background-color: #FFBC7D;
+}
+
+@media(max-width: 1024px) {
+    .elementor-kit-5432 {
+        font-size: 17px;
+        line-height: 1.9em;
+    }
+
+    .elementor-kit-5432 a {
+        font-size: 17px;
+        line-height: 1.2em;
+    }
+
+    .elementor-kit-5432 h1 {
+        font-size: 55px;
+        line-height: 1.2em;
+    }
+
+    .elementor-kit-5432 h2 {
+        font-size: 40px;
+        line-height: 1.2em;
+    }
+
+    .elementor-kit-5432 h3 {
+        font-size: 35px;
+        line-height: 1.2em;
+    }
+
+    .elementor-kit-5432 h4 {
+        font-size: 25px;
+        line-height: 1.2em;
+    }
+
+    .elementor-kit-5432 h5 {
+        font-size: 20px;
+        line-height: 1.2em;
+    }
+
+    .elementor-kit-5432 h6 {
+        font-size: 18px;
+        line-height: 1.2em;
+    }
+
+    .elementor-section.elementor-section-boxed>.elementor-container {
+        max-width: 1024px;
+    }
+
+    .e-con {
+        --container-max-width: 1024px;
+    }
+}
+
+@media(max-width: 767px) {
+    .elementor-kit-5432 {
+        font-size: 16px;
+        line-height: 1.9em;
+    }
+
+    .elementor-kit-5432 a {
+        font-size: 16px;
+        line-height: 1.3em;
+    }
+
+    .elementor-kit-5432 h1 {
+        font-size: 34px;
+        line-height: 1.5em;
+    }
+
+    .elementor-kit-5432 h2 {
+        font-size: 28px;
+        line-height: 1.5em;
+    }
+
+    .elementor-kit-5432 h3 {
+        font-size: 23px;
+        line-height: 1.5em;
+    }
+
+    .elementor-kit-5432 h4 {
+        font-size: 20px;
+        line-height: 1.5em;
+    }
+
+    .elementor-kit-5432 h5 {
+        font-size: 18px;
+        line-height: 1.5em;
+    }
+
+    .elementor-kit-5432 h6 {
+        font-size: 17px;
+        line-height: 1.5em;
+    }
+
+    .elementor-section.elementor-section-boxed>.elementor-container {
+        max-width: 767px;
+    }
+
+    .e-con {
+        --container-max-width: 767px;
+    }
+}
