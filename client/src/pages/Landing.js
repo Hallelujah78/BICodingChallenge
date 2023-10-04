@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Async, { useAsync } from "react-select/async";
 
 const Landing = () => {
   const [country, setCountry] = useState("");
@@ -60,7 +61,7 @@ const Landing = () => {
           </label>
           <div className="btn-container">
             <button
-              // disabled={isLoading}
+              disabled={!country}
               className="btn submit-btn"
               type="submit"
               onClick={handleSubmit}
