@@ -23,7 +23,7 @@
   - the use bit is essentially a user guide
 - Lighthouse reports!
   - accessibility etc
-- move react-scripts to dev deps - DONE
+- ~~move react-scripts to dev deps~~ - DONE
 - handle the fact (front end informational) that users may expect to be able to retrieve information about certain countries (england, scotland, wales) but those countries may not have their own separate entries
 
 # Next Commit
@@ -44,13 +44,36 @@
     - might also provide a 'more info' icon
     - we might have an option to toggle between a longer name and a shorter label - it can be frustrating to be scrolling around and keep coming across, for example, something like CCN3 and you end up having to look up what it means several times
 - may want to provide copy to clipboard for some values, or, indeed for all values - although this is scope creep
+- will have to destructure and massage response from rcAPI on the backend before sending to front end
 
 ### What is a country?
 
 - I find it bizarre that England, Scotland and Wales are not in the restcountries API (rcAPI) by themselves.
+
   - I feel users would have an expectation that Scotland is a country by itself. On the other hand, do we provide the information as is from rcAPI? I think we do provide it as is. Technically they are not independent, well more than technically.
   - there are no entries for England, Scotland and Wales. When retrieving all countries or all countries that are not independent and searching the raw text for these names, they don't appear at all!
   - ~~it's likely that England, Scotland and Wales have full nested data in the API and it is also extremely likely that they are not alone in this respect - ie there will be plenty of countries that are not independent and so will have nested data under a larger state/kingdom, confederation or whatever~~
     - ~~if no breakdown of data is provided for places like Wales, Scotland, then we will have to just provide UK stats~~
     - There is no breakdown of data for scotland/wales when fetching united kingdom as exact name from rcAPI
   - ~~consulting google, Scotland is a country but it's not a country, or at least not independent~~
+
+- The size of data being returned for a single country is about 4.8kb
+  - 10,000 requests is about 48 megabytes, not that much
+  - for example AWS customers receive 100GB data transfer out to the internet per month for free, or about 20 million requests per month. Data cost is not a factor yet.
+  - conclusion: we can send all of the data for each request to the frontend and filter it on the frontend
+- UN member, the field unMember in the json: see Vatican City, it is a member but more complex
+- providing more information by using tooltips could be the way to go to keep the interface clean
+  - eg https://www.npmjs.com/package/react-tooltip#demo this looks good
+- **IMPORTANT** the postalCode key is absent from some responses completely, example, Ireland. This implies that there could be other fields that exist on some responses for some countries and not for other countries. Will have to handle properties not existing when trying to access
+- make sure we can display different translations in our font
+
+## Useful Resources
+
+- list of response fields and description of same: https://www.educative.io/courses/get-started-with-the-rest-countries-api-in-javascript/an-overview-of-the-rest-countries-api
+- note, the description of the status field is still not that useful but I have to assume it relates to independence/sovereignty
+- emoji code for flags, may not need this:
+  - function getFlagEmoji(countryCode) {
+    return [...countryCode.toUpperCase()].map(char =>
+    String.fromCodePoint(127397 + char.charCodeAt())
+    ).reduce((a, b) => `${a}${b}`);
+    }
