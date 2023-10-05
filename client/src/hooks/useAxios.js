@@ -9,7 +9,7 @@ const useAxios = (configParams) => {
 
   useEffect(() => {
     fetchDataUsingAxios(configParams);
-  }, []);
+  }, [configParams]);
 
   const fetchDataUsingAxios = async () => {
     try {

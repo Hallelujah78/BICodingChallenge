@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Async, { useAsync } from "react-select/async";
+import Async from "react-select/async";
 
 const Landing = () => {
   const [country, setCountry] = useState("");
