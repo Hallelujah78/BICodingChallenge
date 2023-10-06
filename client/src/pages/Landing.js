@@ -36,33 +36,6 @@ const Landing = () => {
     if (countryData) {
       const myPara = document.querySelector("p");
       myPara.innerText = `The population of ${countryData.name.common} is ${countryData.population}`;
-      for (const [key, value] of Object.entries(countryData)) {
-        // console.log(`${key}: ${value}`);
-        if (typeof value === "object" && !Array.isArray(value)) {
-          const myValue = value;
-          for (const [key, value] of Object.entries(myValue)) {
-            console.log(`${key}: ${value}`);
-          }
-        }
-      }
-      const {
-        name: {
-          common,
-          official,
-          nativeName: {},
-        },
-        tld,
-        cca2,
-        ccn3,
-        cca3,
-        cioc,
-        independent,
-        status,
-        unMember,
-        currencies,
-        idd,
-        capital,
-      } = countryData;
     }
   }, [countryData]);
 
@@ -104,6 +77,12 @@ const Landing = () => {
         </form>
       </div>
       <p></p>
+      {countryData ? (
+        <img
+          src={countryData?.coatOfArms.svg}
+          alt={`the coat of arms for ${countryData?.name.commmon}`}
+        />
+      ) : null}
     </Wrapper>
   );
 };

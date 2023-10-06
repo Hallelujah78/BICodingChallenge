@@ -1,4 +1,4 @@
-name: 		    common
+Xname: 		    common
 		        official
 		        nativeName:	eng	    official
 					                common
@@ -10,15 +10,15 @@ name: 		    common
 				Note: Belize has 3 keys for the nativeName object,
 				bjz, eng, and spa
 	
-tld
+Xtld
 				Top-level domain .ie. .fr .uk etc
-cca2
+X cca2
 				country code alpha-2, ISO 3166-1 alpha-2 code
 ccn3
 				country code numeric-3
 				Country Codes Numeric-3, ISO 3166-1 numeric-3 code
-cca3
-cioc
+X cca3
+X cioc
 				country code international olympic committee  
 independent: 	bool
 				
@@ -43,8 +43,10 @@ idd:            root
 				
 capital
 altSpellings 	array
-region
-subregion
+
+				there is overlap with name property here
+region			string
+subregion		string
 languages: 	    eng
 		        fra
 
@@ -85,6 +87,7 @@ demonyms:	eng		f
 
 flag: 
 				unicode represention of the 2 letter country code which is used to display an emoji of the flag of the country
+				U+1F1EAU+1F1FA
 
 maps:		    googleMaps	
 		        openStreetMaps

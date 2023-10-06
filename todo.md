@@ -13,6 +13,11 @@
   - an interactive 3D earth map/sphere/globe that you can interact with and rotate and click on a country to find out about it.
   - country comparison by population, area - this does seem well beyond requirements but would let me introduce graphs
     - you could still do it with a selection of pre picked countries for some stats to demo graphing - **IF TIME ALLOWS**
+- Add search functionality on the response - beyond scope
+  - letting user quickly search for exactly what they want would be cool
+- different views
+  - tabular form
+  - group data
 
 # To Do
 
@@ -25,6 +30,9 @@
   - accessibility etc
 - ~~move react-scripts to dev deps~~ - DONE
 - handle the fact (front end informational) that users may expect to be able to retrieve information about certain countries (england, scotland, wales) but those countries may not have their own separate entries
+- programmatically check json data for uniformity - do some countries have keys that other countries don't have - eg postalCode
+- rearrange data on backend before sending to front
+  - will also want to add postalCode and other fields for all countries where those fields don't exist for uniformity
 
 # Next Commit
 
@@ -54,7 +62,7 @@
   - there are no entries for England, Scotland and Wales. When retrieving all countries or all countries that are not independent and searching the raw text for these names, they don't appear at all!
   - ~~it's likely that England, Scotland and Wales have full nested data in the API and it is also extremely likely that they are not alone in this respect - ie there will be plenty of countries that are not independent and so will have nested data under a larger state/kingdom, confederation or whatever~~
     - ~~if no breakdown of data is provided for places like Wales, Scotland, then we will have to just provide UK stats~~
-    - There is no breakdown of data for scotland/wales when fetching united kingdom as exact name from rcAPI
+    - There is no breakdown of data for scotland, wales, england when fetching united kingdom as exact name from rcAPI
   - ~~consulting google, Scotland is a country but it's not a country, or at least not independent~~
 
 - The size of data being returned for a single country is about 4.8kb
@@ -65,7 +73,9 @@
 - providing more information by using tooltips could be the way to go to keep the interface clean
   - eg https://www.npmjs.com/package/react-tooltip#demo this looks good
 - **IMPORTANT** the postalCode key is absent from some responses completely, example, Ireland. This implies that there could be other fields that exist on some responses for some countries and not for other countries. Will have to handle properties not existing when trying to access
+  - further investigation: keys per country vary. Some have as little as 26, with others having up to 35. Will create an object on backend with keys and structure and add our data in there from the response if it exists.
 - make sure we can display different translations in our font
+-
 
 ## Useful Resources
 
@@ -77,3 +87,29 @@
     String.fromCodePoint(127397 + char.charCodeAt())
     ).reduce((a, b) => `${a}${b}`);
     }
+
+## What we know about our response from rcAPI
+
+- the number of keys varies
+  - some countries won't have a fifa code, a postalCode etc
+  - the max number of fields is 35
+  - for countries with 35 keys, the keys are all identical
+    - there is not a situation where a country is missing a key, but has an extra key that other countries don't have, thus maintaining a total key count of 35
+- the name key:
+  - name.common and name.official should equal name.nativeName.eng.common and name.nativeName.eng.official
+    - I think to render this info we ignore nativeName.eng in all cases and just render name.common and name.official
+
+### Issues I've identified with the response
+
+- may be out of date
+  - Ireland has a postal code system
+- International Direct Dialing
+  - the idd key references an object
+  - this object has root and suffix keys
+    - note that the suffixes list for the USA contains area codes
+    - the root key for the USA contains the actual country code '1'
+    - the suffix array for Ireland contains '53'
+    - the root key for Ireland contains +3
+    - the issue is the actual country code for ireland is 353
+  - **_WARN USERS_**
+    - These international direct dialing codes may contain area codes! North America (Canada and The United States) share the international code of +1. I don't really have the ability to go through the data and check and fix this for each country.
