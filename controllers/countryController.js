@@ -1,7 +1,7 @@
 import { StatusCodes } from "http-status-codes";
 import * as CustomError from "../errors/index.js";
 import getData from "../utils/axiosRequest.js";
-import jsonTest from "../DELETE_BEFORE_DEPLOY/jsonTest.js";
+import { jsonTest } from "../DELETE_BEFORE_DEPLOY/jsonTest.js";
 const getAllCountries = async (req, res) => {
   res.status(StatusCodes.OK).json({ status: "getAllCountries" });
 };

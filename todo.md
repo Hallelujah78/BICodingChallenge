@@ -18,6 +18,12 @@
 - different views
   - tabular form
   - group data
+- do we bake our tooltips into our response?
+  - thinking not, keep it on the frontend instead of constantly pushing even more data
+  - we can use responseObject fields to look up tooltips kept in one place in a file
+    - e.g. cca2 will have a tooltip explaining what it is, ISO standard etc
+    - cca2 tooltip text is stored on the frontend:
+      {cca2: "ISO blah blah"}
 
 # To Do
 
@@ -98,6 +104,12 @@
 - the name key:
   - name.common and name.official should equal name.nativeName.eng.common and name.nativeName.eng.official
     - I think to render this info we ignore nativeName.eng in all cases and just render name.common and name.official
+- capitalInfo can be an empty object
+- capital can be absent, eg for island nations
+- the map key exists for all countries and they all contain 2 values, one for google and one for openStreetMaps
+- there are 250 individual records or countries in the data
+  - doing a find on all the data for population, we see it occurs 250 times
+  - similarly for timezones, 250 times
 
 ### Issues I've identified with the response
 
