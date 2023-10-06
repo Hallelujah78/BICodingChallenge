@@ -39,8 +39,12 @@
 - programmatically check json data for uniformity - do some countries have keys that other countries don't have - eg postalCode
 - rearrange data on backend before sending to front
   - will also want to add postalCode and other fields for all countries where those fields don't exist for uniformity
+- may have deleted error handling code from frontend when refactoring
+  - check this out, probably in context files
 
 # Next Commit
+
+ignored allData.json for commits. Continued to build my responseObject.
 
 # Design Considerations
 
