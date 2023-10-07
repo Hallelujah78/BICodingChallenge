@@ -1,7 +1,20 @@
 import { StatusCodes } from "http-status-codes";
 import * as CustomError from "../errors/index.js";
-import getData from "../utils/axiosRequest.js";
-import { jsonTest } from "../DELETE_BEFORE_DEPLOY/jsonTest.js";
+// import getData from "../utils/axiosRequest.js";
+// import createResponseObject from "../utils/createResponseObject.js";
+// import responseObject from "../utils/responseObject.js";
+// import languageObject from "../utils/languageObject.js";
+// import { restCountriesApiUrl } from "../utils/config.js";
+
+import {
+  createResponseObject,
+  getData,
+  restCountriesApiUrl,
+  currencyObject,
+  languageObject,
+  responseObject,
+} from "../utils/index.js";
+
 const getAllCountries = async (req, res) => {
   res.status(StatusCodes.OK).json({ status: "getAllCountries" });
 };
@@ -11,7 +24,8 @@ const getCountry = async (req, res) => {
   if (!country) {
     throw new CustomError.BadRequestError("please provide a country value");
   }
-  const result = await getData(country);
+
+  const result = await getData(country, restCountriesApiUrl);
 
   if (!result) {
     // handle the error
@@ -19,11 +33,15 @@ const getCountry = async (req, res) => {
       "We should get the error from the countries api and do something with that"
     );
   }
-  const countryData = result[0];
 
-  jsonTest();
+  const response = createResponseObject({
+    object: result[0],
+    responseObject,
+    languageObject,
+    currencyObject,
+  });
 
-  res.status(StatusCodes.OK).json(result[0]);
+  res.status(StatusCodes.OK).json(response);
 };
 
 export { getAllCountries, getCountry };

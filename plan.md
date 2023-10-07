@@ -12,6 +12,11 @@
   - in our responseObject, currencies will be an array of objects
   - can we take the object referenced by 'EUR', add a property to it, 'icc' for ISO currency code, and set the value of icc to 'EUR', then add it to our array of objects
 - we will NOT bake tooltips or other text into our response from Node to the frontend
+- We will use the SVG version of the file for coatOfArms and flags
+  - the file size and the width and height vary a lot for the png and svg version, but the svg version scales and looks good at different resolutions
+  - we can use: https://mainfacts.com/media/images/coats_of_arms_small/ge.jpg
+  - these files are small, 6.2kb for this, sizes are consistent
+- I will not declare responseObject inside createResponseObject. Dithered on this, but decided to leave it in a separate file due to its size. Don't know if it's the right decision.
 
 # Steps Taken
 
@@ -37,3 +42,7 @@
 - created an object on the backend that we can populate with our response data
   - used wikipedia entry for Ireland to decide how to categorize the data
 - started to fill out default values and structure for our responseObject
+
+## Day 4
+
+- Added createResponseObject.js, a function to create my responseObject (sent to frontend). Decided not to declare my responseObject in createResponseObject function. It would be easier to fill in the fields, but it's a big object. Not sure if that's the correct decision. Created helper functions and objects for creation of responseObject.

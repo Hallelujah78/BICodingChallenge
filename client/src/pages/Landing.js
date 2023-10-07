@@ -11,7 +11,7 @@ const Landing = () => {
     try {
       const { data: result } = await axios.post("/api/v1/country", { country });
       if (result) {
-        console.log(result.name.common);
+        console.log(result);
         setCountryData(result);
       }
     } catch (error) {
@@ -35,7 +35,7 @@ const Landing = () => {
   useEffect(() => {
     if (countryData) {
       const myPara = document.querySelector("p");
-      myPara.innerText = `The population of ${countryData.name.common} is ${countryData.population}`;
+      myPara.innerText = `The population of ${countryData.general.nameCommon} is ${countryData.demographics.population}`;
     }
   }, [countryData]);
 
@@ -79,8 +79,14 @@ const Landing = () => {
       <p></p>
       {countryData ? (
         <img
-          src={countryData?.coatOfArms.svg}
-          alt={`the coat of arms for ${countryData?.name.commmon}`}
+          src={countryData.general?.coatOfArmsJpgUrl}
+          alt={countryData.general?.coatOfArmsAlt}
+        />
+      ) : null}
+      {countryData ? (
+        <img
+          src={countryData.general?.coatOfArmsPngUrl}
+          alt={countryData.general?.coatOfArmsAlt}
         />
       ) : null}
     </Wrapper>

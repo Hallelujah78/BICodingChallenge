@@ -14,9 +14,13 @@ const responseObject = {
     openStreetMaps: "",
   },
   general: {
-    name: "",
-    coatOfArmsSvg: "", // coatOfArms object can be empty
-    coatOfArmsPng: "",
+    nameOfficial: "",
+    nameCommon: "",
+    nameNative: [], // array of objs
+    coatOfArmsSvgUrl: null, // coatOfArms object can be empty
+    coatOfArmsPngUrl: null,
+    coatOfArmsJpgUrl: null,
+    coatOfArmsAlt: "", //
     currencies: [], // can be absent! dynamic keys 'EUR'{symbol, currency}. We'll use array of objects
     altSpellings: [],
     flagPng: "",
@@ -25,11 +29,11 @@ const responseObject = {
     carSigns: [],
     carSide: "",
   },
-  commmunications: {
+  communications: {
     tld: "", // top lvl domain
     idd: [], // intl direct dialing, we'll combine
     // the root and suffixes
-    postalCode: { format, regex }, // may have to be massaged, usefulness?
+    postalCode: { format: "", regex: "" }, // may have to be massaged, usefulness?
   },
   intlRelations: {
     independent: null, // bool
@@ -43,13 +47,20 @@ const responseObject = {
     gini: [], // array of key (year, 2018), and value (float), will be array of objs
     languages: [], // make array of strings, we can dispense with the key ('ENG', 'FRA')
   },
+  additional: {
+    translations: [], // alpha-3 language code is key, array of objs [{lang: breton, off:, comm}]
+    startOfWeek: "",
+  },
+  codes: {
+    cca2: "",
+    ccn3: "",
+    cca3: "",
+    cioc: "",
+    flag: "",
+  },
 };
 
-// additional:  translations{bre{official, common}, ara{official,commmon}}, startOfWeek
-
-// 2 in additional
-
-// Codes: X cca2, X ccn3, X cca3, X cioc, fifa, flag""
+export default responseObject;
 
 // 6 in codes
 //----------------------
@@ -71,3 +82,9 @@ const responseObject = {
 // demographics: demonyms {fra{m,f}, eng{m,f}}, population, languages{}, gini {2017: INT, 2018: INT}
 
 // 4 in demographics
+
+// additional:  translations{bre{official, common}, ara{official,commmon}}, startOfWeek
+
+// 2 in additional
+
+// Codes: X cca2, X ccn3, X cca3, X cioc, fifa, flag""

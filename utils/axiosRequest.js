@@ -1,12 +1,10 @@
 import axios from "axios";
 
-const URL = "https://restcountries.com/v3.1/name/";
-const fullText = "?fullText=true";
-
-const getData = async (country) => {
+const getData = async (country, urlObject) => {
+  const { baseUrl, queryParam } = urlObject;
   const options = {
     method: "GET",
-    url: `${URL}${country}${fullText}`,
+    url: `${baseUrl}${country}${queryParam}`,
     headers: {
       "Content-Type": "application/json",
     },

@@ -24,6 +24,7 @@
     - e.g. cca2 will have a tooltip explaining what it is, ISO standard etc
     - cca2 tooltip text is stored on the frontend:
       {cca2: "ISO blah blah"}
+- we can make use of the postalCode regex pattern by making it interactive - allow user to input a post code and use the regex to give feedback to see if format is correct
 
 # To Do
 
@@ -43,8 +44,6 @@
   - check this out, probably in context files
 
 # Next Commit
-
-ignored allData.json for commits. Continued to build my responseObject.
 
 # Design Considerations
 
@@ -70,10 +69,12 @@ ignored allData.json for commits. Continued to build my responseObject.
 
   - I feel users would have an expectation that Scotland is a country by itself. On the other hand, do we provide the information as is from rcAPI? I think we do provide it as is. Technically they are not independent, well more than technically.
   - there are no entries for England, Scotland and Wales. When retrieving all countries or all countries that are not independent and searching the raw text for these names, they don't appear at all!
-  - ~~it's likely that England, Scotland and Wales have full nested data in the API and it is also extremely likely that they are not alone in this respect - ie there will be plenty of countries that are not independent and so will have nested data under a larger state/kingdom, confederation or whatever~~
+  - ~~it's likely that England, Scotland and Wales have full nested data in the API and it is also extremely likely that they are not alone in this respect - ie there will be plenty of countries that are not independent and so will have nested data under a larger state/kingdom, confederation or whatever~~ WRONG
     - ~~if no breakdown of data is provided for places like Wales, Scotland, then we will have to just provide UK stats~~
     - There is no breakdown of data for scotland, wales, england when fetching united kingdom as exact name from rcAPI
   - ~~consulting google, Scotland is a country but it's not a country, or at least not independent~~
+
+---
 
 - The size of data being returned for a single country is about 4.8kb
   - 10,000 requests is about 48 megabytes, not that much
@@ -85,7 +86,7 @@ ignored allData.json for commits. Continued to build my responseObject.
 - **IMPORTANT** the postalCode key is absent from some responses completely, example, Ireland. This implies that there could be other fields that exist on some responses for some countries and not for other countries. Will have to handle properties not existing when trying to access
   - further investigation: keys per country vary. Some have as little as 26, with others having up to 35. Will create an object on backend with keys and structure and add our data in there from the response if it exists.
 - make sure we can display different translations in our font
--
+- why create a responseObject? We have objects with an uncertain number of keys and possibly empty objects. Those keys reference, for example, languages. A key might be 'eng' for English. I want access to the value English. Therefore I'd have to jump through a lot of hoops on the frontend while dealing with a complex data structure AND trying to conditionally render stuff. Seems easier to fix/simplify/standardize the data on the backend and have a much easier time on the frontend later.
 
 ## Useful Resources
 
@@ -114,6 +115,12 @@ ignored allData.json for commits. Continued to build my responseObject.
 - there are 250 individual records or countries in the data
   - doing a find on all the data for population, we see it occurs 250 times
   - similarly for timezones, 250 times
+- data size for svg coatOfArms can be big
+  - 1.3mb for an SVG of UK coat of arms!
+  - 866kb for png version - still relatively enormous
+  - the png is not always the smallest, canada, png 572kb, svg 255kb
+  - the width and height of these files vary, canada svg is tiny
+  - have to go with SVG, tiny image still looks great scaled up
 
 ### Issues I've identified with the response
 

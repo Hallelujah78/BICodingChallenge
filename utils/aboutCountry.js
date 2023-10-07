@@ -4,6 +4,7 @@ const countryInfoAsText = (country) => {
     population,
   } = country;
   const infoAsText = `The Country of ${official}, commonly called ${common}, has a population of ${population}.`;
+  return infoAsText;
 };
 
 export default countryInfoAsText;
