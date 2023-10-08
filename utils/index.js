@@ -4,8 +4,9 @@ import { smallJpgMainFacts, restCountriesApiUrl } from "./config.js";
 import currencyObject from "./currencyObject.js";
 import languageObject from "./languageObject.js";
 import isEmpty from "./isEmpty.js";
-import responseObject from "./responseObject.js";
 import createResponseObject from "./createResponseObject.js";
+import populateResponseObject from "./populateResponseObject.js";
+import arrayOfObjectsFromKeyValue from "./arrayOfObjFromKeyValue.js";
 
 export {
   countryInfoAsText,
@@ -15,6 +16,7 @@ export {
   currencyObject,
   languageObject,
   isEmpty,
-  responseObject,
   createResponseObject,
+  populateResponseObject,
+  arrayOfObjectsFromKeyValue,
 };

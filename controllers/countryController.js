@@ -12,7 +12,7 @@ import {
   restCountriesApiUrl,
   currencyObject,
   languageObject,
-  responseObject,
+  populateResponseObject,
 } from "../utils/index.js";
 
 const getAllCountries = async (req, res) => {
@@ -34,9 +34,9 @@ const getCountry = async (req, res) => {
     );
   }
 
-  const response = createResponseObject({
+  const response = populateResponseObject({
     object: result[0],
-    responseObject,
+    createResponseObject,
     languageObject,
     currencyObject,
   });

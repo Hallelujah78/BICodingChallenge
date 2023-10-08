@@ -10,13 +10,14 @@
 - For the currencies property:
   - currencies in the json references an object with dynamic keys
   - in our responseObject, currencies will be an array of objects
-  - can we take the object referenced by 'EUR', add a property to it, 'icc' for ISO currency code, and set the value of icc to 'EUR', then add it to our array of objects
+  - can we take the object referenced by 'EUR', add a property to it, 'icc' for ISO currency code, and set the value of icc to 'EUR', then add it to our array of objects - yes we can
 - we will NOT bake tooltips or other text into our response from Node to the frontend
 - We will use the SVG version of the file for coatOfArms and flags
   - the file size and the width and height vary a lot for the png and svg version, but the svg version scales and looks good at different resolutions
   - we can use: https://mainfacts.com/media/images/coats_of_arms_small/ge.jpg
   - these files are small, 6.2kb for this, sizes are consistent
 - I will not declare responseObject inside createResponseObject. Dithered on this, but decided to leave it in a separate file due to its size. Don't know if it's the right decision.
+- For the languages key, I WILL retain the ISO-639-2/T 3-letter language code. Originally I was going to dispense with the code and create an array of languages
 
 # Steps Taken
 
@@ -46,3 +47,7 @@
 ## Day 4
 
 - Added createResponseObject.js, a function to create my responseObject (sent to frontend). Decided not to declare my responseObject in createResponseObject function. It would be easier to fill in the fields, but it's a big object. Not sure if that's the correct decision. Created helper functions and objects for creation of responseObject.
+
+## Day 5
+
+Added another helper function to create an array of objects from key/value pairs. Continued to work on createResponseObject function.

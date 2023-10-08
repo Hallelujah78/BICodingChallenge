@@ -6,7 +6,7 @@ Xname: 		    common
 					                common
 
 				GLE and ENG are 3 letter language codes
-				these are ISO 639-2 language codes, eng, gle
+				these are ISO 639-2/T language codes, eng, gle
 				Note: Belize has 3 keys for the nativeName object,
 				bjz, eng, and spa
 	
@@ -23,12 +23,12 @@ X cioc
 independent: 	bool
 				
 status
-				Independence recognized by UN, other states in the world, 'officially-assigned'
-				seems to be common value	
+				 Have the country's ISO-3166-1 codes been officially-assigned, the status is 'officially-assigned'
+					
 		
 unMember: 	bool
 
-currencies.	    EUR		name
+currencies:	    EUR		name
 				        symbol
 
 				        XAF, EUR ISO 3-letter currency code is the key
@@ -52,7 +52,7 @@ languages: 	    eng
 
 				can be one or more, seems to be 3-letter language code
 				belize has 3
-				ISO 639-2 language code, ara, bre etc
+				ISO 639-2/T language code, ara, bre etc
 
 translations: 	ara		official
 				        common

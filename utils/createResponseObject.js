@@ -1,73 +1,92 @@
-import createArrayOfObjects from "./createArrayOfObjects.js";
-import isEmpty from "./isEmpty.js";
-import { smallJpgMainFacts } from "./config.js";
-
-const createResponseObject = ({
-  object,
-  responseObject,
-  languageObject,
-  currencyObject,
-}) => {
-  const {
-    demographics,
-    general,
-    additional,
-    intlRelations,
-    geography,
-    communication,
-    codes,
-  } = responseObject;
-
-  const {
-    name: { common, official, nativeName },
-    population,
-    coatOfArms,
-    coatOfArms: { png, svg },
-    cca2,
-    cca3,
-    ccn3,
-    cioc,
-    fifa,
-    tld,
-    independent,
-    status,
-    unMember,
-    currencies,
-  } = object;
-
-  general.nameCommon = common;
-  general.nameOfficial = official;
-  demographics.population = population;
-  console.log(currencies);
-  // nativeName
-
-  general.nameNative = createArrayOfObjects({
-    object: nativeName,
-    newObjProp: "lang",
-    lookUp: languageObject,
-    useLookUp: true,
-  });
-
-  // end of nativeName
-
-  if (!isEmpty(coatOfArms)) {
-    general.coatOfArmsSvgUrl = svg;
-    general.coatOfArmsPngUrl = png;
-    general.coatOfArmsAlt = `Coat of arms for ${official}`;
-    general.coatOfArmsJpgUrl = `${smallJpgMainFacts}${cca2.toLowerCase()}.jpg`;
-  }
-
-  // currencies
-  if (!isEmpty(currencies)) {
-    general.currencies = createArrayOfObjects({
-      object: currencies,
-      newObjProp: "isoCode",
-      lookUp: currencyObject,
-      useLookUp: false,
-    });
-  }
-
+const responseObject = () => {
+  const responseObject = {
+    geography: {
+      continents: [],
+      region: "",
+      subregion: "",
+      latlng: [],
+      borders: [],
+      capital: "", // can be missing for island nations
+      capitalLatlng: [], // can be empty object
+      area: null,
+      timezones: [],
+      landlocked: null,
+      googleMaps: "", // all map objects contain 2 values
+      openStreetMaps: "",
+    },
+    general: {
+      nameOfficial: "",
+      nameCommon: "",
+      nameNative: [], // array of objs
+      coatOfArmsSvgUrl: null, // coatOfArms object can be empty
+      coatOfArmsPngUrl: null,
+      coatOfArmsJpgUrl: null,
+      coatOfArmsAlt: "", //
+      currencies: null, // can be absent! dynamic keys 'EUR'{symbol, currency}. We'll use array of objects
+      altSpellings: [],
+      flagPng: "",
+      flagSvg: "",
+      flagAlt: "", //
+      carSigns: [],
+      carSide: "",
+    },
+    communications: {
+      tld: "", // top lvl domain
+      idd: null, // intl direct dialing, we'll combine
+      // the root and suffixes
+      postalCode: { format: "", regex: "" }, // may have to be massaged, usefulness?
+    },
+    intlRelations: {
+      independent: null, // bool
+      status: "", // officially-assigned
+      unMember: null, // bool
+    },
+    demographics: {
+      demonyms: [],
+      population: null, // number can be zero
+      gini: [], // array of key (year, 2018), and value (float), will be array of objs
+      languages: [], // make array of strings, we won't dispense with the key ('ENG', 'FRA')
+    },
+    additional: {
+      translations: [], // alpha-3 language code is key, array of objs [{lang: breton, off:, comm}]
+      startOfWeek: "",
+    },
+    codes: {
+      cca2: "",
+      ccn3: "",
+      cca3: "",
+      cioc: "",
+      flag: "",
+      fifa: "",
+    },
+  };
   return responseObject;
 };
+export default responseObject;
 
-export default createResponseObject;
+// 6 in codes
+//----------------------
+// geography: continents[], region"", subregion"", latlng[], borders[IRL], capital, capitalInfo{latlng}, area INT, timezones[], landlocked BOOL, maps{googleMaps, openStreetMaps}
+
+// 11 in geography
+
+// general: X name, coatOfArms{svg, png}, currencies{EUR, USD}, altSpellings[], flags{png, svg, alt}, car{signs[], side}
+
+// 6 in general
+
+// communications: X tld, idd, postalCodes
+// 2 in communications
+
+// International Relations: X independent, X status, unMember
+
+// 3 in international relations
+
+// demographics: demonyms {fra{m,f}, eng{m,f}}, population, languages{}, gini {2017: INT, 2018: INT}
+
+// 4 in demographics
+
+// additional:  translations{bre{official, common}, ara{official,commmon}}, startOfWeek
+
+// 2 in additional
+
+// Codes: X cca2, X ccn3, X cca3, X cioc, fifa, flag""

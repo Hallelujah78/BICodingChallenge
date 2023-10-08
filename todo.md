@@ -47,7 +47,7 @@
 
 # Design Considerations
 
-- The API provides two endpoints that seem to be what we're looking for. One requires the exact name to be provided, the other requires a partial name. Using the one that requires a partial name and inputting 'ireland,' I was confused to get back Great Britain. This is because the official name contains Northern Ireland. I also got back Ireland in this data.
+- The API provides two endpoints that seem to be what we're looking for. One requires the exact name to be provided, the other requires a partial name. Using the one that requires a partial name and inputting 'ireland,' I was confused to get back Great Britain. This is because the official name for the United Kingdom contains 'Northern Ireland.' I also got back Ireland in this data.
   - this suggests we will have to allow the user to fill in some letters and then prompt them with the allowed values (i.e. specific name)
   - while partial matches might be nice to allow the user to see all countries that contain the string 'ire' for example, it does raise the issue of getting multiple items back in the response data.
 - In terms of formulating text that we incorporate the data into, "Ireland has a population of X and a land area of Y", I think this is best done by the server? Better performance for end users in a browser or on a mobile.
@@ -91,7 +91,7 @@
 ## Useful Resources
 
 - list of response fields and description of same: https://www.educative.io/courses/get-started-with-the-rest-countries-api-in-javascript/an-overview-of-the-rest-countries-api
-- note, the description of the status field is still not that useful but I have to assume it relates to independence/sovereignty
+- ~~note, the description of the status field is still not that useful but I have to assume it relates to independence/sovereignty~~ WRONG
 - emoji code for flags, may not need this:
   - function getFlagEmoji(countryCode) {
     return [...countryCode.toUpperCase()].map(char =>
@@ -125,7 +125,7 @@
 ### Issues I've identified with the response
 
 - may be out of date
-  - Ireland has a postal code system
+  - Ireland has a postal code system but that is not included in the response
 - International Direct Dialing
   - the idd key references an object
   - this object has root and suffix keys
@@ -136,3 +136,18 @@
     - the issue is the actual country code for ireland is 353
   - **_WARN USERS_**
     - These international direct dialing codes may contain area codes! North America (Canada and The United States) share the international code of +1. I don't really have the ability to go through the data and check and fix this for each country.
+  - keys may be missing where there is no value
+    - postalCode is omitted entirely, this affects destructuring
+    - you can't destructure a key that doesn't exist = 500 server error
+    - we will probably need to add missing fields, set to null or set to empty object?
+  - keys that may be undefined:
+    - gini {}
+    - postalCode {}
+    - languages {}
+
+# Biggest Mistakes & Lessons
+
+- Jumped straight into examining the response from the API and didn't see that there was a [fields.md](https://gitlab.com/restcountries/restcountries/-/blob/master/FIELDS.md) available. Pretty bad.
+  - ALWAYS look for documentation about what the fields in an API response refer to
+- Consuming somebody else's API is a lot different than consuming an API created for a course or consuming an API you've created yourself!!
+- I assumed that responseObject did not retain values between requests, it appears it does. I request Chad on the front end and I get back details for Chad. I request Antarctica, and get back details for Antarctica. Antarctica doesn't have an international direct dialing code, but we still have Chad's code in the response. Will have to move my response object into createResponseObject so it is created freshly for each request. Doh!
