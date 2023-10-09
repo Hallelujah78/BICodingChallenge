@@ -1,6 +1,6 @@
 import { StatusCodes } from "http-status-codes";
 import * as CustomError from "../errors/index.js";
-import { jsonTest } from "../DELETE_BEFORE_DEPLOY/jsonTest.js";
+import { jsonTestWrapper } from "../DELETE_BEFORE_DEPLOY/jsonTest.js";
 
 import {
   createResponseObject,
@@ -11,12 +11,8 @@ import {
   populateResponseObject,
 } from "../utils/index.js";
 
-const getAllCountries = async (req, res) => {
-  res.status(StatusCodes.OK).json({ status: "getAllCountries" });
-};
-
 const getCountry = async (req, res) => {
-  // await jsonTest();
+  await jsonTestWrapper();
   const country = req.body.country;
   if (!country) {
     throw new CustomError.BadRequestError("please provide a country value");
@@ -41,4 +37,4 @@ const getCountry = async (req, res) => {
   res.status(StatusCodes.OK).json(response);
 };
 
-export { getAllCountries, getCountry };
+export { getCountry };
