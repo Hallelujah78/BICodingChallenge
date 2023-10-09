@@ -23,7 +23,7 @@ const getCountry = async (req, res) => {
   if (!result) {
     // handle the error
     throw new CustomError.NotFoundError(
-      "We should get the error from the countries api and do something with that"
+      "Greetings from the backend, terribly sorry about this. I'm afraid there's been a bit of a mix up."
     );
   }
 
