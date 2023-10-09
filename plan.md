@@ -50,4 +50,8 @@
 
 ## Day 5
 
-Added another helper function to create an array of objects from key/value pairs. Continued to work on createResponseObject function.
+Added another helper function to create an array of objects from key/value pairs. Continued to work on createResponseObject function. Finalized responseObject. Will undoubtedly have errors.
+
+## Day 6
+
+Populated my languageObject so I can look up languages using language codes.

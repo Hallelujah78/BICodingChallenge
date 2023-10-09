@@ -30,7 +30,7 @@
 
 - create icons
 - validate the input on the frontend
-- get the basic request to the backend working with a response - DONE
+- ~~get the basic request to the backend working with a response~~ - DONE
 - create a readme that details how to set up, start and use the application
   - the use bit is essentially a user guide
 - Lighthouse reports!
@@ -38,12 +38,15 @@
 - ~~move react-scripts to dev deps~~ - DONE
 - handle the fact (front end informational) that users may expect to be able to retrieve information about certain countries (england, scotland, wales) but those countries may not have their own separate entries
 - programmatically check json data for uniformity - do some countries have keys that other countries don't have - eg postalCode
-- rearrange data on backend before sending to front
-  - will also want to add postalCode and other fields for all countries where those fields don't exist for uniformity
+- ~~rearrange data on backend before sending to front~~ DONE
+  - ~~will also want to add postalCode and other fields for all countries where those fields don't exist for uniformity~~ DONE-ish, may have errors
 - may have deleted error handling code from frontend when refactoring
   - check this out, probably in context files
+- ~~create list of lookup values for language~~ DONE
 
 # Next Commit
+
+Populated my languageObject so I can look up languages using language codes.
 
 # Design Considerations
 

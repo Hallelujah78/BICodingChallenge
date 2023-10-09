@@ -1,46 +1,37 @@
-import { readFile } from "fs/promises";
-import crypto from "crypto";
-
-const returnObjectLength = (obj) => {
-  return Object.keys(obj).length;
-};
+import { readFile, writeFile } from "fs/promises";
+import arrayOfObjectsFromKeyValue from "../utils/arrayOfObjFromKeyValue.js";
 
 const jsonTest = async () => {
   const json = JSON.parse(
     await readFile(new URL("./allData.json", import.meta.url))
   );
-  let salt = "f844b09ff50c";
-  let hashes = [];
-  let count = 0;
+  let uniqueLang = {};
+  let langCodes = [];
   json.forEach((country) => {
-    if (returnObjectLength(country.maps) < 2) {
-      console.log("***WARNING***");
-    } else {
-      count++;
-      console.log(
-        `good! count: ${count}: google: ${!!country.maps.openStreetMaps}`
-      );
-    }
-    if (Object.keys(country).length === 35) {
-      const keyString = Object.keys(country).join("");
-      let hash = crypto
-        .pbkdf2Sync(keyString, salt, 3, 64, "md5")
-        .toString("hex");
-      hashes.push({ country, hash });
+    let tempArray = [];
+    if (country.languages) {
+      tempArray = arrayOfObjectsFromKeyValue({
+        object: country.languages,
+        newKeyName: "code",
+        newValueName: "lang",
+      });
+      langCodes = [...langCodes, ...tempArray];
     }
   });
-  const referenceHash = hashes[0].hash;
-
-  hashes.forEach((object) => {
-    if (object.hash === referenceHash) {
-      // console.log(
-      //   `country: ${object.country.name.common}\nobjHash: ${object.hash}\nrefHash: ${referenceHash}\n\n`
-      // );
-      // console.log("good");
-    } else {
-      // console.log("****bad****");
+  langCodes.map((item) => {
+    if (uniqueLang[item.code] === undefined) {
+      uniqueLang[item.code] = item.lang;
     }
   });
+  try {
+    await writeFile(
+      "uniqueLang.txt",
+      JSON.stringify(uniqueLang, null, 2),
+      "utf8"
+    );
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export { jsonTest };

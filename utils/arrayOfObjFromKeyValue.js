@@ -11,7 +11,8 @@ const arrayOfObjectsFromKeyValue = ({ object, newKeyName, newValueName }) => {
 
     return objArray;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
+    console.log("***arrayOfObjFromKeyValue ERROR***");
   }
 };
 

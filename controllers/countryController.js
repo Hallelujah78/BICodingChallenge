@@ -1,10 +1,6 @@
 import { StatusCodes } from "http-status-codes";
 import * as CustomError from "../errors/index.js";
-// import getData from "../utils/axiosRequest.js";
-// import createResponseObject from "../utils/createResponseObject.js";
-// import responseObject from "../utils/responseObject.js";
-// import languageObject from "../utils/languageObject.js";
-// import { restCountriesApiUrl } from "../utils/config.js";
+import { jsonTest } from "../DELETE_BEFORE_DEPLOY/jsonTest.js";
 
 import {
   createResponseObject,
@@ -20,6 +16,7 @@ const getAllCountries = async (req, res) => {
 };
 
 const getCountry = async (req, res) => {
+  // await jsonTest();
   const country = req.body.country;
   if (!country) {
     throw new CustomError.BadRequestError("please provide a country value");

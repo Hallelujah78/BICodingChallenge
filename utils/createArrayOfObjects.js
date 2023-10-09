@@ -8,7 +8,8 @@ const createArrayOfObjects = ({ object, newObjProp, lookUp, useLookUp }) => {
     });
     return objArray;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
+    console.log("***createArrayOfObjects ERROR***");
   }
 };
 
