@@ -1,6 +1,8 @@
 const responseObject = () => {
   const responseObject = {
     geography: {
+      title: "geography",
+      type: "geography",
       continents: [],
       region: "",
       subregion: "",
@@ -15,6 +17,8 @@ const responseObject = () => {
       openStreetMaps: "",
     },
     general: {
+      title: "general information",
+      type: "general",
       nameOfficial: "",
       nameCommon: "",
       nameNative: [], // array of objs
@@ -31,27 +35,37 @@ const responseObject = () => {
       carSide: "",
     },
     communications: {
+      title: "communications",
+      type: "communications",
       tld: "", // top lvl domain
       idd: null, // intl direct dialing, we'll combine
       // the root and suffixes
       postalCode: { format: "", regex: "" }, // may have to be massaged, usefulness?
     },
     intlRelations: {
+      title: "international relations",
+      type: "intlRelations",
       independent: null, // bool
       status: "", // officially-assigned
       unMember: null, // bool
     },
     demographics: {
+      title: "demographics",
+      type: "demographics",
       demonyms: [],
       population: null, // number can be zero
       gini: [], // array of key (year, 2018), and value (float), will be array of objs
       languages: [], // make array of strings, we won't dispense with the key ('ENG', 'FRA')
     },
     additional: {
+      title: "additional info",
+      type: "additional",
       translations: [], // alpha-3 language code is key, array of objs [{lang: breton, off:, comm}]
       startOfWeek: "",
     },
     codes: {
+      title: "codes",
+      type: "codes",
       cca2: "",
       ccn3: "",
       cca3: "",

@@ -1,9 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
 import axios from "axios";
-import Async from "react-select/async";
-import InfoContainer from "../components/InfoContainer";
-import General from "../components/General";
+import DynamicObjectRenderer from "../components/DynamicObjectRenderer.js";
 
 const BasicUI = () => {
   const [country, setCountry] = useState("");
@@ -24,7 +22,6 @@ const BasicUI = () => {
       }
     } catch (error) {
       setIsError(true);
-
       setErrorMessage(error.response.data.msg);
     }
     setIsLoading(false);
@@ -86,13 +83,7 @@ const BasicUI = () => {
       ) : isError ? (
         <div className="content-center">{errorMessage}</div>
       ) : countryData ? (
-        <div className="content-center">
-          <InfoContainer>
-            <General general={countryData.general} />
-          </InfoContainer>
-          <InfoContainer countryData={countryData} />
-          <InfoContainer countryData={countryData} />
-        </div>
+        <DynamicObjectRenderer data={countryData} />
       ) : null}
     </Wrapper>
   );
@@ -116,7 +107,6 @@ const Wrapper = styled.section`
     margin: 5rem auto;
     transition: 0.3s ease-in all;
     width: 80vw;
-    /* border: red solid 1px; */
     height: fit-content;
     .btn-container {
       display: flex;
@@ -153,14 +143,3 @@ const Wrapper = styled.section`
     height: auto;
   }
 `;
-
-// <Wrapper className="content-center">
-//   <h1>loading...</h1>
-// </Wrapper>
-
-// <Wrapper>
-//   <section className="content-center">
-//     <h1>Error...</h1>
-//     <button onClick={() => setIsError(false)}>Back</button>
-//   </section>
-// </Wrapper>
