@@ -66,7 +66,7 @@ const populateResponseObject = ({
   general.altSpellings = altSpellings; // []
   general.flagPng = flagPng;
   general.flagSvg = flagSvg;
-  general.flagAlt = flagAlt;
+  general.flagAlt = flagAlt ? flagAlt : `The flag of ${common}.`;
   general.carSigns = signs; //[]
   general.carSide = side;
 

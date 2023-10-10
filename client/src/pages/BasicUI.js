@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { useState } from "react";
 import axios from "axios";
 import Async from "react-select/async";
+import InfoContainer from "../components/InfoContainer";
+import General from "../components/General";
 
 const BasicUI = () => {
   const [country, setCountry] = useState("");
@@ -85,15 +87,11 @@ const BasicUI = () => {
         <div className="content-center">{errorMessage}</div>
       ) : countryData ? (
         <div className="content-center">
-          <img
-            src={countryData.general?.coatOfArmsJpgUrl}
-            alt={countryData.general?.coatOfArmsAlt}
-          />
-          <img
-            className="arms-large"
-            src={countryData.general?.coatOfArmsPngUrl}
-            alt={countryData.general?.coatOfArmsAlt}
-          />
+          <InfoContainer>
+            <General general={countryData.general} />
+          </InfoContainer>
+          <InfoContainer countryData={countryData} />
+          <InfoContainer countryData={countryData} />
         </div>
       ) : null}
     </Wrapper>
@@ -147,7 +145,6 @@ const Wrapper = styled.section`
   .content-center {
     display: grid;
     place-content: center;
-    border: red solid 1px;
     min-height: 50vh;
     width: 100%;
   }
