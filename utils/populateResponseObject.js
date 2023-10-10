@@ -67,8 +67,6 @@ const populateResponseObject = ({
   general.flagPng = flagPng;
   general.flagSvg = flagSvg;
   general.flagAlt = flagAlt ? flagAlt : `The flag of ${common}.`;
-  general.carSigns = signs; //[]
-  general.carSide = side;
 
   // nativeName
 
@@ -146,6 +144,8 @@ const populateResponseObject = ({
 
   //** ADDITIONAL **/
   additional.startOfWeek = startOfWeek;
+  additional.carSigns = signs; //[]
+  additional.carSide = side;
 
   // translations
   if (!isEmpty(translations)) {

@@ -31,8 +31,6 @@ const responseObject = () => {
       flagPng: "",
       flagSvg: "",
       flagAlt: "", //
-      carSigns: [],
-      carSide: "",
     },
     communications: {
       title: "communications",
@@ -60,8 +58,10 @@ const responseObject = () => {
     additional: {
       title: "additional info",
       type: "additional",
-      translations: [], // alpha-3 language code is key, array of objs [{lang: breton, off:, comm}]
+      translations: [], // alpha-3 language code is key, array of objs [{lang: breton, official, common}]
       startOfWeek: "",
+      carSigns: [],
+      carSide: "",
     },
     codes: {
       title: "codes",

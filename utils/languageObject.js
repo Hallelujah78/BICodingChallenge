@@ -1,4 +1,7 @@
 const languageObject = {
+  bre: "Breton",
+  per: "Persian",
+  cym: "Welsh",
   fra: "French",
   spa: "Spanish",
   eng: "English",

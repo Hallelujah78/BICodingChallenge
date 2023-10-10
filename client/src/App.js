@@ -2,6 +2,7 @@ import BasicUI from "./pages/BasicUI.js";
 import Navbar from "./components/Navbar.js";
 import Footer from "./components/Footer.js";
 import styled from "styled-components";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -9,9 +10,11 @@ function App() {
     <Wrapper>
       <BrowserRouter>
         <Navbar />
+
         <Routes>
           <Route path="/" element={<BasicUI />} />
         </Routes>
+
         <Footer />
       </BrowserRouter>
     </Wrapper>

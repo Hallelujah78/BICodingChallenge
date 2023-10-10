@@ -2,9 +2,6 @@ import React from "react";
 import InfoContainer from "./InfoContainer.js";
 import styled from "styled-components";
 
-// our data object (simplified)
-//
-
 const DynamicObjectRenderer = ({ data }) => {
   return (
     <Wrapper>
@@ -15,8 +12,6 @@ const DynamicObjectRenderer = ({ data }) => {
             nameOfficial,
             nameCommon,
             altSpellings,
-            carSide,
-            carSigns,
             coatOfArmsAlt,
             coatOfArmsJpgUrl,
             coatOfArmsSvgUrl,
@@ -25,49 +20,92 @@ const DynamicObjectRenderer = ({ data }) => {
             flagAlt,
             flagPng,
             nameNative,
-
             title,
-            type,
           } = data.general;
           return (
             <InfoContainer key={key} title={title}>
-              <table className="two">
-                <tr>
-                  <td>Country</td>
-                  <td>{nameOfficial}</td>
-                </tr>
-                <tr>
-                  <td>Informal name</td>
-                  <td>{nameCommon}</td>
-                </tr>
-                <tr>
-                  <td>Flag</td>
-                  <td>
-                    <img src={flagSvg} alt={flagAlt} />
-                  </td>
-                </tr>
+              <div className="title">
+                <h3>{nameOfficial}</h3>
+              </div>
+              <table className="table-2-col">
+                <tbody>
+                  <tr>
+                    <td>Formal Name</td>
+                    <td>{nameOfficial}</td>
+                  </tr>
+                  <tr>
+                    <td>Informal name</td>
+                    <td>{nameCommon}</td>
+                  </tr>
+                  <tr>
+                    <td>Flag</td>
+                    <td>
+                      <img src={flagSvg} alt={flagAlt} />
+                    </td>
+                  </tr>
+                </tbody>
               </table>
-              <table className="three">
-                <tr>
-                  <td>Names</td>
-
-                  {nameNative[0] ? (
-                    <>
-                      <td>{nameNative[0].lang}</td>
-                      <td>{nameNative[0].common}</td>
-                    </>
+              <table className="th-3-col">
+                <tbody>
+                  <tr>
+                    <th>Official Languages</th>
+                    <th>Informal Name</th>
+                    <th>Official Name</th>
+                  </tr>
+                  {nameNative?.length > 0 ? (
+                    nameNative.map((name) => {
+                      return (
+                        <tr key={name.lang}>
+                          <td>{name.lang}</td>
+                          <td>{name.common}</td>
+                          <td>{name.official}</td>
+                        </tr>
+                      );
+                    })
                   ) : (
-                    <td>no native name</td>
+                    <tr>
+                      <td>None</td>
+                      <td>-</td>
+                      <td>-</td>
+                    </tr>
                   )}
-                </tr>
+                </tbody>
               </table>
-              <table className="two">
-                <tr>
-                  <td>Coat of Arms</td>
-                  <td>
-                    <img src={coatOfArmsSvgUrl} alt={coatOfArmsAlt} />
-                  </td>
-                </tr>
+              <table className="table-2-col">
+                <tbody>
+                  <tr>
+                    <td>Coat of Arms</td>
+                    <td>
+                      <img src={coatOfArmsSvgUrl} alt={coatOfArmsAlt} />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <table className="th-3-col">
+                <tbody>
+                  <tr>
+                    <th>Currency</th>
+                    <th>Currency Symbol</th>
+                    <th>3-Letter Code</th>
+                  </tr>
+                  {currencies?.length > 0 ? (
+                    currencies.map((currency) => {
+                      return (
+                        <tr key={currency.symbol}>
+                          <td>{currency.name}</td>
+                          <td>{currency.symbol}</td>
+                          <td>{currency.iso4217}</td>
+                        </tr>
+                      );
+                    })
+                  ) : (
+                    <tr>
+                      <td>None</td>
+                      <td>-</td>
+                      <td>-</td>
+                    </tr>
+                  )}
+                </tbody>
               </table>
             </InfoContainer>
           );
@@ -95,14 +133,55 @@ const DynamicObjectRenderer = ({ data }) => {
               </div>
             </InfoContainer>
           );
-        } else if (item.type === "intlRelations") {
-          const { independent, status, unMember, title } = data.intlRelations;
+        } else if (item.type === "additional") {
+          const { carSigns, carSide, startOfWeek, translations, title } =
+            data.additional;
           return (
             <InfoContainer key={key} title={title}>
               <div>
-                <p>Independent: {independent ? "Yes" : "No"}</p>
-                <p>ISO 3166 code status: {status}</p>
-                <p>Member of United Nations: {unMember ? "Yes" : "No"}</p>
+                <table className="table-2-col">
+                  <tbody>
+                    <tr>
+                      <td>Start of Week</td>
+                      <td>{startOfWeek}</td>
+                    </tr>
+                    <tr>
+                      <td>Driving Side</td>
+                      <td>Drive on the {carSide} side of the road</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table className="th-3-col">
+                  <tbody>
+                    <tr>
+                      <th colSpan="3" className="table-heading">
+                        Translations of Name
+                      </th>
+                    </tr>
+                    <tr>
+                      <th>Language</th>
+                      <th>Informal Name</th>
+                      <th>Official Name</th>
+                    </tr>
+                    {translations?.length > 0 ? (
+                      translations.map((translation) => {
+                        return (
+                          <tr key={translation.lang}>
+                            <td>{translation.lang}</td>
+                            <td>{translation.common}</td>
+                            <td>{translation.official}</td>
+                          </tr>
+                        );
+                      })
+                    ) : (
+                      <tr>
+                        <td>None</td>
+                        <td>-</td>
+                        <td>-</td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
               </div>
             </InfoContainer>
           );
@@ -135,31 +214,49 @@ const Wrapper = styled.div`
   }
   table {
     text-align: left;
+    width: 100%;
+    border-collapse: collapse;
   }
-  td {
-    padding: 15px 0;
+
+  td,
+  th {
+    padding: 15px 5px;
+    word-wrap: break-word;
   }
   td:nth-of-type(1) {
     font-weight: bold;
     color: rgba(100, 100, 100, 1);
   }
   td:nth-of-type(3) {
-    font-size: 2rem;
+    /* font-size: 1rem; */
   }
-  td:nth-of-type(2) {
-    font-style: italic;
-  }
-  table.two {
+
+  table.table-2-col {
     table-layout: fixed;
-    td {
+    td,
+    th {
       width: 50%;
     }
   }
-  table.three {
+  table.table-3-col {
+    table-layout: auto;
+    width: 100%;
+    td,
+    th {
+      word-wrap: break-word;
+    }
+    td:nth-of-type(2) {
+      font-style: italic;
+    }
+  }
+  table.th-3-col {
     table-layout: auto;
     width: 100%;
     td {
     }
+  }
+  .table-heading {
+    text-align: center;
   }
 `;
 
