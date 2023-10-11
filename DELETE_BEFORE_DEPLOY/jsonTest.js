@@ -37,6 +37,7 @@ const getCountryLowestKeys = async () => {
   const countryKeys = { country: "", keys: 35 };
   data.forEach((country) => {
     let countryKeyLength = Object.keys(country).length;
+
     if (countryKeyLength < countryKeys.keys) {
       countryKeys.keys = countryKeyLength;
       countryKeys.country = country.name.common;
@@ -49,8 +50,30 @@ const readJsonData = async () => {
   return JSON.parse(await readFile(new URL("./allData.json", import.meta.url)));
 };
 
+const compareCountryKeys = async (country1, country2) => {
+  const data = await readJsonData();
+  console.log(data[0]);
+
+  const keysCountry1 = data.map((country) => {
+    if (country.name.common === country1) {
+      return Object.keys(country);
+    }
+    return;
+  });
+
+  console.log(keysCountry1);
+  const keysCountry2 = data.map((country) => {
+    if (country.name.common === country2) {
+      return Object.keys(country);
+    }
+    return "hi";
+  });
+  console.log(keysCountry2);
+  // keysCountry2.forEach((key, index) => console.log(key, keysCountry1[index]));
+};
+
 const jsonTestWrapper = async () => {
-  getCountryLowestKeys();
+  // compareCountryKeys("Bouvet Island", "Antarctica");
 };
 
 export { jsonTest, getCountryLowestKeys, jsonTestWrapper };

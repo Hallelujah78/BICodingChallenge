@@ -108,15 +108,18 @@ const populateResponseObject = ({
 
   //** DEMOGRAPHICS **/
   demographics.population = population;
-
-  // demonyms
-  if (!isEmpty(demonyms) && demonyms !== undefined) {
-    demographics.demonyms = createArrayOfObjects({
-      object: demonyms,
-      newObjProp: "lang",
-      lookUp: languageObject,
-      useLookUp: true,
-    });
+  try {
+    // demonyms
+    if (demonyms !== undefined && !isEmpty(demonyms)) {
+      demographics.demonyms = createArrayOfObjects({
+        object: demonyms,
+        newObjProp: "lang",
+        lookUp: languageObject,
+        useLookUp: true,
+      });
+    }
+  } catch (err) {
+    console.log(err);
   }
   // end of demonyms
 
@@ -144,7 +147,9 @@ const populateResponseObject = ({
 
   //** ADDITIONAL **/
   additional.startOfWeek = startOfWeek;
-  additional.carSigns = signs; //[]
+  if (signs !== undefined && signs[0] !== "") {
+    additional.carSigns = signs; //[]
+  }
   additional.carSide = side;
 
   // translations
@@ -157,14 +162,18 @@ const populateResponseObject = ({
     });
   }
   //** COMMUNICATIONS **/
-  communications.tld = tld;
+  communications.tld = tld; // this is actually an array of strings
 
   // internatonal dialing
-  if (!isEmpty(idd)) {
+  if (idd !== undefined && !isEmpty(idd)) {
     const iddCodes = [];
-    idd.suffixes.forEach((suffix) => {
-      iddCodes.push(`${idd.root}${suffix}`);
-    });
+    if (idd.suffixes?.length > 0) {
+      idd.suffixes.forEach((suffix) => {
+        iddCodes.push(`${idd.root}${suffix}`);
+      });
+    } else {
+      iddCodes.push(idd?.root);
+    }
     communications.idd = iddCodes;
   }
 
@@ -187,7 +196,7 @@ const populateResponseObject = ({
   geography.borders = borders ? borders : null;
   geography.capital = capital ? capital : "None"; // can be missing for island nations
   geography.capitalLatlng = capitalInfo?.latlng ? capitalInfo.latlng : null; // can be empty object
-  geography.area = area ? area : 0;
+  geography.area = area ? area.toLocaleString() : 0;
   geography.timezones = timezones;
   geography.landlocked = landlocked;
   geography.googleMaps = googleMaps; // all map objects contain 2 values

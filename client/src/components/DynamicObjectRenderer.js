@@ -1,6 +1,7 @@
 import React from "react";
 import InfoContainer from "./InfoContainer.js";
 import styled from "styled-components";
+import TableRow from "./TableRow.js";
 
 const DynamicObjectRenderer = ({ data }) => {
   return (
@@ -76,7 +77,11 @@ const DynamicObjectRenderer = ({ data }) => {
                   <tr>
                     <td>Coat of Arms</td>
                     <td>
-                      <img src={coatOfArmsSvgUrl} alt={coatOfArmsAlt} />
+                      {coatOfArmsSvgUrl ? (
+                        <img src={coatOfArmsSvgUrl} alt={coatOfArmsAlt} />
+                      ) : (
+                        "None"
+                      )}
                     </td>
                   </tr>
                 </tbody>
@@ -113,24 +118,66 @@ const DynamicObjectRenderer = ({ data }) => {
           const { tld, idd, postalCode, title } = data.communications;
           return (
             <InfoContainer key={key} title={title}>
-              <div className="grid-container">
-                <div>Top Level Domain</div> <div>{tld}</div>
-                <div>Postal Code Format</div>
-                <div>{postalCode ? postalCode.format : " No postal Code"}</div>
-                <div>International Direct Dialing Code</div>
-                <div> {idd?.[0]}</div>
-              </div>
+              <table className="table-2-col">
+                <tbody>
+                  <tr>
+                    <td>Top Level Domain</td>
+                    <td>{tld}</td>
+                  </tr>
+                  <tr>
+                    <td>Postal Code Format</td>
+                    <td>
+                      {postalCode ? postalCode.format : " No postal Code"}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Postal Code Regular Expression</td>
+                    <td>
+                      {postalCode ? (
+                        <code>{postalCode.regex}</code>
+                      ) : (
+                        " No postal Code"
+                      )}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Postal Code Validator</td>
+                    <td>
+                      {postalCode ? (
+                        <input pattern={postalCode.regex} />
+                      ) : (
+                        " No postal Code"
+                      )}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>International Direct Dialing</td>
+                    <td>{idd?.[0] ? idd[0] : "None"}</td>
+                  </tr>
+                </tbody>
+              </table>
             </InfoContainer>
           );
         } else if (item.type === "intlRelations") {
           const { independent, status, unMember, title } = data.intlRelations;
           return (
             <InfoContainer key={key} title={title}>
-              <div>
-                <p>Independent: {independent ? "Yes" : "No"}</p>
-                <p>ISO 3166 code status: {status}</p>
-                <p>Member of United Nations: {unMember ? "Yes" : "No"}</p>
-              </div>
+              <table className="table-2-col">
+                <tbody>
+                  <tr>
+                    <td>Independent</td>
+                    <td>{independent ? "Yes" : "No"}</td>
+                  </tr>
+                  <tr>
+                    <td>ISO 3166 country code status</td>
+                    <td>{status}</td>
+                  </tr>
+                  <tr>
+                    <td>Member of United Nations</td>
+                    <td>{unMember ? "Yes" : "No"}</td>
+                  </tr>
+                </tbody>
+              </table>
             </InfoContainer>
           );
         } else if (item.type === "additional") {
@@ -138,51 +185,135 @@ const DynamicObjectRenderer = ({ data }) => {
             data.additional;
           return (
             <InfoContainer key={key} title={title}>
-              <div>
-                <table className="table-2-col">
-                  <tbody>
+              <table className="table-2-col">
+                <tbody>
+                  <tr>
+                    <td>Start of Week</td>
+                    <td>{startOfWeek}</td>
+                  </tr>
+                  <tr>
+                    <td>Driving Side</td>
+                    <td>Drive on the {carSide} side of the road</td>
+                  </tr>
+                  <tr>
+                    <td>International Vehicle Registration Codes</td>
+                    <td>
+                      {carSigns?.length > 0
+                        ? carSigns.map((sign, index) => {
+                            if (index === carSigns.length - 1) {
+                              return `${sign}`;
+                            }
+                            return `${sign}, `;
+                          })
+                        : "None"}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <table className="th-3-col">
+                <tbody>
+                  <tr>
+                    <th colSpan="3" className="table-heading">
+                      Name in Different Languages
+                    </th>
+                  </tr>
+                  <tr>
+                    <th>Language</th>
+                    <th>Informal Name</th>
+                    <th>Official Name</th>
+                  </tr>
+                  {translations?.length > 0 ? (
+                    translations.map((translation) => {
+                      const { lang, common, official } = translation;
+                      return (
+                        <tr key={lang}>
+                          <td>{lang}</td>
+                          <td>{common}</td>
+                          <td>{official}</td>
+                        </tr>
+                      );
+                    })
+                  ) : (
                     <tr>
-                      <td>Start of Week</td>
-                      <td>{startOfWeek}</td>
+                      <td>None</td>
+                      <td>-</td>
+                      <td>-</td>
                     </tr>
-                    <tr>
-                      <td>Driving Side</td>
-                      <td>Drive on the {carSide} side of the road</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <table className="th-3-col">
-                  <tbody>
-                    <tr>
-                      <th colSpan="3" className="table-heading">
-                        Translations of Name
-                      </th>
-                    </tr>
-                    <tr>
-                      <th>Language</th>
-                      <th>Informal Name</th>
-                      <th>Official Name</th>
-                    </tr>
-                    {translations?.length > 0 ? (
-                      translations.map((translation) => {
-                        return (
-                          <tr key={translation.lang}>
-                            <td>{translation.lang}</td>
-                            <td>{translation.common}</td>
-                            <td>{translation.official}</td>
-                          </tr>
-                        );
-                      })
-                    ) : (
-                      <tr>
-                        <td>None</td>
-                        <td>-</td>
-                        <td>-</td>
-                      </tr>
-                    )}
-                  </tbody>
-                </table>
-              </div>
+                  )}
+                </tbody>
+              </table>
+            </InfoContainer>
+          );
+        } else if (item.type === "geography") {
+          const {
+            title,
+            continents,
+            region,
+            subregion,
+            latlng,
+            borders,
+            capital,
+            capitalLatlng,
+            area,
+            timezones,
+            landlocked,
+            googleMaps,
+            openStreetMaps,
+          } = data.geography;
+          return (
+            <InfoContainer key={key} title={title}>
+              <table className="table-2-col">
+                <tbody>
+                  <TableRow
+                    label="Area in Square Kilometres"
+                    property={area}
+                    nullValue="None"
+                  />
+                  <TableRow
+                    label="Google Maps Link"
+                    property={
+                      <a
+                        style={{ textDecoration: "underline", color: "green" }}
+                        href={googleMaps}
+                      >
+                        Google Maps
+                      </a>
+                    }
+                  />
+                  <TableRow
+                    label="Open Street Maps Link"
+                    property={
+                      <a
+                        style={{ textDecoration: "underline", color: "green" }}
+                        href={openStreetMaps}
+                      >
+                        Open Street Maps
+                      </a>
+                    }
+                  />
+                  <TableRow label="Region" property={region} />
+                  <TableRow
+                    label="Subregion"
+                    property={subregion}
+                    nullValue="None"
+                  />
+                  <TableRow label="Capital City" property={capital} />
+                  <tr>
+                    <td>Continents</td>
+                    <td>
+                      {continents?.length > 0
+                        ? continents.map((continent, index) => {
+                            if (continents.length - 1 === index) {
+                              return `${continent}`;
+                            } else {
+                              return `${continent}, `;
+                            }
+                          })
+                        : "None"}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </InfoContainer>
           );
         }
@@ -198,10 +329,7 @@ const Wrapper = styled.div`
   display: grid;
   justify-content: space-evenly;
   grid-template-columns: 1fr;
-  /* .grid-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  } */
+
   img {
     width: 90%;
     margin: 0.5rem;
@@ -250,13 +378,20 @@ const Wrapper = styled.div`
     }
   }
   table.th-3-col {
-    table-layout: auto;
+    table-layout: fixed;
     width: 100%;
     td {
     }
   }
   .table-heading {
     text-align: center;
+  }
+  h3 {
+    margin-top: 1rem;
+    font-size: calc(1.25rem + 0.390625vw);
+  }
+  code {
+    font-size: 0.7rem;
   }
 `;
 
