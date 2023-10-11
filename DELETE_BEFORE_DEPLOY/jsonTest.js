@@ -72,8 +72,27 @@ const compareCountryKeys = async (country1, country2) => {
   // keysCountry2.forEach((key, index) => console.log(key, keysCountry1[index]));
 };
 
+const countryCodes = async () => {
+  const data = await readJsonData();
+  const countryObject = {};
+  data.forEach((country) => {
+    countryObject[country.cca3] = country.name.common;
+  });
+
+  try {
+    await writeFile(
+      "countryObject.txt",
+      JSON.stringify(countryObject, null, 2),
+      "utf8"
+    );
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const jsonTestWrapper = async () => {
   // compareCountryKeys("Bouvet Island", "Antarctica");
+  // countryCodes();
 };
 
 export { jsonTest, getCountryLowestKeys, jsonTestWrapper };

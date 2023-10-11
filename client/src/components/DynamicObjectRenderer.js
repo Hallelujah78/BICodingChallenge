@@ -312,6 +312,7 @@ const DynamicObjectRenderer = ({ data }) => {
                         : "None"}
                     </td>
                   </tr>
+                  <TableRow label="Latitude & Longitude" property={latlng} />
                 </tbody>
               </table>
             </InfoContainer>
@@ -325,6 +326,7 @@ const DynamicObjectRenderer = ({ data }) => {
 };
 
 const Wrapper = styled.div`
+  hyphens: auto;
   width: 100%;
   display: grid;
   justify-content: space-evenly;
@@ -350,6 +352,7 @@ const Wrapper = styled.div`
   th {
     padding: 15px 5px;
     word-wrap: break-word;
+    hyphens: auto;
   }
   td:nth-of-type(1) {
     font-weight: bold;
@@ -364,6 +367,7 @@ const Wrapper = styled.div`
     td,
     th {
       width: 50%;
+      hyphens: auto;
     }
   }
   table.table-3-col {
@@ -372,6 +376,7 @@ const Wrapper = styled.div`
     td,
     th {
       word-wrap: break-word;
+      hyphens: auto;
     }
     td:nth-of-type(2) {
       font-style: italic;
@@ -381,6 +386,7 @@ const Wrapper = styled.div`
     table-layout: fixed;
     width: 100%;
     td {
+      hyphens: auto;
     }
   }
   .table-heading {

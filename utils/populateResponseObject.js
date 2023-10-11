@@ -49,7 +49,7 @@ const populateResponseObject = ({
     translations,
     capitalInfo,
     region,
-    subRegion,
+    subregion,
     capital,
     area,
     landlocked,
@@ -191,8 +191,9 @@ const populateResponseObject = ({
   //** GEOGRAPHY **/
   geography.continents = continents;
   geography.region = region;
-  geography.subregion = subRegion ? subRegion : null;
+  geography.subregion = subregion ? subregion : null;
   geography.latlng = latlng;
+
   geography.borders = borders ? borders : null;
   geography.capital = capital ? capital : "None"; // can be missing for island nations
   geography.capitalLatlng = capitalInfo?.latlng ? capitalInfo.latlng : null; // can be empty object
