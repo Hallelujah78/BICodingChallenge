@@ -1,16 +1,23 @@
 import styled from "styled-components";
-
+import image from "../assets/images/CI.svg";
 const Navbar = () => {
   return (
     <Wrapper>
       <div className="gradient"></div>
-      <h3>Navbar</h3>
+      <div className="nav-container">
+        <img src={image} alt="country insights logo" />
+      </div>
     </Wrapper>
   );
 };
 export default Navbar;
 
 const Wrapper = styled.header`
+  .nav-container {
+    display: flex;
+    max-width: 95vw;
+    margin: 0 auto;
+  }
   box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.15);
   text-align: center;
   width: 100%;
