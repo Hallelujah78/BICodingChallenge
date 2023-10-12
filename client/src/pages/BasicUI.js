@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import axios from "axios";
 import DynamicObjectRenderer from "../components/DynamicObjectRenderer.js";
+import worldMap from "../assets/images/01.jpg";
 
 const BasicUI = () => {
   const [country, setCountry] = useState("");
@@ -84,7 +85,13 @@ const BasicUI = () => {
         <div className="content-center">{errorMessage}</div>
       ) : countryData ? (
         <DynamicObjectRenderer data={countryData} />
-      ) : null}
+      ) : (
+        <>
+          <section>
+            <img src={worldMap} alt="" />
+          </section>
+        </>
+      )}
     </Wrapper>
   );
 };
@@ -141,5 +148,9 @@ const Wrapper = styled.section`
   .arms-large {
     width: 200px;
     height: auto;
+  }
+  section img {
+    aspect-ratio: 1;
+    width: 100%;
   }
 `;
