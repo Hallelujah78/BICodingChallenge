@@ -8,6 +8,7 @@ const populateResponseObject = ({
   createResponseObject,
   languageObject,
   currencyObject,
+  countryObject,
 }) => {
   const responseObject = createResponseObject();
   const {
@@ -107,7 +108,7 @@ const populateResponseObject = ({
   //** END OF INTERNATIONAL RELATIONS **/
 
   //** DEMOGRAPHICS **/
-  demographics.population = population;
+  demographics.population = population ? population.toLocaleString() : 0;
   try {
     // demonyms
     if (demonyms !== undefined && !isEmpty(demonyms)) {
@@ -192,11 +193,23 @@ const populateResponseObject = ({
   geography.continents = continents;
   geography.region = region;
   geography.subregion = subregion ? subregion : null;
-  geography.latlng = latlng;
+  geography.latlng = [
+    Number.parseFloat(latlng[0].toFixed(6)),
+    Number.parseFloat(latlng[1].toFixed(6)),
+  ];
 
-  geography.borders = borders ? borders : null;
+  geography.borders = borders
+    ? borders.map((country) => {
+        return countryObject[country];
+      })
+    : [];
   geography.capital = capital ? capital : "None"; // can be missing for island nations
-  geography.capitalLatlng = capitalInfo?.latlng ? capitalInfo.latlng : null; // can be empty object
+  geography.capitalLatlng = capitalInfo?.latlng
+    ? [
+        Number.parseFloat(capitalInfo.latlng[0].toFixed(6)),
+        Number.parseFloat(capitalInfo.latlng[1].toFixed(6)),
+      ]
+    : null; // can be empty object
   geography.area = area ? area.toLocaleString() : 0;
   geography.timezones = timezones;
   geography.landlocked = landlocked;

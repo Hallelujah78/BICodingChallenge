@@ -264,6 +264,11 @@ const DynamicObjectRenderer = ({ data }) => {
             <InfoContainer key={key} title={title}>
               <table className="table-2-col">
                 <tbody>
+                  <TableRow label="Capital City" property={capital} />
+                  <TableRow
+                    label="Capital Latitude and Longitude"
+                    property={capitalLatlng}
+                  />
                   <TableRow
                     label="Area in Square Kilometres"
                     property={area}
@@ -297,7 +302,7 @@ const DynamicObjectRenderer = ({ data }) => {
                     property={subregion}
                     nullValue="None"
                   />
-                  <TableRow label="Capital City" property={capital} />
+
                   <tr>
                     <td>Continents</td>
                     <td>
@@ -313,6 +318,85 @@ const DynamicObjectRenderer = ({ data }) => {
                     </td>
                   </tr>
                   <TableRow label="Latitude & Longitude" property={latlng} />
+                  <TableRow label="Bordering Countries" property={borders} />
+                  <TableRow label="Timezones" property={timezones} />
+                  <TableRow
+                    label="Landlocked"
+                    property={landlocked}
+                    nullValue="No"
+                    value="Yes"
+                  />
+                </tbody>
+              </table>
+            </InfoContainer>
+          );
+        } else if (item.type === "demographics") {
+          const { title, demonyms, population, gini, languages } =
+            data.demographics;
+          return (
+            <InfoContainer key={key} title={title}>
+              <table className="table-2-col">
+                <tbody>
+                  <TableRow label="Population" property={population} />
+                </tbody>
+              </table>
+              <table className="table-2-col">
+                <tbody>
+                  <tr>
+                    <th colSpan="2" className="table-heading">
+                      Official Languages
+                    </th>
+                  </tr>
+                  <tr>
+                    <th>Language</th>
+                    <th>3-letter Code</th>
+                  </tr>
+                  {languages?.length > 0 ? (
+                    languages.map((language) => {
+                      return (
+                        <tr key={language.iso6392T}>
+                          <td>{language.lang}</td>
+                          <td>{language.iso6392T}</td>
+                        </tr>
+                      );
+                    })
+                  ) : (
+                    <tr>
+                      <td>None</td>
+
+                      <td>-</td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+              {/* array of objects */}
+              <table className="table-2-col">
+                <tbody>
+                  <tr>
+                    <th colSpan="2" className="table-heading">
+                      Gini Index
+                    </th>
+                  </tr>
+                  <tr>
+                    <th>Year</th>
+                    <th>Gini Index</th>
+                  </tr>
+
+                  {gini ? (
+                    gini.map((item) => {
+                      return (
+                        <tr>
+                          <td>{item.year}</td>
+                          <td>{item.gini}</td>
+                        </tr>
+                      );
+                    })
+                  ) : (
+                    <tr>
+                      <td>none</td>
+                      <td>none</td>
+                    </tr>
+                  )}
                 </tbody>
               </table>
             </InfoContainer>
@@ -392,6 +476,7 @@ const Wrapper = styled.div`
   .table-heading {
     text-align: center;
   }
+
   h3 {
     margin-top: 1rem;
     font-size: calc(1.25rem + 0.390625vw);

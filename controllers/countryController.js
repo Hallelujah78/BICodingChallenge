@@ -9,6 +9,7 @@ import {
   currencyObject,
   languageObject,
   populateResponseObject,
+  countryObject,
 } from "../utils/index.js";
 
 const getCountry = async (req, res) => {
@@ -19,7 +20,7 @@ const getCountry = async (req, res) => {
   }
 
   const result = await getData(country, restCountriesApiUrl);
-
+  console.log(result[0].languages);
   if (!result) {
     // handle the error
     throw new CustomError.NotFoundError(
@@ -32,6 +33,7 @@ const getCountry = async (req, res) => {
     createResponseObject,
     languageObject,
     currencyObject,
+    countryObject,
   });
 
   res.status(StatusCodes.OK).json(response);

@@ -7,7 +7,7 @@ import isEmpty from "./isEmpty.js";
 import createResponseObject from "./createResponseObject.js";
 import populateResponseObject from "./populateResponseObject.js";
 import arrayOfObjectsFromKeyValue from "./arrayOfObjFromKeyValue.js";
-
+import countryObject from "./countryObject.js";
 export {
   countryInfoAsText,
   getData,
@@ -19,4 +19,5 @@ export {
   createResponseObject,
   populateResponseObject,
   arrayOfObjectsFromKeyValue,
+  countryObject,
 };
