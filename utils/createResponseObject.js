@@ -33,7 +33,7 @@ const responseObject = () => {
       flagAlt: "", //
     },
     communications: {
-      title: "communications",
+      title: "communications & codes",
       type: "communications",
       tld: [], // top lvl domain
       idd: null, // intl direct dialing, we'll combine

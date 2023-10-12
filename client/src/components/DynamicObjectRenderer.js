@@ -14,12 +14,10 @@ const DynamicObjectRenderer = ({ data }) => {
             nameCommon,
             altSpellings,
             coatOfArmsAlt,
-            coatOfArmsJpgUrl,
             coatOfArmsSvgUrl,
             currencies,
             flagSvg,
             flagAlt,
-            flagPng,
             nameNative,
             title,
           } = data.general;
@@ -38,6 +36,10 @@ const DynamicObjectRenderer = ({ data }) => {
                     <td>Informal name</td>
                     <td>{nameCommon}</td>
                   </tr>
+                  <TableRow
+                    label="Alternative Names and Abbreviations"
+                    property={altSpellings}
+                  />
                   <tr>
                     <td>Flag</td>
                     <td>
@@ -121,7 +123,7 @@ const DynamicObjectRenderer = ({ data }) => {
               <table className="table-2-col">
                 <tbody>
                   <tr>
-                    <td>Top Level Domain</td>
+                    <td>Country Code Top-Level Domain</td>
                     <td>{tld}</td>
                   </tr>
                   <tr>
@@ -318,7 +320,11 @@ const DynamicObjectRenderer = ({ data }) => {
                     </td>
                   </tr>
                   <TableRow label="Latitude & Longitude" property={latlng} />
-                  <TableRow label="Bordering Countries" property={borders} />
+                  <TableRow
+                    label="Bordering Countries"
+                    property={borders}
+                    value="None"
+                  />
                   <TableRow label="Timezones" property={timezones} />
                   <TableRow
                     label="Landlocked"
@@ -385,7 +391,7 @@ const DynamicObjectRenderer = ({ data }) => {
                   {gini ? (
                     gini.map((item) => {
                       return (
-                        <tr>
+                        <tr key={item.year}>
                           <td>{item.year}</td>
                           <td>{item.gini}</td>
                         </tr>
@@ -399,11 +405,74 @@ const DynamicObjectRenderer = ({ data }) => {
                   )}
                 </tbody>
               </table>
+              <table className="th-3-col">
+                <tbody>
+                  <tr>
+                    <th className="table-heading" colSpan="3">
+                      Demonyms
+                    </th>
+                  </tr>
+                  <tr>
+                    <th>Language</th>
+                    <th>Male</th>
+                    <th>Female</th>
+                  </tr>
+                  {demonyms?.length > 0 ? (
+                    demonyms.map((demonym) => {
+                      return (
+                        <tr key={demonym.lang}>
+                          <td>{demonym.lang}</td>
+                          <td>{demonym.m}</td>
+                          <td>{demonym.f}</td>
+                        </tr>
+                      );
+                    })
+                  ) : (
+                    <tr>
+                      <td>None</td>
+                      <td>-</td>
+                      <td>-</td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </InfoContainer>
+          );
+        } else if (item.type === "codes") {
+          const { title, cca2, ccn3, cca3, cioc, flag, fifa } = data.codes;
+          return (
+            <InfoContainer key={key} title={title}>
+              <table>
+                <tbody>
+                  <TableRow
+                    label="ISO 3166-1 Alpha-2 Country Code"
+                    property={cca2}
+                  />
+                  <TableRow
+                    label="ISO 3166-1 Alpha-3 Country Code"
+                    property={cca3}
+                  />
+                  <TableRow
+                    label="ISO 3166-1 Numeric-3 Country Code"
+                    property={ccn3}
+                  />
+
+                  <TableRow
+                    label="International Olympic Committee Country Code"
+                    property={cioc}
+                  />
+                  <TableRow
+                    label="Unicode Emoji Flag Sequence"
+                    property={flag}
+                  />
+                  <TableRow label="FIFA Country Code" property={fifa} />
+                </tbody>
+              </table>
             </InfoContainer>
           );
         }
-        // Handle other types similarly if needed
-        return null; // Render nothing for unknown types
+
+        return null;
       })}
     </Wrapper>
   );

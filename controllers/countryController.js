@@ -20,7 +20,7 @@ const getCountry = async (req, res) => {
   }
 
   const result = await getData(country, restCountriesApiUrl);
-  console.log(result[0].languages);
+
   if (!result) {
     // handle the error
     throw new CustomError.NotFoundError(
