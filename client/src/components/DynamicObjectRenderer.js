@@ -122,10 +122,10 @@ const DynamicObjectRenderer = ({ data }) => {
             <InfoContainer key={key} title={title}>
               <table className="table-2-col">
                 <tbody>
-                  <tr>
-                    <td>Country Code Top-Level Domain</td>
-                    <td>{tld}</td>
-                  </tr>
+                  <TableRow
+                    label="Country Code Top-Level Domain"
+                    property={tld}
+                  />
                   <tr>
                     <td>Postal Code Format</td>
                     <td>

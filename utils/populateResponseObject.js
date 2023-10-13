@@ -147,7 +147,10 @@ const populateResponseObject = ({
   }
 
   //** ADDITIONAL **/
-  additional.startOfWeek = startOfWeek;
+  additional.startOfWeek = startOfWeek
+    .charAt(0)
+    .toUpperCase()
+    .concat(startOfWeek.slice(1));
   if (signs !== undefined && signs[0] !== "") {
     additional.carSigns = signs; //[]
   }
@@ -163,7 +166,7 @@ const populateResponseObject = ({
     });
   }
   //** COMMUNICATIONS **/
-  communications.tld = tld; // this is actually an array of strings
+  communications.tld = tld !== undefined && tld[0] ? tld : []; // this is actually an array of strings
 
   // internatonal dialing
   if (idd !== undefined && !isEmpty(idd)) {
