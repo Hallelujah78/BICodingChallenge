@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 
 const useAxios = (configParams) => {
@@ -7,11 +7,8 @@ const useAxios = (configParams) => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetchDataUsingAxios(configParams);
-  }, [configParams]);
-
   const fetchDataUsingAxios = async () => {
+    setLoading(true);
     try {
       const { data } = await axios.request(configParams);
       setResult(data);
@@ -21,6 +18,7 @@ const useAxios = (configParams) => {
 
     setLoading(false);
   };
+
   return [result, error, loading];
 };
 export default useAxios;
