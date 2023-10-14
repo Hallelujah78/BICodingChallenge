@@ -32,14 +32,21 @@ const responseObject = () => {
       flagSvg: "",
       flagAlt: "", //
     },
-    communications: {
+    communicationsAndCodes: {
       title: "communications & codes",
-      type: "communications",
+      type: "communicationsAndCodes",
       tld: [], // top lvl domain
       idd: null, // intl direct dialing, we'll combine
       // the root and suffixes
       postalCode: { format: "", regex: "" },
       // may have to be massaged, usefulness?
+
+      cca2: "",
+      ccn3: "",
+      cca3: "",
+      cioc: "",
+      flag: "",
+      fifa: "",
     },
     intlRelations: {
       title: "international relations",
@@ -63,16 +70,6 @@ const responseObject = () => {
       startOfWeek: "",
       carSigns: [],
       carSide: "",
-    },
-    codes: {
-      title: "codes",
-      type: "codes",
-      cca2: "",
-      ccn3: "",
-      cca3: "",
-      cioc: "",
-      flag: "",
-      fifa: "",
     },
   };
   return responseObject;

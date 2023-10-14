@@ -17,8 +17,7 @@ const populateResponseObject = ({
     additional,
     intlRelations,
     geography,
-    communications,
-    codes,
+    communicationsAndCodes,
   } = responseObject;
 
   const {
@@ -166,7 +165,7 @@ const populateResponseObject = ({
     });
   }
   //** COMMUNICATIONS **/
-  communications.tld = tld !== undefined && tld[0] ? tld : []; // this is actually an array of strings
+  communicationsAndCodes.tld = tld !== undefined && tld[0] ? tld : []; // this is actually an array of strings
 
   // internatonal dialing
   if (idd !== undefined && !isEmpty(idd)) {
@@ -178,19 +177,19 @@ const populateResponseObject = ({
     } else {
       iddCodes.push(idd?.root);
     }
-    communications.idd = iddCodes;
+    communicationsAndCodes.idd = iddCodes;
   }
 
   //postal
-  communications.postalCode = postalCode ? postalCode : null;
+  communicationsAndCodes.postalCode = postalCode ? postalCode : null;
 
   //** CODES **/
-  codes.cca2 = cca2;
-  codes.cca3 = cca3;
-  codes.ccn3 = ccn3;
-  codes.cioc = cioc;
-  codes.flag = flag;
-  codes.fifa = fifa;
+  communicationsAndCodes.cca2 = cca2;
+  communicationsAndCodes.cca3 = cca3;
+  communicationsAndCodes.ccn3 = ccn3;
+  communicationsAndCodes.cioc = cioc;
+  communicationsAndCodes.flag = flag;
+  communicationsAndCodes.fifa = fifa;
 
   //** GEOGRAPHY **/
   geography.continents = continents;

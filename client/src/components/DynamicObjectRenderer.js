@@ -116,8 +116,19 @@ const DynamicObjectRenderer = ({ data }) => {
               </table>
             </InfoContainer>
           );
-        } else if (item.type === "communications") {
-          const { tld, idd, postalCode, title } = data.communications;
+        } else if (item.type === "communicationsAndCodes") {
+          const {
+            tld,
+            idd,
+            postalCode,
+            title,
+            cca2,
+            ccn3,
+            cca3,
+            cioc,
+            flag,
+            fifa,
+          } = data.communicationsAndCodes;
           return (
             <InfoContainer key={key} title={title}>
               <table className="table-2-col">
@@ -156,6 +167,29 @@ const DynamicObjectRenderer = ({ data }) => {
                     <td>International Direct Dialing</td>
                     <td>{idd?.[0] ? idd[0] : "None"}</td>
                   </tr>
+
+                  <TableRow
+                    label="ISO 3166-1 Alpha-2 Country Code"
+                    property={cca2}
+                  />
+                  <TableRow
+                    label="ISO 3166-1 Alpha-3 Country Code"
+                    property={cca3}
+                  />
+                  <TableRow
+                    label="ISO 3166-1 Numeric-3 Country Code"
+                    property={ccn3}
+                  />
+
+                  <TableRow
+                    label="International Olympic Committee Country Code"
+                    property={cioc}
+                  />
+                  <TableRow
+                    label="Unicode Emoji Flag Sequence"
+                    property={flag}
+                  />
+                  <TableRow label="FIFA Country Code" property={fifa} />
                 </tbody>
               </table>
             </InfoContainer>
@@ -434,38 +468,6 @@ const DynamicObjectRenderer = ({ data }) => {
                       <td>-</td>
                     </tr>
                   )}
-                </tbody>
-              </table>
-            </InfoContainer>
-          );
-        } else if (item.type === "codes") {
-          const { title, cca2, ccn3, cca3, cioc, flag, fifa } = data.codes;
-          return (
-            <InfoContainer key={key} title={title}>
-              <table>
-                <tbody>
-                  <TableRow
-                    label="ISO 3166-1 Alpha-2 Country Code"
-                    property={cca2}
-                  />
-                  <TableRow
-                    label="ISO 3166-1 Alpha-3 Country Code"
-                    property={cca3}
-                  />
-                  <TableRow
-                    label="ISO 3166-1 Numeric-3 Country Code"
-                    property={ccn3}
-                  />
-
-                  <TableRow
-                    label="International Olympic Committee Country Code"
-                    property={cioc}
-                  />
-                  <TableRow
-                    label="Unicode Emoji Flag Sequence"
-                    property={flag}
-                  />
-                  <TableRow label="FIFA Country Code" property={fifa} />
                 </tbody>
               </table>
             </InfoContainer>
