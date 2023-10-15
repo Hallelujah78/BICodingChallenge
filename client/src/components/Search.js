@@ -1,67 +1,22 @@
-import { useState } from "react";
-import useAxios from "../hooks/useAxios.js";
+import useAxiosFetch from "../hooks/useAxios";
+import URL from "../utils/config";
+import Select from "react-select";
 
-const Search = () => {
-  const [country, setCountry] = useState("");
-  const {
-    results: countryData,
-    isLoading,
-    isError,
-    fetchDataUsingAxios: fetchCountryData,
-  } = useAxios();
+const Search = ({ setCountry }) => {
+  const { data } = useAxiosFetch(URL);
 
-  const handleChange = (e) => {
-    setCountry(e.target.value);
-  };
-  const clearValues = () => {
-    setCountry("");
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    fetchCountryData(country);
-    clearValues();
+  const handleChange = (selectedOption) => {
+    setCountry(selectedOption.value);
   };
 
   return (
     <div>
-      <form
-        className={
-          countryData ? "search-container search-move" : "search-container"
-        }
-      >
-        <label htmlFor="country name" className="form-label">
-          Enter a country
-          <input
-            id="country name"
-            type="text"
-            value={country}
-            name="country name"
-            className="form-input"
-            onChange={(e) => handleChange(e)}
-          />{" "}
-        </label>
-        <div className="btn-container">
-          <button
-            disabled={!country}
-            className="btn submit-btn"
-            type="submit"
-            onClick={handleSubmit}
-          >
-            submit
-          </button>
-          <button
-            // disabled={isLoading}
-            onClick={(e) => {
-              e.preventDefault();
-              clearValues();
-            }}
-            className="btn clear-btn"
-          >
-            clear
-          </button>
-        </div>
-      </form>
+      <Select
+        onChange={handleChange}
+        placeholder="Select a country"
+        options={data}
+        autoFocus={true}
+      />
     </div>
   );
 };

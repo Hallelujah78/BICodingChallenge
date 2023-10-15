@@ -5,12 +5,26 @@ import { jsonTestWrapper } from "../DELETE_BEFORE_DEPLOY/jsonTest.js";
 import {
   createResponseObject,
   getData,
-  restCountriesApiUrl,
+  restCountriesSingleCountryUrl,
   currencyObject,
   languageObject,
   populateResponseObject,
   countryObject,
+  restCountriesGetNamesUrl,
+  getNames,
 } from "../utils/index.js";
+
+const getCountryNames = async (req, res) => {
+  let result = await getNames(restCountriesGetNamesUrl);
+  result = result.map((country) => {
+    let option = {};
+    option.value = country.name.common.toLowerCase();
+    option.label = country.name.common;
+    return option;
+  });
+  console.log(result);
+  res.status(StatusCodes.OK).json(result);
+};
 
 const getCountry = async (req, res) => {
   await jsonTestWrapper();
@@ -19,7 +33,7 @@ const getCountry = async (req, res) => {
     throw new CustomError.BadRequestError("please provide a country value");
   }
 
-  const result = await getData(country, restCountriesApiUrl);
+  const result = await getData(country, restCountriesSingleCountryUrl);
 
   if (!result) {
     // handle the error
@@ -39,4 +53,4 @@ const getCountry = async (req, res) => {
   res.status(StatusCodes.OK).json(response);
 };
 
-export { getCountry };
+export { getCountry, getCountryNames };

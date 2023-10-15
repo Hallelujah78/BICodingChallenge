@@ -1,24 +1,42 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
-const useAxios = (configParams) => {
-  axios.defaults.baseURL = "/api/v1/country";
-  const [result, setResult] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(true);
+const useAxiosFetch = (dataUrl) => {
+  const [data, setData] = useState([]);
+  const [isError, setIsError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const fetchDataUsingAxios = async () => {
-    setLoading(true);
-    try {
-      const { data } = await axios.request(configParams);
-      setResult(data);
-    } catch (error) {
-      setError(error);
-    }
+  useEffect(() => {
+    let isMounted = true;
+    const controller = new AbortController();
 
-    setLoading(false);
-  };
+    const fetchData = async (url) => {
+      setIsLoading(true);
 
-  return [result, error, loading];
+      try {
+        const { data } = await axios.get(url, { signal: controller.signal });
+        if (isMounted) {
+          setData(data);
+          setIsError(false);
+        }
+      } catch (err) {
+        if (isMounted) {
+          setIsError(err.message);
+          setData([]);
+        }
+      } finally {
+        isMounted && setIsLoading(false);
+      }
+    };
+    fetchData(dataUrl);
+
+    return () => {
+      console.log("clean up function");
+      isMounted = false;
+      controller.abort();
+    };
+  }, [dataUrl]);
+
+  return { data, isError, isLoading };
 };
-export default useAxios;
+export default useAxiosFetch;

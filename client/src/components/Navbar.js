@@ -5,7 +5,9 @@ const Navbar = () => {
     <Wrapper>
       <div className="gradient"></div>
       <div className="nav-container">
-        <img src={image} alt="country insights logo" />
+        <div className="image-container">
+          <img src={image} alt="country insights logo" />
+        </div>
       </div>
     </Wrapper>
   );
@@ -39,5 +41,8 @@ const Wrapper = styled.header`
       rgba(253, 141, 59, 1) 89%,
       rgba(252, 69, 69, 1) 100%
     );
+  }
+  .image-container {
+    margin-top: 0.25rem;
   }
 `;

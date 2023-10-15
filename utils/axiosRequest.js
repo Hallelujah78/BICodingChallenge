@@ -12,11 +12,28 @@ const getData = async (country, urlObject) => {
 
   try {
     const { data } = await axios(options);
-
     return data;
   } catch (err) {
     console.log(err);
   }
 };
 
-export default getData;
+const getNames = async (urlObject) => {
+  const { baseUrl, queryParam } = urlObject;
+  const options = {
+    method: "GET",
+    url: `${baseUrl}${queryParam}`,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  try {
+    const { data } = await axios(options);
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export { getData, getNames };

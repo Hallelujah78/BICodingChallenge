@@ -1,9 +1,8 @@
 import styled from "styled-components";
 import { useState } from "react";
-import axios from "axios";
 import DynamicObjectRenderer from "../components/DynamicObjectRenderer.js";
-import worldMap from "../assets/images/01.jpg";
-import Search from "../components/Search.js";
+import worldMap from "../assets/images/globe.svg";
+import SearchForm from "../components/SearchForm.js";
 
 const BasicUI = () => {
   const [country, setCountry] = useState("");
@@ -12,81 +11,24 @@ const BasicUI = () => {
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const fetchCountryData = async (country) => {
-    setIsLoading(true);
-    setErrorMessage("");
-    setIsError(false);
-    try {
-      const { data: result } = await axios.post("/api/v1/country", { country });
-      if (result) {
-        console.log(result);
-        setCountryData(result);
-      }
-    } catch (error) {
-      setIsError(true);
-      setErrorMessage(error.response.data.msg);
-    }
-    setIsLoading(false);
-  };
-
-  const handleChange = (e) => {
-    setCountry(e.target.value);
-  };
-  const clearValues = () => {
-    setCountry("");
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    fetchCountryData(country);
-    clearValues();
-  };
   return (
     <Wrapper>
-      <Search />
-      <form
-        className={
-          countryData ? "search-container search-move" : "search-container"
-        }
-      >
-        <label htmlFor="country name" className="form-label">
-          Enter a country
-          <input
-            id="country name"
-            type="text"
-            value={country}
-            name="country name"
-            className="form-input"
-            onChange={(e) => handleChange(e)}
-          />{" "}
-        </label>
-        <div className="btn-container">
-          <button
-            disabled={!country}
-            className="btn submit-btn"
-            type="submit"
-            onClick={handleSubmit}
-          >
-            submit
-          </button>
-          <button
-            // disabled={isLoading}
-            onClick={(e) => {
-              e.preventDefault();
-              clearValues();
-            }}
-            className="btn clear-btn"
-          >
-            clear
-          </button>
-        </div>
-      </form>
+      <SearchForm
+        setCountry={setCountry}
+        setCountryData={setCountryData}
+        country={country}
+        setIsLoading={setIsLoading}
+        setIsError={setIsError}
+      />
       {isLoading ? (
         <div className="content-center">loading...</div>
       ) : isError ? (
         <div className="content-center">{errorMessage}</div>
-      ) : countryData ? (
-        <DynamicObjectRenderer data={countryData} />
+      ) : !isLoading && !isError && countryData ? (
+        <div className="content-center">
+          <h2>{countryData?.general.nameOfficial}</h2>
+          <DynamicObjectRenderer data={countryData} />
+        </div>
       ) : (
         <>
           <section>
@@ -106,15 +48,18 @@ const Wrapper = styled.section`
   ::before {
     box-sizing: border-box;
   }
-
+  position: relative;
   overflow-x: hidden;
   padding-bottom: 50rem;
   max-width: 100%;
   min-height: 100vh;
 
   .search-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     margin: 5rem auto;
-    transition: 0.3s ease-in all;
+    transition: 0.9s ease-in all;
     width: 80vw;
     height: fit-content;
     .btn-container {
@@ -142,10 +87,15 @@ const Wrapper = styled.section`
     }
   }
   .content-center {
+    margin-top: 2rem;
     display: grid;
     place-content: center;
     min-height: 50vh;
     width: 100%;
+    h2 {
+      text-align: center;
+      font-size: calc(2rem + 0.390625vw);
+    }
   }
   .arms-large {
     width: 200px;
@@ -154,5 +104,11 @@ const Wrapper = styled.section`
   section img {
     aspect-ratio: 1;
     width: 100%;
+    margin-top: 30vh;
+  }
+  .hide {
+    opacity: 0.5;
+    transform: translate(-50%, -100vh);
+    left: 50%;
   }
 `;

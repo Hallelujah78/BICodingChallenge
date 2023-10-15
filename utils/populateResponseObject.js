@@ -1,6 +1,6 @@
 import createArrayOfObjects from "./createArrayOfObjects.js";
 import isEmpty from "./isEmpty.js";
-import { smallJpgMainFacts } from "./config.js";
+
 import arrayOfObjectsFromKeyValue from "./arrayOfObjFromKeyValue.js";
 
 const populateResponseObject = ({
@@ -84,7 +84,6 @@ const populateResponseObject = ({
     general.coatOfArmsSvgUrl = svg;
     general.coatOfArmsPngUrl = png;
     general.coatOfArmsAlt = `Coat of arms for ${official}`;
-    general.coatOfArmsJpgUrl = `${smallJpgMainFacts}${cca2.toLowerCase()}.jpg`;
   }
 
   // currencies

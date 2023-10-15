@@ -1,6 +1,9 @@
 import countryInfoAsText from "./aboutCountry.js";
-import getData from "./axiosRequest.js";
-import { smallJpgMainFacts, restCountriesApiUrl } from "./config.js";
+import { getData, getNames } from "./axiosRequest.js";
+import {
+  restCountriesGetNamesUrl,
+  restCountriesSingleCountryUrl,
+} from "./config.js";
 import currencyObject from "./currencyObject.js";
 import languageObject from "./languageObject.js";
 import isEmpty from "./isEmpty.js";
@@ -11,8 +14,7 @@ import countryObject from "./countryObject.js";
 export {
   countryInfoAsText,
   getData,
-  smallJpgMainFacts,
-  restCountriesApiUrl,
+  restCountriesSingleCountryUrl,
   currencyObject,
   languageObject,
   isEmpty,
@@ -20,4 +22,6 @@ export {
   populateResponseObject,
   arrayOfObjectsFromKeyValue,
   countryObject,
+  restCountriesGetNamesUrl,
+  getNames,
 };

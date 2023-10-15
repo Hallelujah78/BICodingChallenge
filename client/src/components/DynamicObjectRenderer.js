@@ -23,9 +23,6 @@ const DynamicObjectRenderer = ({ data }) => {
           } = data.general;
           return (
             <InfoContainer key={key} title={title}>
-              <div className="title">
-                <h3>{nameOfficial}</h3>
-              </div>
               <table className="table-2-col">
                 <tbody>
                   <tr>
