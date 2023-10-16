@@ -3,6 +3,7 @@ import { useState } from "react";
 import DynamicObjectRenderer from "../components/DynamicObjectRenderer.js";
 import worldMap from "../assets/images/globe.svg";
 import SearchForm from "../components/SearchForm.js";
+import Loading from "../components/Loading.js";
 
 const BasicUI = () => {
   const [country, setCountry] = useState("");
@@ -21,7 +22,9 @@ const BasicUI = () => {
         setIsError={setIsError}
       />
       {isLoading ? (
-        <div className="content-center">loading...</div>
+        <div className="content-center">
+          <Loading />
+        </div>
       ) : isError ? (
         <div className="content-center">{errorMessage}</div>
       ) : !isLoading && !isError && countryData ? (
@@ -32,7 +35,9 @@ const BasicUI = () => {
       ) : (
         <>
           <section>
-            <img src={worldMap} alt="" />
+            <div className="img-container">
+              <img src={worldMap} alt="globe of the world" />
+            </div>
           </section>
         </>
       )}
@@ -59,7 +64,7 @@ const Wrapper = styled.section`
     left: 50%;
     transform: translateX(-50%);
     margin: 5rem auto;
-    transition: 0.9s ease-in all;
+    transition: 0.5s ease-in all;
     width: 80vw;
     height: fit-content;
     .btn-container {
@@ -101,14 +106,33 @@ const Wrapper = styled.section`
     width: 200px;
     height: auto;
   }
-  section img {
+  section {
     aspect-ratio: 1;
-    width: 100%;
-    margin-top: 30vh;
+    width: 90%;
+    height: 100%;
+    margin: 30vh auto 0 auto;
   }
   .hide {
-    opacity: 0.5;
-    transform: translate(-50%, -100vh);
+    transform: translate(-50%, -150vh);
     left: 50%;
+  }
+  @media (min-width: 800px) {
+    section {
+      width: 100%;
+      height: calc(100vh - 4rem);
+      margin: 0 auto 0 auto;
+      .img-container {
+        width: 100%;
+        height: 100%;
+        margin: auto;
+
+        display: grid;
+        place-content: center;
+        img {
+          margin-top: 12rem;
+          height: 60vh;
+        }
+      }
+    }
   }
 `;
