@@ -7,7 +7,7 @@ const TableElementWithToolTip = ({
   isHeading = true,
 }) => {
   return (
-    <Wrapper>
+    <Wrapper className={isHeading ? "" : "flex"}>
       <div className={isHeading ? "heading" : ""}>{headingText}</div>
       <div className="icon-container">
         <FaCircleInfo
@@ -23,6 +23,12 @@ const TableElementWithToolTip = ({
 export default TableElementWithToolTip;
 
 const Wrapper = styled.div`
+  &.flex {
+    display: flex;
+    .icon-container {
+      position: relative;
+    }
+  }
   .heading {
     text-align: center;
   }

@@ -138,62 +138,125 @@ const DynamicObjectRenderer = ({ data }) => {
               <table className="table-2-col">
                 <tbody>
                   <TableRow
-                    label="Country Code Top-Level Domain"
+                    label={
+                      <TableElementWithToolTip
+                        isHeading={false}
+                        headingText="Country Code Top-Level Domain"
+                        toolTipText="A country code top-level <br/> domain is an Internet <br/>top-level domain generally<br/> used or reserved for a country, <br/>sovereign state, or dependent <br/>territory identified with a country<br/> code."
+                      />
+                    }
                     property={tld}
                   />
                   <tr>
-                    <td>Postal Code Format</td>
+                    <td>
+                      <TableElementWithToolTip
+                        isHeading={false}
+                        headingText=" Postal Code Format"
+                        toolTipText="A # (number sign) indicates<br/> a digit between 0 and 9. An <br/>@ symbol represents an <br/>alphabetic character."
+                      />
+                    </td>
                     <td>
                       {postalCode ? postalCode.format : " No postal Code"}
                     </td>
                   </tr>
                   <tr>
-                    <td>Postal Code Regular Expression</td>
                     <td>
-                      {postalCode ? (
-                        <code>{postalCode.regex}</code>
+                      <TableElementWithToolTip
+                        isHeading={false}
+                        headingText="Postal Code Regular Expression"
+                        toolTipText="A regular expression <br/> is a sequence of characters <br/> that can be used to match<br/> a pattern in text. Postal<br/>  codes have  particular <br/>formats and so we can <br/>use regular expressions <br/>to find out if a given group<br/> of numbers and alphabetic<br/> characters could be a valid <br/>postal code."
+                      />
+                    </td>
+                    <td>
+                      {postalCode?.regex ? (
+                        <code>{postalCode?.regex}</code>
                       ) : (
-                        " No postal Code"
+                        " No regular expression provided"
                       )}
                     </td>
                   </tr>
                   <tr>
                     <td>Postal Code Validator</td>
                     <td>
-                      {postalCode ? (
+                      {postalCode?.regex ? (
                         <input pattern={postalCode.regex} />
                       ) : (
-                        " No postal Code"
+                        " No regular expression provided"
                       )}
                     </td>
                   </tr>
                   <tr>
-                    <td>International Direct Dialing</td>
+                    <td>
+                      <TableElementWithToolTip
+                        isHeading={false}
+                        headingText="International Direct Dialing"
+                        toolTipText="An international direct<br/>dialing code is the code <br/>you must dial to place <br/>a call to a given country."
+                      />
+                    </td>
                     <td>{idd?.[0] ? idd[0] : "None"}</td>
                   </tr>
 
                   <TableRow
-                    label="ISO 3166-1 Alpha-2 Country Code"
+                    label={
+                      <TableElementWithToolTip
+                        isHeading={false}
+                        headingText="ISO 3166-1 Alpha-2 Country Code"
+                        toolTipText="These 2-letter country<br/> codes are part of ISO <br/>3166 published by the <br/>International Standards <br/>Organization."
+                      />
+                    }
                     property={cca2}
                   />
                   <TableRow
-                    label="ISO 3166-1 Alpha-3 Country Code"
+                    label={
+                      <TableElementWithToolTip
+                        isHeading={false}
+                        headingText="ISO 3166-1 Alpha-3 Country Code"
+                        toolTipText="These 3-letter country<br/> codes are part of ISO <br/>3166 published by the <br/>International Standards <br/>Organization."
+                      />
+                    }
                     property={cca3}
                   />
                   <TableRow
-                    label="ISO 3166-1 Numeric-3 Country Code"
+                    label={
+                      <TableElementWithToolTip
+                        isHeading={false}
+                        headingText="ISO 3166-1 Numeric-3 Country Code"
+                        toolTipText="These 3-digit country<br/> codes are part of ISO <br/>3166 published by the <br/>International Standards <br/>Organization."
+                      />
+                    }
                     property={ccn3}
                   />
 
                   <TableRow
-                    label="International Olympic Committee Country Code"
+                    label={
+                      <TableElementWithToolTip
+                        isHeading={false}
+                        headingText="International Olympic Committee Country Code"
+                        toolTipText="These 3-letter country<br/> codes are used by the <br/>International Olympic <br/>Committee.<br/>"
+                      />
+                    }
                     property={cioc}
                   />
                   <TableRow
-                    label="Unicode Emoji Flag Sequence"
+                    label={
+                      <TableElementWithToolTip
+                        isHeading={false}
+                        headingText="Unicode Emoji Flag Sequence"
+                        toolTipText="This sequence of two <br/> Unicode characters will <br/>appear as either a flag <br/>or a sequence of two <br/>letters depending on the <br/>operating system or browser <br/>you are using. Unicode is a<br/> character encoding standard."
+                      />
+                    }
                     property={flag}
                   />
-                  <TableRow label="FIFA Country Code" property={fifa} />
+                  <TableRow
+                    label={
+                      <TableElementWithToolTip
+                        isHeading={false}
+                        headingText="FIFA Country Code"
+                        toolTipText="These 3-letter country<br/> codes are used by FIFA,<br/> the international governing<br/> body of soccer."
+                      />
+                    }
+                    property={fifa}
+                  />
                 </tbody>
               </table>
             </InfoContainer>
@@ -209,7 +272,13 @@ const DynamicObjectRenderer = ({ data }) => {
                     <td>{independent ? "Yes" : "No"}</td>
                   </tr>
                   <tr>
-                    <td>ISO 3166 country code status</td>
+                    <td>
+                      <TableElementWithToolTip
+                        isHeading={false}
+                        headingText="ISO 3166 country code status"
+                        toolTipText="ISO 3166 country  codes<br/> are assigned by the<br/> United Nations."
+                      />
+                    </td>
                     <td>{status}</td>
                   </tr>
                   <tr>
@@ -238,8 +307,9 @@ const DynamicObjectRenderer = ({ data }) => {
                   <tr>
                     <td>
                       <TableElementWithToolTip
+                        isHeading={false}
                         headingText="International Vehicle Registration Codes"
-                        toolTipText="The 3-letter language code comes <br/> from ISO 639-2/T which is a standard<br/> published by the International <br/>Organization for Standardization."
+                        toolTipText="The country in which <br/> a motor vehicle's <br/>vehicle registration <br/>plate was issued <br/>may be indicated <br/>by an international <br/>licence plate country <br/>code."
                       />
                     </td>
                     <td>
@@ -368,7 +438,16 @@ const DynamicObjectRenderer = ({ data }) => {
                     property={borders}
                     value="None"
                   />
-                  <TableRow label="Timezones" property={timezones} />
+                  <TableRow
+                    label={
+                      <TableElementWithToolTip
+                        isHeading={false}
+                        headingText="Timezones"
+                        toolTipText="UTC means Coordinated <br/> Universal Time, and it is<br/> the primary central time <br/>standard by which the <br/>world synchronizes clock <br/>and time, nowadays, which <br/>also is based on time<br/> in Greenwich, London."
+                      />
+                    }
+                    property={timezones}
+                  />
                   <TableRow
                     label="Landlocked"
                     property={landlocked}
@@ -401,7 +480,7 @@ const DynamicObjectRenderer = ({ data }) => {
                     <th>
                       <TableElementWithToolTip
                         headingText="3-letter code"
-                        toolTipText="The 3-letter language code comes <br/> from ISO 639-2/T which is a standard<br/> published by the International <br/>Organization for Standardization."
+                        toolTipText="The 3-letter language code <br/> comes  from ISO 639-2/T <br/>which is a standard<br/> published by the International <br/>Organization for Standardization."
                       />
                     </th>
                   </tr>
@@ -434,7 +513,6 @@ const DynamicObjectRenderer = ({ data }) => {
                   <tr>
                     <th>Year</th>
                     <th>
-                      {" "}
                       <TableElementWithToolTip
                         headingText="Gini Index"
                         toolTipText="The Gini Index is a  <br/> measure, on a 0 to 100 scale, <br/> of how equal a country's  <br/>distribution of income is.<br/> Lower is better."
@@ -442,7 +520,7 @@ const DynamicObjectRenderer = ({ data }) => {
                     </th>
                   </tr>
 
-                  {gini ? (
+                  {gini.year ? (
                     gini.map((item) => {
                       return (
                         <tr key={item.year}>
@@ -453,8 +531,8 @@ const DynamicObjectRenderer = ({ data }) => {
                     })
                   ) : (
                     <tr>
-                      <td>none</td>
-                      <td>none</td>
+                      <td>-</td>
+                      <td>not available</td>
                     </tr>
                   )}
                 </tbody>
