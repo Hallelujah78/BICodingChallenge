@@ -2,6 +2,7 @@ import React from "react";
 import InfoContainer from "./InfoContainer.js";
 import styled from "styled-components";
 import TableRow from "./TableRow.js";
+import TableElementWithToolTip from "./TableElementWithToolTip.js";
 
 const DynamicObjectRenderer = ({ data }) => {
   return (
@@ -90,7 +91,13 @@ const DynamicObjectRenderer = ({ data }) => {
                   <tr>
                     <th>Currency</th>
                     <th>Currency Symbol</th>
-                    <th>3-Letter Code</th>
+                    <th>
+                      <TableElementWithToolTip
+                        isHeading={true}
+                        headingText="3-letter code"
+                        toolTipText="The 3-letter currency code comes <br/> from ISO 4217 which is a standard<br/> published by the International <br/>Organization for Standardization."
+                      />
+                    </th>
                   </tr>
                   {currencies?.length > 0 ? (
                     currencies.map((currency) => {
@@ -229,7 +236,12 @@ const DynamicObjectRenderer = ({ data }) => {
                     <td>Drive on the {carSide} side of the road</td>
                   </tr>
                   <tr>
-                    <td>International Vehicle Registration Codes</td>
+                    <td>
+                      <TableElementWithToolTip
+                        headingText="International Vehicle Registration Codes"
+                        toolTipText="The 3-letter language code comes <br/> from ISO 639-2/T which is a standard<br/> published by the International <br/>Organization for Standardization."
+                      />
+                    </td>
                     <td>
                       {carSigns?.length > 0
                         ? carSigns.map((sign, index) => {
@@ -386,7 +398,12 @@ const DynamicObjectRenderer = ({ data }) => {
                   </tr>
                   <tr>
                     <th>Language</th>
-                    <th>3-letter Code</th>
+                    <th>
+                      <TableElementWithToolTip
+                        headingText="3-letter code"
+                        toolTipText="The 3-letter language code comes <br/> from ISO 639-2/T which is a standard<br/> published by the International <br/>Organization for Standardization."
+                      />
+                    </th>
                   </tr>
                   {languages?.length > 0 ? (
                     languages.map((language) => {
@@ -416,7 +433,13 @@ const DynamicObjectRenderer = ({ data }) => {
                   </tr>
                   <tr>
                     <th>Year</th>
-                    <th>Gini Index</th>
+                    <th>
+                      {" "}
+                      <TableElementWithToolTip
+                        headingText="Gini Index"
+                        toolTipText="The Gini Index is a  <br/> measure, on a 0 to 100 scale, <br/> of how equal a country's  <br/>distribution of income is.<br/> Lower is better."
+                      />
+                    </th>
                   </tr>
 
                   {gini ? (
@@ -440,7 +463,15 @@ const DynamicObjectRenderer = ({ data }) => {
                 <tbody>
                   <tr>
                     <th className="table-heading" colSpan="3">
-                      Demonyms
+                      <TableElementWithToolTip
+                        headingText="Demonyms"
+                        toolTipText="A demonym is a <br/>
+                                    noun used to denote<br/>
+                                    the natives or <br/>
+                                    inhabitants of a <br/>
+                                    particular country, <br/>
+                                    state, city, etc."
+                      />
                     </th>
                   </tr>
                   <tr>

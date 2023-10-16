@@ -2,7 +2,7 @@ import styled from "styled-components";
 const Loading = () => {
   return (
     <Wrapper>
-      <div class="lds-ring">
+      <div className="lds-ring">
         <div></div>
         <div></div>
         <div></div>

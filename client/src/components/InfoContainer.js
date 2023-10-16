@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 const InfoContainer = ({ children, title }) => {
   return (
     <Wrapper>
