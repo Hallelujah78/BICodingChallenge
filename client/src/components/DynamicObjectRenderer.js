@@ -186,16 +186,17 @@ const DynamicObjectRenderer = ({ data }) => {
                       )}
                     </td>
                   </tr>
-                  <tr>
-                    <td>
+
+                  <TableRow
+                    label={
                       <TableElementWithToolTip
                         isHeading={false}
                         headingText="International Direct Dialing"
                         toolTipText="An international direct<br/>dialing code is the code <br/>you must dial to place <br/>a call to a given country."
                       />
-                    </td>
-                    <td>{idd?.[0] ? idd[0] : "None"}</td>
-                  </tr>
+                    }
+                    property={idd}
+                  />
 
                   <TableRow
                     label={

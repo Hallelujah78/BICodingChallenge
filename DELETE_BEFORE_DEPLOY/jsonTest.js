@@ -50,6 +50,20 @@ const readJsonData = async () => {
   return JSON.parse(await readFile(new URL("./allData.json", import.meta.url)));
 };
 
+const checkLengthIddSuffixes = async () => {
+  const data = await readJsonData();
+  const suffixGreaterThanOne = data.map((country) => {
+    if (
+      country.idd &&
+      country.idd.suffixes &&
+      country.idd.suffixes.length > 1
+    ) {
+      return country.name.common;
+    }
+  });
+  console.log(new Set(suffixGreaterThanOne));
+};
+
 const compareCountryKeys = async (country1, country2) => {
   const data = await readJsonData();
   console.log(data[0]);
@@ -93,6 +107,7 @@ const countryCodes = async () => {
 const jsonTestWrapper = async () => {
   // compareCountryKeys("Bouvet Island", "Antarctica");
   // countryCodes();
+  checkLengthIddSuffixes();
 };
 
 export { jsonTest, getCountryLowestKeys, jsonTestWrapper };

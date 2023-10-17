@@ -1,6 +1,6 @@
 import { StatusCodes } from "http-status-codes";
 import * as CustomError from "../errors/index.js";
-import { jsonTestWrapper } from "../DELETE_BEFORE_DEPLOY/jsonTest.js";
+// import { jsonTestWrapper } from "../DELETE_BEFORE_DEPLOY/jsonTest.js";
 
 import {
   createResponseObject,
@@ -15,6 +15,7 @@ import {
 } from "../utils/index.js";
 
 const getCountryNames = async (req, res) => {
+  // await jsonTestWrapper();
   let result = await getNames(restCountriesGetNamesUrl);
   result = result.map((country) => {
     let option = {};
@@ -22,12 +23,11 @@ const getCountryNames = async (req, res) => {
     option.label = country.name.common;
     return option;
   });
-  console.log(result);
+
   res.status(StatusCodes.OK).json(result);
 };
 
 const getCountry = async (req, res) => {
-  await jsonTestWrapper();
   const country = req.body.country;
   if (!country) {
     throw new CustomError.BadRequestError("please provide a country value");

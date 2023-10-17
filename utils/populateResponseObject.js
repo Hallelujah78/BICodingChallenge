@@ -1,6 +1,6 @@
 import createArrayOfObjects from "./createArrayOfObjects.js";
 import isEmpty from "./isEmpty.js";
-
+import internationalDialingFix from "../utils/internationalDialingFix.js";
 import arrayOfObjectsFromKeyValue from "./arrayOfObjFromKeyValue.js";
 
 const populateResponseObject = ({
@@ -59,6 +59,10 @@ const populateResponseObject = ({
     latlng,
     timezones,
   } = object;
+
+  //** Specific "Cleaning" of Data from API**//
+
+  // USA international direct dialing suffixes includes area codes, this is not consistent with other countries
 
   //** GENERAL **/
   general.nameCommon = common;
@@ -176,7 +180,7 @@ const populateResponseObject = ({
     } else {
       iddCodes.push(idd?.root);
     }
-    communicationsAndCodes.idd = iddCodes;
+    communicationsAndCodes.idd = internationalDialingFix(common) || iddCodes;
   }
 
   //postal
