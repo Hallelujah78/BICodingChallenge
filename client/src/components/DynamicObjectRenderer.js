@@ -3,6 +3,7 @@ import InfoContainer from "./InfoContainer.js";
 import styled from "styled-components";
 import TableRow from "./TableRow.js";
 import TableElementWithToolTip from "./TableElementWithToolTip.js";
+import PostalCodeValidation from "./PostalCodeValidation.js";
 
 const DynamicObjectRenderer = ({ data }) => {
   return (
@@ -176,10 +177,10 @@ const DynamicObjectRenderer = ({ data }) => {
                     </td>
                   </tr>
                   <tr>
-                    <td>Postal Code Validator</td>
+                    <td>Postal Code Format Validator</td>
                     <td>
                       {postalCode?.regex ? (
-                        <input pattern={postalCode.regex} />
+                        <PostalCodeValidation regex={postalCode?.regex} />
                       ) : (
                         " No regular expression provided"
                       )}

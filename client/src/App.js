@@ -15,7 +15,6 @@ function App() {
           backgroundColor: "black",
           color: "#fff",
           zIndex: 999,
-          opacity: "1",
         }}
       />
       <BrowserRouter>

@@ -15,6 +15,7 @@ const BasicUI = () => {
   return (
     <Wrapper>
       <SearchForm
+        className="search"
         setCountry={setCountry}
         setCountryData={setCountryData}
         country={country}
@@ -35,6 +36,7 @@ const BasicUI = () => {
       ) : (
         <>
           <section>
+            <h5>a world of information</h5>
             <div className="img-container">
               <img src={worldMap} alt="globe of the world" />
             </div>
@@ -48,6 +50,9 @@ const BasicUI = () => {
 export default BasicUI;
 
 const Wrapper = styled.section`
+  .search {
+    z-index: 99999;
+  }
   *,
   ::after,
   ::before {
@@ -55,7 +60,6 @@ const Wrapper = styled.section`
   }
   position: relative;
   overflow-x: hidden;
-  padding-bottom: 50rem;
   max-width: 100%;
   min-height: 100vh;
 
@@ -107,10 +111,25 @@ const Wrapper = styled.section`
     height: auto;
   }
   section {
+    position: relative;
+    z-index: -99;
     aspect-ratio: 1;
     width: 90%;
     height: 100%;
     margin: 30vh auto 0 auto;
+    h5 {
+      position: absolute;
+      text-align: center;
+      font-size: calc(1rem + 0.390625vw);
+      top: 18vh;
+      left: 50%;
+      color: white;
+      transform: translate(-50%);
+
+      padding: 0.25rem 1rem;
+      border-radius: var(--borderRadius);
+      background: #e14ed2;
+    }
   }
   .hide {
     transform: translate(-50%, -150vh);
@@ -118,20 +137,26 @@ const Wrapper = styled.section`
   }
   @media (min-width: 800px) {
     section {
+      position: relative;
+      z-index: -99;
       width: 100%;
       height: calc(100vh - 4rem);
       margin: 0 auto 0 auto;
       .img-container {
+        position: relative;
         width: 100%;
         height: 100%;
         margin: auto;
-
         display: grid;
         place-content: center;
+        z-index: -99;
         img {
           margin-top: 12rem;
           height: 60vh;
         }
+      }
+      h5 {
+        top: 56vh;
       }
     }
   }

@@ -148,6 +148,7 @@ const Wrapper = styled.footer`
     .footer-container {
       color: white;
       width: 90%;
+
       margin: auto;
       height: auto;
       display: grid;
@@ -168,8 +169,7 @@ const Wrapper = styled.footer`
     .social-logo {
       img {
         margin: auto;
-        width: 100%;
-        text-align: right;
+        width: 50%;
       }
     }
     .social-icons {
@@ -180,7 +180,7 @@ const Wrapper = styled.footer`
         justify-content: space-around;
         .social-icon {
           margin: auto 0 auto 0;
-          font-size: 2.5rem;
+          font-size: 2rem;
           &:hover {
             cursor: pointer;
           }
@@ -193,6 +193,7 @@ const Wrapper = styled.footer`
       .footer-container {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        padding-bottom: 2rem;
       }
     }
   }
