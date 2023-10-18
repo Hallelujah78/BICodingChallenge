@@ -3,10 +3,12 @@ import image from "../assets/images/CI.svg";
 const Navbar = () => {
   return (
     <Wrapper>
-      <div className="gradient"></div>
-      <div className="nav-container">
-        <div className="image-container">
-          <img src={image} alt="country insights logo" />
+      <div className="nav">
+        <div className="gradient"></div>
+        <div className="nav-container">
+          <div className="image-container">
+            <img src={image} alt="country insights logo" />
+          </div>
         </div>
       </div>
     </Wrapper>
@@ -15,17 +17,21 @@ const Navbar = () => {
 export default Navbar;
 
 const Wrapper = styled.header`
+  .nav {
+    box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    width: 100%;
+    background: white;
+    transition: 0.5s all linear;
+  }
+
+  height: 4rem;
   .nav-container {
     display: flex;
     max-width: 95vw;
     margin: 0 auto;
   }
-  box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.15);
-  text-align: center;
-  width: 100%;
-  height: 4rem;
-  background: white;
-  color: white;
+
   .gradient {
     height: 0.75rem;
     background: rgb(180, 58, 58);
