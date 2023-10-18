@@ -38,6 +38,7 @@ const Wrapper = styled.div`
   position: relative;
   input {
     height: 2.25rem;
+    width: 100%;
   }
   div {
     position: absolute;

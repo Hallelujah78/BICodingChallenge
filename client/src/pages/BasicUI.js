@@ -1,21 +1,39 @@
+import { useState, useEffect, useRef } from "react";
+
 import styled from "styled-components";
-import { useState } from "react";
+
 import DynamicObjectRenderer from "../components/DynamicObjectRenderer.js";
 import worldMap from "../assets/images/globe.svg";
 import SearchForm from "../components/SearchForm.js";
 import Loading from "../components/Loading.js";
+import Navbar from "../components/Navbar.js";
 
 const BasicUI = () => {
+  const myRef = useRef(null);
   const [country, setCountry] = useState("");
   const [countryData, setCountryData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
+  useEffect(() => {
+    const searchForm = myRef.current;
+  }, []);
+
+  useEffect(() => {
+    if (countryData) {
+      myRef.current.classList.add("hide");
+      setTimeout(() => {
+        myRef.current.classList.add("nav-search");
+      }, 500);
+    }
+  }, [countryData]);
+
   return (
     <Wrapper>
+      <Navbar countryData={countryData} />
       <SearchForm
-        className="search"
+        ref={myRef}
         setCountry={setCountry}
         setCountryData={setCountryData}
         country={country}
@@ -50,9 +68,6 @@ const BasicUI = () => {
 export default BasicUI;
 
 const Wrapper = styled.section`
-  .search {
-    z-index: 99999;
-  }
   *,
   ::after,
   ::before {
@@ -63,38 +78,6 @@ const Wrapper = styled.section`
   max-width: 100%;
   min-height: 100vh;
 
-  .search-container {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    margin: 5rem auto;
-    transition: 0.5s ease-in all;
-    width: 80vw;
-    height: fit-content;
-    .btn-container {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-    }
-  }
-
-  input {
-    display: block;
-    width: 100%;
-  }
-  button {
-    border: transparent;
-    width: 45%;
-    border-radius: 35px;
-    background: #e14ed2;
-    color: white;
-    text-transform: uppercase;
-    padding: 15px 20px;
-    transition: all 0.3s;
-    &:hover {
-      background: #ed96e5;
-    }
-  }
   .content-center {
     margin-top: 2rem;
     display: grid;
@@ -106,10 +89,7 @@ const Wrapper = styled.section`
       font-size: calc(2rem + 0.390625vw);
     }
   }
-  .arms-large {
-    width: 200px;
-    height: auto;
-  }
+
   section {
     position: relative;
     z-index: -99;
@@ -131,10 +111,7 @@ const Wrapper = styled.section`
       background: #e14ed2;
     }
   }
-  .hide {
-    transform: translate(-50%, -150vh);
-    left: 50%;
-  }
+
   @media (min-width: 800px) {
     section {
       position: relative;
@@ -159,5 +136,8 @@ const Wrapper = styled.section`
         top: 56vh;
       }
     }
+  }
+  .search-form {
+    z-index: 9999999;
   }
 `;

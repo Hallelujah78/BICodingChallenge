@@ -1,9 +1,9 @@
-import BasicUI from "./pages/BasicUI.js";
-import Navbar from "./components/Navbar.js";
-import Footer from "./components/Footer.js";
-import styled from "styled-components";
-import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip } from "react-tooltip";
+
+import BasicUI from "./pages/BasicUI.js";
+import Footer from "./components/Footer.js";
+
+import styled from "styled-components";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
           zIndex: 999,
         }}
       />
-      <Navbar />
+
       <BasicUI />
       <Footer />
     </Wrapper>

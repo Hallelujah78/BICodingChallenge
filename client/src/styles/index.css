@@ -356,3 +356,21 @@
      transform: translateY(-100%) !important;
      visibility: hidden !important;
  }
+
+ .show {
+     transform: translateY(0);
+     visibility: visible;
+ }
+
+ .hide {
+     transform: translate(-50%, -50vh) !important;
+     left: 50%;
+     visibility: hidden;
+ }
+
+ .nav-search {
+     transform: translate(-50%, -9rem) !important;
+     left: 50%;
+     width: 50%;
+     visibility: visible;
+ }

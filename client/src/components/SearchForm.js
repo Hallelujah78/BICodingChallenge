@@ -1,17 +1,17 @@
 import Search from "../components/Search.js";
+import styled from "styled-components";
 import axios from "axios";
+import { forwardRef } from "react";
 
-const SearchForm = ({
-  setCountry,
-  country,
-  setCountryData,
-  setIsLoading,
-  setIsError,
-}) => {
+const SearchForm = forwardRef((props, ref) => {
+  const { setCountry, country, setCountryData, setIsLoading, setIsError } =
+    props;
   const fetchCountryData = async (country) => {
     setIsLoading(true);
     try {
-      const { data: result } = await axios.post("/api/v1/country", { country });
+      const { data: result } = await axios.post("/api/v1/country", {
+        country,
+      });
       if (result) {
         setCountryData(result);
       }
@@ -25,12 +25,10 @@ const SearchForm = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     fetchCountryData(country);
-    const form = document.querySelector("form");
-    form.classList.add("hide");
   };
 
   return (
-    <form className="search-container">
+    <Wrapper ref={ref}>
       <label htmlFor="country name" className="form-label">
         Select a Country
         <Search
@@ -50,7 +48,36 @@ const SearchForm = ({
           submit
         </button>
       </div>
-    </form>
+    </Wrapper>
   );
-};
+});
 export default SearchForm;
+
+const Wrapper = styled.form`
+  transition: 0.5s ease-in all;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 5rem auto;
+  width: 80vw;
+  height: fit-content;
+  .btn-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  button {
+    border: transparent;
+    width: 45%;
+    border-radius: 35px;
+    background: #e14ed2;
+    color: white;
+    text-transform: uppercase;
+    padding: 15px 20px;
+    transition: all 0.3s;
+    &:hover {
+      background: #ed96e5;
+    }
+  }
+`;
