@@ -16,7 +16,8 @@ const Search = ({ setCountry }) => {
         styles={{
           input: (baseStyles, state) => ({
             ...baseStyles,
-            width: "15rem",
+            width: "13rem",
+            height: "auto",
           }),
         }}
         onChange={handleChange}

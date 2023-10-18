@@ -4,23 +4,20 @@ import SearchForm from "./SearchForm";
 export const NavSearchForm = styled(SearchForm)`
   display: flex;
   transition: 0.5s ease-in all;
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 0;
-  height: fit-content;
+  position: relative;
+  height: auto;
+  width: fit-content;
   z-index: 9999;
-  border: red solid 1px;
+  margin: 0.5rem 0 0.5rem 0;
   .btn-container {
-    height: 3rem;
-    margin: -1rem;
+    margin-top: 0;
+    height: auto;
     display: flex;
-    justify-content: space-between;
-
+    width: auto;
     button {
       border: transparent;
       height: auto;
-      width: 5rem;
+      width: 4rem;
       border-radius: 35px;
       background: #e14ed2;
       color: white;
@@ -28,7 +25,7 @@ export const NavSearchForm = styled(SearchForm)`
       text-transform: uppercase;
       padding: 0.25rem;
       transition: all 0.3s;
-      margin: 0 0 0 0.5rem;
+      margin: 0 0 0 0.4rem;
       &:hover {
         background: #ed96e5;
       }

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import image from "../assets/images/CI.svg";
+import image from "../assets/images/CI.webp";
 import icon from "../assets/images/CI-small.png";
 
 import { NavSearchForm } from "./NavSearchForm";
@@ -19,7 +19,7 @@ const Navbar = ({
       <div className={countryData ? "nav" : "nav hidden"}>
         <div className="gradient"></div>
         <div className="nav-container">
-          <img src={icon} alt="" />
+          <img className="icon-small" src={icon} alt="" />
           {!renderSearch ? (
             <NavSearchForm
               className="nav-search-form"
@@ -44,7 +44,7 @@ export default Navbar;
 
 const Wrapper = styled.header`
   width: 100%;
-
+  height: 4rem;
   position: relative;
   .nav {
     box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.15);
@@ -54,11 +54,12 @@ const Wrapper = styled.header`
     transition: 0.5s all linear;
   }
 
-  height: 4rem;
   .nav-container {
     position: relative;
-    display: flex;
-    max-width: 95vw;
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    place-content: center;
+    max-width: 95%;
     margin: 0 auto;
     height: 4rem;
   }
@@ -77,5 +78,10 @@ const Wrapper = styled.header`
     top: 1.25rem;
     left: 1vw;
     transition: 0.5s all linear;
+  }
+  .icon-small {
+    margin: auto 0 auto 0;
+    width: 2rem;
+    height: 2rem;
   }
 `;

@@ -31,7 +31,6 @@ const useAxiosFetch = (dataUrl) => {
     fetchData(dataUrl);
 
     return () => {
-      console.log("clean up function");
       isMounted = false;
       controller.abort();
     };

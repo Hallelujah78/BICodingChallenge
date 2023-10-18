@@ -63,10 +63,8 @@ const Wrapper = styled.form`
   left: 50%;
   transform: translateX(-50%);
   margin: 5rem auto;
-  width: 80vw;
   height: fit-content;
   .btn-container {
-    margin-top: 2rem;
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -81,6 +79,7 @@ const Wrapper = styled.form`
     text-transform: uppercase;
     padding: 15px 20px;
     transition: all 0.3s;
+    margin-top: 1rem;
     &:hover {
       background: #ed96e5;
     }
