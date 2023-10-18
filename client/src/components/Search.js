@@ -13,6 +13,12 @@ const Search = ({ setCountry }) => {
   return (
     <Wrapper>
       <Select
+        styles={{
+          input: (baseStyles, state) => ({
+            ...baseStyles,
+            width: "15rem",
+          }),
+        }}
         onChange={handleChange}
         placeholder="Select a country"
         options={data}
@@ -23,9 +29,4 @@ const Search = ({ setCountry }) => {
 };
 export default Search;
 
-const Wrapper = styled.div`
-  input {
-    display: block;
-    width: 50%;
-  }
-`;
+const Wrapper = styled.div``;

@@ -9,6 +9,7 @@ import Loading from "../components/Loading.js";
 import Navbar from "../components/Navbar.js";
 
 const BasicUI = () => {
+  const [renderSearch, setRenderSearch] = useState(true);
   const myRef = useRef(null);
   const [country, setCountry] = useState("");
   const [countryData, setCountryData] = useState(null);
@@ -21,25 +22,37 @@ const BasicUI = () => {
   }, []);
 
   useEffect(() => {
-    if (countryData) {
+    if (countryData && myRef.current) {
       myRef.current.classList.add("hide");
+
       setTimeout(() => {
-        myRef.current.classList.add("nav-search");
+        setRenderSearch(false);
       }, 500);
     }
   }, [countryData]);
 
   return (
     <Wrapper>
-      <Navbar countryData={countryData} />
-      <SearchForm
-        ref={myRef}
+      <Navbar
+        countryData={countryData}
+        renderSearch={renderSearch}
         setCountry={setCountry}
         setCountryData={setCountryData}
         country={country}
         setIsLoading={setIsLoading}
         setIsError={setIsError}
       />
+      {renderSearch ? (
+        <SearchForm
+          ref={myRef}
+          setCountry={setCountry}
+          setCountryData={setCountryData}
+          country={country}
+          setIsLoading={setIsLoading}
+          setIsError={setIsError}
+        />
+      ) : null}
+
       {isLoading ? (
         <div className="content-center">
           <Loading />

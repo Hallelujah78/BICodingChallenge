@@ -4,8 +4,14 @@ import axios from "axios";
 import { forwardRef } from "react";
 
 const SearchForm = forwardRef((props, ref) => {
-  const { setCountry, country, setCountryData, setIsLoading, setIsError } =
-    props;
+  const {
+    setCountry,
+    country,
+    setCountryData,
+    setIsLoading,
+    setIsError,
+    className,
+  } = props;
   const fetchCountryData = async (country) => {
     setIsLoading(true);
     try {
@@ -28,16 +34,14 @@ const SearchForm = forwardRef((props, ref) => {
   };
 
   return (
-    <Wrapper ref={ref}>
-      <label htmlFor="country name" className="form-label">
-        Select a Country
-        <Search
-          setCountry={setCountry}
-          id="country name"
-          name="country name"
-          className="form-input"
-        />
-      </label>
+    <Wrapper className={className} ref={ref}>
+      <Search
+        setCountry={setCountry}
+        id="country name"
+        name="country name"
+        className="form-input"
+      />
+
       <div className="btn-container">
         <button
           disabled={!country}
@@ -62,6 +66,7 @@ const Wrapper = styled.form`
   width: 80vw;
   height: fit-content;
   .btn-container {
+    margin-top: 2rem;
     display: flex;
     justify-content: space-between;
     width: 100%;
