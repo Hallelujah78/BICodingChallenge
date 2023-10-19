@@ -6,6 +6,7 @@ import icon from "../assets/images/CI-small.png";
 import { NavSearchForm } from "./NavSearchForm";
 
 const Navbar = ({
+  width,
   countryData,
   renderSearch,
   setCountry,
@@ -16,12 +17,23 @@ const Navbar = ({
 }) => {
   return (
     <Wrapper>
-      <div className={countryData ? "nav" : "nav hidden"}>
+      <div className={countryData ? "nav show" : "nav hidden"}>
         <div className="gradient"></div>
         <div className="nav-container">
-          <img className="icon-small" src={icon} alt="" />
+          {width < 650 ? (
+            <>
+              <img className="icon-small" src={icon} alt="" />
+            </>
+          ) : (
+            <>
+              <img className="icon-small" src={icon} alt="" />
+              <img className="logo" src={image} alt="country insights logo" />
+            </>
+          )}
+
           {!renderSearch ? (
             <NavSearchForm
+              width={width}
               className="nav-search-form"
               setCountry={setCountry}
               setCountryData={setCountryData}
@@ -76,12 +88,21 @@ const Wrapper = styled.header`
   .image-container {
     position: absolute;
     top: 1.25rem;
-    left: 1vw;
+    left: 2vw;
     transition: 0.5s all linear;
   }
+
   .icon-small {
     margin: auto 0 auto 0;
     width: 2rem;
     height: 2rem;
+  }
+  @media (min-width: 650px) {
+    .nav-container {
+      grid-template-columns: 1fr 1fr 5fr;
+    }
+  }
+  .logo {
+    margin-top: 0.5rem;
   }
 `;

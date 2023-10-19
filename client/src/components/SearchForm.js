@@ -65,14 +65,14 @@ const Wrapper = styled.form`
   margin: 5rem auto;
   height: fit-content;
   .btn-container {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    align-items: right;
     width: 100%;
   }
 
   button {
     border: transparent;
-    width: 45%;
+    width: 100%;
     border-radius: 35px;
     background: #e14ed2;
     color: white;
@@ -80,6 +80,7 @@ const Wrapper = styled.form`
     padding: 15px 20px;
     transition: all 0.3s;
     margin-top: 1rem;
+
     &:hover {
       background: #ed96e5;
     }

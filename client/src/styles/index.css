@@ -355,17 +355,18 @@
  .hidden {
      transform: translateY(-100%) !important;
      visibility: hidden !important;
+     opacity: 0;
  }
 
  .show {
-     transform: translateY(0);
-     visibility: visible;
+     opacity: 1;
  }
 
  .hide {
      transform: translate(-50%, -50vh) !important;
      left: 50%;
      visibility: hidden;
+     opacity: 0;
  }
 
  .nav-search {
@@ -373,4 +374,5 @@
      left: 50%;
      width: 50%;
      visibility: visible;
+
  }

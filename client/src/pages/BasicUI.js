@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 
 import styled from "styled-components";
+import { useWindowSize } from "react-use";
 
 import DynamicObjectRenderer from "../components/DynamicObjectRenderer.js";
 import worldMap from "../assets/images/globe.svg";
@@ -16,6 +17,7 @@ const BasicUI = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const { width } = useWindowSize();
 
   useEffect(() => {
     const searchForm = myRef.current;
@@ -34,6 +36,7 @@ const BasicUI = () => {
   return (
     <Wrapper>
       <Navbar
+        width={width}
         countryData={countryData}
         renderSearch={renderSearch}
         setCountry={setCountry}
