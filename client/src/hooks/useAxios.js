@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const useAxiosFetch = (dataUrl) => {
   const [data, setData] = useState([]);
@@ -21,8 +22,11 @@ const useAxiosFetch = (dataUrl) => {
         }
       } catch (err) {
         if (isMounted) {
-          setIsError(err.message);
+          setIsError(err.response.status);
           setData([]);
+          toast(
+            `${err.response.status}. Unable to retrieve a list of countries from the server. Please try again later!`
+          );
         }
       } finally {
         isMounted && setIsLoading(false);

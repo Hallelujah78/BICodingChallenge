@@ -4,7 +4,7 @@ import URL from "../utils/config";
 import Select from "react-select";
 
 const Search = ({ setCountry }) => {
-  const { data } = useAxiosFetch(URL);
+  const { data, isError, isLoading } = useAxiosFetch(URL);
 
   const handleChange = (selectedOption) => {
     setCountry(selectedOption.value);
@@ -24,6 +24,7 @@ const Search = ({ setCountry }) => {
         placeholder="Select a country"
         options={data}
         autoFocus={true}
+        isLoading={isLoading}
       />
     </Wrapper>
   );

@@ -1,9 +1,12 @@
+// third party
 import { Tooltip } from "react-tooltip";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import styled from "styled-components";
 
+// my components and pages
 import BasicUI from "./pages/BasicUI.js";
 import Footer from "./components/Footer.js";
-
-import styled from "styled-components";
 
 function App() {
   return (
@@ -19,11 +22,26 @@ function App() {
 
       <BasicUI />
       <Footer />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      {/* Same as */}
+      <ToastContainer />
     </Wrapper>
   );
 }
 
 export default App;
+
 const Wrapper = styled.div`
   position: relative;
   min-height: 900px;
