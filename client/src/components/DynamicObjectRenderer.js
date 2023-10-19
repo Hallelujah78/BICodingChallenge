@@ -4,6 +4,7 @@ import styled from "styled-components";
 import TableRow from "./TableRow.js";
 import TableElementWithToolTip from "./TableElementWithToolTip.js";
 import PostalCodeValidation from "./PostalCodeValidation.js";
+import Accordion from "./Accordion.js";
 
 const DynamicObjectRenderer = ({ data }) => {
   return (
@@ -24,102 +25,205 @@ const DynamicObjectRenderer = ({ data }) => {
             title,
           } = data.general;
           return (
-            <InfoContainer key={key} title={title}>
-              <table className="table-2-col">
-                <tbody>
-                  <tr>
-                    <td>Formal Name</td>
-                    <td>{nameOfficial}</td>
-                  </tr>
-                  <tr>
-                    <td>Informal name</td>
-                    <td>{nameCommon}</td>
-                  </tr>
-                  <TableRow
-                    label="Alternative Names and Abbreviations"
-                    property={altSpellings}
-                  />
-                  <tr>
-                    <td>Flag</td>
-                    <td>
-                      <img src={flagSvg} alt={flagAlt} />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <table className="th-3-col">
-                <tbody>
-                  <tr>
-                    <th>Official Languages</th>
-                    <th>Informal Name</th>
-                    <th>Official Name</th>
-                  </tr>
-                  {nameNative?.length > 0 ? (
-                    nameNative.map((name) => {
-                      return (
-                        <tr key={name.lang}>
-                          <td>{name.lang}</td>
-                          <td>{name.common}</td>
-                          <td>{name.official}</td>
+            <>
+              <Accordion
+                title={title}
+                content={
+                  <InfoContainer key={key} title={title}>
+                    <table className="table-2-col">
+                      <tbody>
+                        <tr>
+                          <td>Formal Name</td>
+                          <td>{nameOfficial}</td>
                         </tr>
-                      );
-                    })
-                  ) : (
-                    <tr>
-                      <td>None</td>
-                      <td>-</td>
-                      <td>-</td>
-                    </tr>
-                  )}
-                </tbody>
-              </table>
-              <table className="table-2-col">
-                <tbody>
-                  <tr>
-                    <td>Coat of Arms</td>
-                    <td>
-                      {coatOfArmsSvgUrl ? (
-                        <img src={coatOfArmsSvgUrl} alt={coatOfArmsAlt} />
-                      ) : (
-                        "None"
-                      )}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <table className="th-3-col">
-                <tbody>
-                  <tr>
-                    <th>Currency</th>
-                    <th>Currency Symbol</th>
-                    <th>
-                      <TableElementWithToolTip
-                        isHeading={true}
-                        headingText="3-letter code"
-                        toolTipText="The 3-letter currency code comes <br/> from ISO 4217 which is a standard<br/> published by the International <br/>Organization for Standardization."
-                      />
-                    </th>
-                  </tr>
-                  {currencies?.length > 0 ? (
-                    currencies.map((currency) => {
-                      return (
-                        <tr key={currency.symbol}>
-                          <td>{currency.name}</td>
-                          <td>{currency.symbol}</td>
-                          <td>{currency.iso4217}</td>
+                        <tr>
+                          <td>Informal name</td>
+                          <td>{nameCommon}</td>
                         </tr>
-                      );
-                    })
-                  ) : (
+                        <TableRow
+                          label="Alternative Names and Abbreviations"
+                          property={altSpellings}
+                        />
+                        <tr>
+                          <td>Flag</td>
+                          <td>
+                            <img src={flagSvg} alt={flagAlt} />
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <table className="th-3-col">
+                      <tbody>
+                        <tr>
+                          <th>Official Languages</th>
+                          <th>Informal Name</th>
+                          <th>Official Name</th>
+                        </tr>
+                        {nameNative?.length > 0 ? (
+                          nameNative.map((name) => {
+                            return (
+                              <tr key={name.lang}>
+                                <td>{name.lang}</td>
+                                <td>{name.common}</td>
+                                <td>{name.official}</td>
+                              </tr>
+                            );
+                          })
+                        ) : (
+                          <tr>
+                            <td>None</td>
+                            <td>-</td>
+                            <td>-</td>
+                          </tr>
+                        )}
+                      </tbody>
+                    </table>
+                    <table className="table-2-col">
+                      <tbody>
+                        <tr>
+                          <td>Coat of Arms</td>
+                          <td>
+                            {coatOfArmsSvgUrl ? (
+                              <img src={coatOfArmsSvgUrl} alt={coatOfArmsAlt} />
+                            ) : (
+                              "None"
+                            )}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <table className="th-3-col">
+                      <tbody>
+                        <tr>
+                          <th>Currency</th>
+                          <th>Currency Symbol</th>
+                          <th>
+                            <TableElementWithToolTip
+                              isHeading={true}
+                              headingText="3-letter code"
+                              toolTipText="The 3-letter currency code comes <br/> from ISO 4217 which is a standard<br/> published by the International <br/>Organization for Standardization."
+                            />
+                          </th>
+                        </tr>
+                        {currencies?.length > 0 ? (
+                          currencies.map((currency) => {
+                            return (
+                              <tr key={currency.symbol}>
+                                <td>{currency.name}</td>
+                                <td>{currency.symbol}</td>
+                                <td>{currency.iso4217}</td>
+                              </tr>
+                            );
+                          })
+                        ) : (
+                          <tr>
+                            <td>None</td>
+                            <td>-</td>
+                            <td>-</td>
+                          </tr>
+                        )}
+                      </tbody>
+                    </table>
+                  </InfoContainer>
+                }
+              />
+              <InfoContainer key={key} title={title}>
+                <table className="table-2-col">
+                  <tbody>
                     <tr>
-                      <td>None</td>
-                      <td>-</td>
-                      <td>-</td>
+                      <td>Formal Name</td>
+                      <td>{nameOfficial}</td>
                     </tr>
-                  )}
-                </tbody>
-              </table>
-            </InfoContainer>
+                    <tr>
+                      <td>Informal name</td>
+                      <td>{nameCommon}</td>
+                    </tr>
+                    <TableRow
+                      label="Alternative Names and Abbreviations"
+                      property={altSpellings}
+                    />
+                    <tr>
+                      <td>Flag</td>
+                      <td>
+                        <img src={flagSvg} alt={flagAlt} />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table className="th-3-col">
+                  <tbody>
+                    <tr>
+                      <th>Official Languages</th>
+                      <th>Informal Name</th>
+                      <th>Official Name</th>
+                    </tr>
+                    {nameNative?.length > 0 ? (
+                      nameNative.map((name) => {
+                        return (
+                          <tr key={name.lang}>
+                            <td>{name.lang}</td>
+                            <td>{name.common}</td>
+                            <td>{name.official}</td>
+                          </tr>
+                        );
+                      })
+                    ) : (
+                      <tr>
+                        <td>None</td>
+                        <td>-</td>
+                        <td>-</td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+                <table className="table-2-col">
+                  <tbody>
+                    <tr>
+                      <td>Coat of Arms</td>
+                      <td>
+                        {coatOfArmsSvgUrl ? (
+                          <img src={coatOfArmsSvgUrl} alt={coatOfArmsAlt} />
+                        ) : (
+                          "None"
+                        )}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table className="th-3-col">
+                  <tbody>
+                    <tr>
+                      <th>Currency</th>
+                      <th>Currency Symbol</th>
+                      <th>
+                        <TableElementWithToolTip
+                          isHeading={true}
+                          headingText="3-letter code"
+                          toolTipText="The 3-letter currency code comes <br/> from ISO 4217 which is a standard<br/> published by the International <br/>Organization for Standardization."
+                        />
+                      </th>
+                    </tr>
+                    {currencies?.length > 0 ? (
+                      currencies.map((currency) => {
+                        return (
+                          <tr key={currency.symbol}>
+                            <td>{currency.name}</td>
+                            <td>{currency.symbol}</td>
+                            <td>{currency.iso4217}</td>
+                          </tr>
+                        );
+                      })
+                    ) : (
+                      <tr>
+                        <td>None</td>
+                        <td>-</td>
+                        <td>-</td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </InfoContainer>
+            </>
           );
         } else if (item.type === "communicationsAndCodes") {
           const {

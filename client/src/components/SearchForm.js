@@ -26,7 +26,9 @@ const SearchForm = forwardRef((props, ref) => {
     } catch (err) {
       setIsError(true);
       toast(
-        `${err.response.status}. Unable to retrieve country information right now. Please try again later!`
+        `${
+          err?.response?.status ? err.response.status : "No internet connection"
+        }. Unable to retrieve country information right now. Please try again later!`
       );
     } finally {
       setIsLoading(false);

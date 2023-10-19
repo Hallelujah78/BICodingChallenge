@@ -22,10 +22,14 @@ const useAxiosFetch = (dataUrl) => {
         }
       } catch (err) {
         if (isMounted) {
-          setIsError(err.response.status);
+          setIsError(err?.response?.status);
           setData([]);
           toast(
-            `${err.response.status}. Unable to retrieve a list of countries from the server. Please try again later!`
+            `${
+              err?.response?.status
+                ? err.response.status
+                : "No internet connection"
+            }. Unable to retrieve a list of countries from the server. Please try again later!`
           );
         }
       } finally {
