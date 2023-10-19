@@ -37,9 +37,7 @@ const getCountry = async (req, res) => {
 
   if (!result) {
     // handle the error
-    throw new CustomError.NotFoundError(
-      "Greetings from the backend, terribly sorry about this. I'm afraid there's been a bit of a mix up."
-    );
+    throw new CustomError.NotFoundError("404 not found");
   }
 
   const response = populateResponseObject({

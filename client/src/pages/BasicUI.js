@@ -16,7 +16,6 @@ const BasicUI = () => {
   const [countryData, setCountryData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
   const { width } = useWindowSize();
 
   useEffect(() => {
@@ -29,7 +28,7 @@ const BasicUI = () => {
 
       setTimeout(() => {
         setRenderSearch(false);
-      }, 500);
+      }, 300);
     }
   }, [countryData]);
 
@@ -61,7 +60,14 @@ const BasicUI = () => {
           <Loading />
         </div>
       ) : isError ? (
-        <div className="content-center">{errorMessage}</div>
+        <div className="content-center">
+          <div className="error">
+            <p>
+              Whoops. Looks like something went wrong. Try refreshing or please
+              try again later...
+            </p>
+          </div>
+        </div>
       ) : !isLoading && !isError && countryData ? (
         <div className="content-center">
           <h2>{countryData?.general.nameOfficial}</h2>
@@ -100,9 +106,20 @@ const Wrapper = styled.section`
     place-content: center;
     min-height: 50vh;
     width: 100%;
+    .error {
+      display: grid;
+      text-align: center;
+      max-width: 70vw;
+      margin: 10rem auto 0 auto;
+      height: 50vh;
+      font-size: calc(1.25rem + 0.390625vw);
+      p {
+        margin: auto;
+      }
+    }
     h2 {
       text-align: center;
-      font-size: calc(2rem + 0.390625vw);
+      font-size: calc(1.25rem + 0.390625vw);
     }
   }
 
@@ -121,7 +138,6 @@ const Wrapper = styled.section`
       left: 50%;
       color: white;
       transform: translate(-50%);
-
       padding: 0.25rem 1rem;
       border-radius: var(--borderRadius);
       background: #e14ed2;

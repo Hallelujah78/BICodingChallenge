@@ -2,6 +2,8 @@ import Search from "../components/Search.js";
 import styled from "styled-components";
 import axios from "axios";
 import { forwardRef } from "react";
+import { toast } from "react-toastify";
+import URL from "../utils/config.js";
 
 const SearchForm = forwardRef((props, ref) => {
   const {
@@ -15,14 +17,17 @@ const SearchForm = forwardRef((props, ref) => {
   const fetchCountryData = async (country) => {
     setIsLoading(true);
     try {
-      const { data: result } = await axios.post("/api/v1/country", {
+      const { data: result } = await axios.post("api/v1/country", {
         country,
       });
       if (result) {
         setCountryData(result);
       }
-    } catch (error) {
+    } catch (err) {
       setIsError(true);
+      toast(
+        `${err.response.status}. Unable to retrieve country information right now. Please try again later!`
+      );
     } finally {
       setIsLoading(false);
     }
