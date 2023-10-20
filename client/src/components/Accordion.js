@@ -50,4 +50,7 @@ const Wrapper = styled.div`
     margin: auto;
     margin-top: 0.4rem;
   }
+  .accordion-content {
+    transition: 0.5s linear all;
+  }
 `;

@@ -1,21 +1,5 @@
 const responseObject = () => {
   const responseObject = {
-    geography: {
-      title: "geography",
-      type: "geography",
-      continents: [],
-      region: "",
-      subregion: "",
-      latlng: [],
-      borders: [],
-      capital: "", // can be missing for island nations
-      capitalLatlng: [], // can be empty object
-      area: null,
-      timezones: [],
-      landlocked: null,
-      googleMaps: "", // all map objects contain 2 values
-      openStreetMaps: "",
-    },
     general: {
       title: "general information",
       type: "general",
@@ -32,6 +16,23 @@ const responseObject = () => {
       flagSvg: "",
       flagAlt: "", //
     },
+    geography: {
+      title: "geography",
+      type: "geography",
+      continents: [],
+      region: "",
+      subregion: "",
+      latlng: [],
+      borders: [],
+      capital: "", // can be missing for island nations
+      capitalLatlng: [], // can be empty object
+      area: null,
+      timezones: [],
+      landlocked: null,
+      googleMaps: "", // all map objects contain 2 values
+      openStreetMaps: "",
+    },
+
     communicationsAndCodes: {
       title: "communications & codes",
       type: "communicationsAndCodes",

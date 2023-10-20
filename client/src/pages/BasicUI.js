@@ -103,7 +103,7 @@ const Wrapper = styled.section`
   .content-center {
     margin-top: 2rem;
     display: grid;
-    place-content: center;
+    /* place-content: center; */
     min-height: 50vh;
     width: 100%;
     .error {
@@ -120,6 +120,7 @@ const Wrapper = styled.section`
     h2 {
       text-align: center;
       font-size: calc(1.25rem + 0.390625vw);
+      margin-top: 5rem;
     }
   }
 
