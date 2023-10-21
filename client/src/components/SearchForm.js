@@ -17,7 +17,7 @@ const SearchForm = forwardRef((props, ref) => {
   const fetchCountryData = async (country) => {
     setIsLoading(true);
     try {
-      const { data: result } = await axios.post("api/v1/country", {
+      const { data: result } = await axios.post(URL, {
         country,
       });
       if (result) {
