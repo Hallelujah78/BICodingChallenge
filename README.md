@@ -56,7 +56,8 @@ npm start
 - in the case of the International Direct Dialing Code (idd):
   - the 'suffixes' array includes area codes for a handful of countries only, most countries only h
   - I've handled these by omitting area codes for all countries
-    - this has meant creating separate logic on the backend for the specific countries where the
+    - this has meant creating separate logic on the backend for the specific countries where the suffixes array contained area codes
+    - the internationalDialingFix.js file in utils on the backend handles this
 
 ## Front End Validation
 
@@ -69,7 +70,7 @@ npm start
 
 ## Error Handling
 
-- errors we might expect would be 404 or 500, either from the Node backend or rcAPI
+- errors we might expect would be 400, 404 or 500, either from the Node backend or rcAPI
 - I tested these in development by:
   - using a malformed URL on the front & back ends to retrieve country names (for the select input)
   - requesting data for countries that don't exist in the API/malformed URL

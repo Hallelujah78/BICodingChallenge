@@ -1,8 +1,11 @@
+// libraries
 import styled from "styled-components";
 
+// assets
 import image from "../assets/images/CI.webp";
 import icon from "../assets/images/CI-small.png";
 
+// components
 import { NavSearchForm } from "./NavSearchForm";
 
 const Navbar = ({

@@ -1,8 +1,14 @@
-import Search from "../components/Search.js";
+// react
+import { forwardRef } from "react";
+
+// libraries
 import styled from "styled-components";
 import axios from "axios";
-import { forwardRef } from "react";
 import { toast } from "react-toastify";
+
+// components
+import Search from "../components/Search.js";
+// utils
 import URL from "../utils/config.js";
 
 const SearchForm = forwardRef((props, ref) => {
@@ -14,6 +20,7 @@ const SearchForm = forwardRef((props, ref) => {
     setIsError,
     className,
   } = props;
+
   const fetchCountryData = async (country) => {
     setIsLoading(true);
     try {

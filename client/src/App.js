@@ -1,12 +1,14 @@
-// third party
+// libraries
 import { Tooltip } from "react-tooltip";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styled from "styled-components";
 
-// my components and pages
-import BasicUI from "./pages/BasicUI.js";
+// components
 import Footer from "./components/Footer.js";
+
+// pages
+import BasicUI from "./pages/BasicUI.js";
 
 function App() {
   return (
@@ -34,8 +36,6 @@ function App() {
         pauseOnHover
         theme="light"
       />
-      {/* Same as */}
-      <ToastContainer />
     </Wrapper>
   );
 }

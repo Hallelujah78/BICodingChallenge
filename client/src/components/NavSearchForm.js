@@ -1,4 +1,7 @@
+// libraries
 import styled from "styled-components";
+
+// components
 import SearchForm from "./SearchForm";
 
 export const NavSearchForm = styled(SearchForm)`

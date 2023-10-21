@@ -1,6 +1,5 @@
 import { StatusCodes } from "http-status-codes";
 import * as CustomError from "../errors/index.js";
-// import { jsonTestWrapper } from "../DELETE_BEFORE_DEPLOY/jsonTest.js";
 
 import {
   createResponseObject,
@@ -15,7 +14,6 @@ import {
 } from "../utils/index.js";
 
 const getCountryNames = async (req, res) => {
-  // await jsonTestWrapper();
   let result = await getNames(restCountriesGetNamesUrl);
   result = result.map((country) => {
     let option = {};
@@ -36,7 +34,6 @@ const getCountry = async (req, res) => {
   const result = await getData(country, restCountriesSingleCountryUrl);
 
   if (!result) {
-    // handle the error
     throw new CustomError.NotFoundError("404 not found");
   }
 

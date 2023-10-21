@@ -1,6 +1,8 @@
-import React from "react";
-import InfoContainer from "./InfoContainer.js";
+// libraries
 import styled from "styled-components";
+
+// components
+import InfoContainer from "./InfoContainer.js";
 import TableRow from "./TableRow.js";
 import TableElementWithToolTip from "./TableElementWithToolTip.js";
 import PostalCodeValidation from "./PostalCodeValidation.js";

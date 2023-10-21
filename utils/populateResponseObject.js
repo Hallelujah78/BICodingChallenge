@@ -60,14 +60,10 @@ const populateResponseObject = ({
     timezones,
   } = object;
 
-  //** Specific "Cleaning" of Data from API**//
-
-  // USA international direct dialing suffixes includes area codes, this is not consistent with other countries
-
   //** GENERAL **/
   general.nameCommon = common;
   general.nameOfficial = official;
-  general.altSpellings = altSpellings; // []
+  general.altSpellings = altSpellings;
   general.flagPng = flagPng;
   general.flagSvg = flagSvg;
   general.flagAlt = flagAlt ? flagAlt : `The flag of ${common}.`;
@@ -154,7 +150,7 @@ const populateResponseObject = ({
     .toUpperCase()
     .concat(startOfWeek.slice(1));
   if (signs !== undefined && signs[0] !== "") {
-    additional.carSigns = signs; //[]
+    additional.carSigns = signs;
   }
   additional.carSide = side;
 
@@ -168,7 +164,7 @@ const populateResponseObject = ({
     });
   }
   //** COMMUNICATIONS **/
-  communicationsAndCodes.tld = tld !== undefined && tld[0] ? tld : []; // this is actually an array of strings
+  communicationsAndCodes.tld = tld !== undefined && tld[0] ? tld : [];
 
   // internatonal dialing
   if (idd !== undefined && !isEmpty(idd)) {
@@ -208,7 +204,7 @@ const populateResponseObject = ({
         return countryObject[country];
       })
     : [];
-  geography.capital = capital ? capital : "None"; // can be missing for island nations
+  geography.capital = capital ? capital : "None";
   geography.capitalLatlng = capitalInfo?.latlng
     ? [
         Number.parseFloat(capitalInfo.latlng[0].toFixed(6)),

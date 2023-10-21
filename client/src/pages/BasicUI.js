@@ -1,10 +1,15 @@
+// react
 import { useState, useEffect, useRef } from "react";
 
+// libraries
 import styled from "styled-components";
 import { useWindowSize } from "react-use";
 
-import DynamicObjectRenderer from "../components/DynamicObjectRenderer.js";
+// assets
 import worldMap from "../assets/images/globe.svg";
+
+// components
+import DynamicObjectRenderer from "../components/DynamicObjectRenderer.js";
 import SearchForm from "../components/SearchForm.js";
 import Loading from "../components/Loading.js";
 import Navbar from "../components/Navbar.js";

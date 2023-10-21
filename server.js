@@ -10,8 +10,10 @@ import xss from "xss-clean";
 
 dotenv.config();
 
+// router
 import countryRouter from "./routes/countryRoutes.js";
 
+// middleware
 import notFoundMiddleware from "./middleware/not-found.js";
 import errorHandlerMiddleware from "./middleware/error-handler.js";
 

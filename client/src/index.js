@@ -1,5 +1,8 @@
+// react
 import React from "react";
 import ReactDOM from "react-dom/client";
+
+// styles
 import "normalize.css";
 import "./styles/index.css";
 

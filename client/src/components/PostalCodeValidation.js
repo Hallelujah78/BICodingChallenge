@@ -1,6 +1,10 @@
-import styled from "styled-components";
+// react
 import { useState, useEffect } from "react";
+
+// libraries
+import styled from "styled-components";
 import { TbCircleCheck, TbCircleX } from "react-icons/tb";
+
 const PostalCodeValidation = ({ regex }) => {
   const [code, setCode] = useState("");
   const [isValid, setIsValid] = useState(false);

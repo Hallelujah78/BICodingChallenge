@@ -4,6 +4,8 @@ const createArrayOfObjects = ({ object, newObjProp, lookUp, useLookUp }) => {
     const keys = Object.keys(object);
     keys.forEach((key) => {
       object[key][newObjProp] = useLookUp ? lookUp[key] : key;
+
+      console.log(key);
       objArray.push(object[key]);
     });
     return objArray;

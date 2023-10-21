@@ -1,4 +1,5 @@
 const languageObject = {
+  bar: "Bavarian",
   bre: "Breton",
   per: "Persian",
   cym: "Welsh",

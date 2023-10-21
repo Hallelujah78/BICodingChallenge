@@ -1,7 +1,10 @@
+// libraries
 import styled from "styled-components";
+import { FaInstagram, FaYoutube, FaTwitter, FaTiktok } from "react-icons/fa6";
+
+// assets
 import wave from "../assets/images/wave1.svg";
 import logo from "../assets/images/CI.svg";
-import { FaInstagram, FaYoutube, FaTwitter, FaTiktok } from "react-icons/fa6";
 
 const Footer = () => {
   return (

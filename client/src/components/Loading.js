@@ -1,4 +1,6 @@
+// libraries
 import styled from "styled-components";
+
 const Loading = () => {
   return (
     <Wrapper>
