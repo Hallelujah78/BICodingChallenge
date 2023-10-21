@@ -1,5 +1,5 @@
 // react
-import { forwardRef } from "react";
+import { forwardRef, useEffect, useRef } from "react";
 
 // libraries
 import styled from "styled-components";
@@ -20,23 +20,39 @@ const SearchForm = forwardRef((props, ref) => {
     setIsError,
     className,
   } = props;
+  const controllerRef = useRef(null);
+
+  useEffect(() => {
+    controllerRef.current = new AbortController();
+    return () => {
+      controllerRef.current.abort();
+    };
+  }, []);
 
   const fetchCountryData = async (country) => {
     setIsLoading(true);
     try {
-      const { data: result } = await axios.post(URL, {
-        country,
-      });
+      const { data: result } = await axios.post(
+        URL,
+        {
+          country,
+        },
+        { signal: controllerRef.signal, timeout: 3000 }
+      );
       if (result) {
         setCountryData(result);
       }
     } catch (err) {
-      setIsError(true);
-      toast(
-        `${
-          err?.response?.status ? err.response.status : "No internet connection"
-        }. Unable to retrieve country information right now. Please try again later!`
-      );
+      if (!controllerRef.current.signal.aborted) {
+        setIsError(true);
+        toast(
+          `${
+            err?.response?.status
+              ? err.response.status
+              : "No internet connection"
+          }. Unable to retrieve country information right now. Please try again later!`
+        );
+      }
     } finally {
       setIsLoading(false);
     }

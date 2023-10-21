@@ -18,7 +18,10 @@ const useAxiosFetch = (dataUrl) => {
       setIsLoading(true);
 
       try {
-        const { data } = await axios.get(url, { signal: controller.signal });
+        const { data } = await axios.get(url, {
+          signal: controller.signal,
+          timeout: 3000,
+        });
         if (isMounted) {
           setData(data);
           setIsError(false);

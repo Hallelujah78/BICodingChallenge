@@ -5,12 +5,10 @@ const createArrayOfObjects = ({ object, newObjProp, lookUp, useLookUp }) => {
     keys.forEach((key) => {
       object[key][newObjProp] = useLookUp ? lookUp[key] : key;
 
-      console.log(key);
       objArray.push(object[key]);
     });
     return objArray;
   } catch (error) {
-    // console.log(error);
     console.log("***createArrayOfObjects ERROR***");
   }
 };

@@ -483,8 +483,8 @@ const DynamicObjectRenderer = ({ data }) => {
                     <th>Language</th>
                     <th>
                       <TableElementWithToolTip
-                        headingText="3-letter code"
-                        toolTipText="The 3-letter language code <br/> comes  from ISO 639-2/T <br/>which is a standard<br/> published by the International <br/>Organization for Standardization."
+                        headingText="2 or 3-letter code"
+                        toolTipText="The 2 or 3-letter language code <br/> comes from ISO 639 <br/>which is a standard<br/> published by the International <br/>Organization for Standardization."
                       />
                     </th>
                   </tr>
