@@ -23,9 +23,9 @@ const BasicUI = () => {
   const [isError, setIsError] = useState(false);
   const { width } = useWindowSize();
 
-  useEffect(() => {
-    const searchForm = myRef.current;
-  }, []);
+  // useEffect(() => {
+  //   // const searchForm = myRef.current;
+  // }, []);
 
   useEffect(() => {
     if (countryData && myRef.current) {
@@ -81,8 +81,8 @@ const BasicUI = () => {
       ) : (
         <>
           <section>
-            <h5>a world of information</h5>
             <div className="img-container">
+              <h5>a world of information</h5>
               <img src={worldMap} alt="globe of the world" />
             </div>
           </section>
@@ -108,8 +108,7 @@ const Wrapper = styled.section`
   .content-center {
     margin-top: 2rem;
     display: grid;
-    /* place-content: center; */
-    min-height: 50vh;
+
     width: 100%;
     .error {
       display: grid;
@@ -136,17 +135,19 @@ const Wrapper = styled.section`
     width: 90%;
     height: 100%;
     margin: 30vh auto 0 auto;
-    h5 {
-      position: absolute;
-      text-align: center;
-      font-size: calc(1rem + 0.390625vw);
-      top: 18vh;
-      left: 50%;
-      color: white;
-      transform: translate(-50%);
-      padding: 0.25rem 1rem;
-      border-radius: var(--borderRadius);
-      background: #e14ed2;
+    .img-container {
+      h5 {
+        position: absolute;
+        text-align: center;
+        font-size: calc(1rem + 0.390625vw);
+        left: 50%;
+        top: 50%;
+        color: white;
+        transform: translate(-50%, -50%);
+        padding: 0.25rem 1rem;
+        border-radius: var(--borderRadius);
+        background: #e14ed2;
+      }
     }
   }
 
@@ -158,6 +159,7 @@ const Wrapper = styled.section`
       height: calc(100vh - 4rem);
       margin: 0 auto 0 auto;
       .img-container {
+        border: red solid 1px;
         position: relative;
         width: 100%;
         height: 100%;
@@ -165,13 +167,23 @@ const Wrapper = styled.section`
         display: grid;
         place-content: center;
         z-index: -99;
+        h5 {
+          margin-top: 6rem;
+          position: absolute;
+          text-align: center;
+          font-size: calc(1rem + 0.390625vw);
+          left: 50%;
+          top: 50%;
+          color: white;
+          transform: translate(-50%, -50%);
+          padding: 0.25rem 1rem;
+          border-radius: var(--borderRadius);
+          background: #e14ed2;
+        }
         img {
           margin-top: 12rem;
           height: 60vh;
         }
-      }
-      h5 {
-        top: 56vh;
       }
     }
   }
