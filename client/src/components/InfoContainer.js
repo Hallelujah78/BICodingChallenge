@@ -7,17 +7,18 @@ const InfoContainer = ({ children, title }) => {
 
   const handleClick = (e) => {
     e.currentTarget
+      .closest("article")
       .querySelector(".center.content")
       .classList.toggle("minimized");
   };
 
   return (
-    <Wrapper
-      onClick={(e) => {
-        handleClick(e);
-      }}
-    >
-      <header>
+    <Wrapper>
+      <header
+        onClick={(e) => {
+          handleClick(e);
+        }}
+      >
         <h1 className="center">{title}</h1>
       </header>
 
@@ -46,6 +47,10 @@ const Wrapper = styled.article`
     border-top-left-radius: 20px;
     border-radius: 20px;
     text-align: center;
+
+    &:hover {
+      cursor: pointer;
+    }
     h1 {
       font-size: calc(1.25rem + 0.390625vw);
       line-height: 3rem;
@@ -60,9 +65,6 @@ const Wrapper = styled.article`
     .minimized {
       height: 0rem;
       overflow-y: hidden;
-    }
-    &:hover {
-      cursor: pointer;
     }
   }
 `;
