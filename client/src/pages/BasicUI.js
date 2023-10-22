@@ -159,7 +159,6 @@ const Wrapper = styled.section`
       height: calc(100vh - 4rem);
       margin: 0 auto 0 auto;
       .img-container {
-        border: red solid 1px;
         position: relative;
         width: 100%;
         height: 100%;
