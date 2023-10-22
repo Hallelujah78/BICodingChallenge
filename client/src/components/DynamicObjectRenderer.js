@@ -58,11 +58,12 @@ const DynamicObjectRenderer = ({ data }) => {
                   </tr>
                   {nameNative?.length > 0 ? (
                     nameNative.map((name) => {
+                      const { iso6391, lang, official, common } = name;
                       return (
-                        <tr key={name.lang}>
-                          <td>{name.lang}</td>
-                          <td>{name.common}</td>
-                          <td>{name.official}</td>
+                        <tr key={lang}>
+                          <td>{lang}</td>
+                          <td lang={iso6391}>{common}</td>
+                          <td lang={iso6391}>{official}</td>
                         </tr>
                       );
                     })
@@ -343,12 +344,12 @@ const DynamicObjectRenderer = ({ data }) => {
                   </tr>
                   {translations?.length > 0 ? (
                     translations.map((translation) => {
-                      const { lang, common, official } = translation;
+                      const { lang, common, official, iso6391 } = translation;
                       return (
                         <tr key={lang}>
                           <td>{lang}</td>
-                          <td>{common}</td>
-                          <td>{official}</td>
+                          <td lang={iso6391}>{common}</td>
+                          <td lang={iso6391}>{official}</td>
                         </tr>
                       );
                     })
@@ -604,12 +605,7 @@ const Wrapper = styled.div`
     width: 90%;
     margin: 0.5rem;
   }
-  @media (min-width: 800px) {
-    grid-template-columns: 1fr 1fr;
-  }
-  @media (min-width: 1150px) {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
+
   table {
     text-align: left;
     width: 100%;
@@ -636,6 +632,7 @@ const Wrapper = styled.div`
     th {
       width: 50%;
       hyphens: auto;
+      word-wrap: break-word;
     }
   }
   table.table-3-col {
@@ -667,6 +664,12 @@ const Wrapper = styled.div`
   }
   code {
     font-size: 0.7rem;
+  }
+  @media (min-width: 800px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (min-width: 1150px) {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 `;
 

@@ -4,7 +4,7 @@ import {
   restCountriesSingleCountryUrl,
 } from "./config.js";
 import currencyObject from "./currencyObject.js";
-import languageObject from "./languageObject.js";
+import languageObject6392 from "./languageObject.js";
 import isEmpty from "./isEmpty.js";
 import createResponseObject from "./createResponseObject.js";
 import populateResponseObject from "./populateResponseObject.js";
@@ -14,7 +14,7 @@ export {
   getData,
   restCountriesSingleCountryUrl,
   currencyObject,
-  languageObject,
+  languageObject6392,
   isEmpty,
   createResponseObject,
   populateResponseObject,

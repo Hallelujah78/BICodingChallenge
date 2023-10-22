@@ -6,7 +6,7 @@ import arrayOfObjectsFromKeyValue from "./arrayOfObjFromKeyValue.js";
 const populateResponseObject = ({
   object,
   createResponseObject,
-  languageObject,
+  languageObject6392,
   currencyObject,
   countryObject,
 }) => {
@@ -74,7 +74,7 @@ const populateResponseObject = ({
     general.nameNative = createArrayOfObjects({
       object: name.nativeName,
       newObjProp: "lang",
-      lookUp: languageObject,
+      lookUp: languageObject6392,
       useLookUp: true,
     });
   }
@@ -113,7 +113,7 @@ const populateResponseObject = ({
       demographics.demonyms = createArrayOfObjects({
         object: demonyms,
         newObjProp: "lang",
-        lookUp: languageObject,
+        lookUp: languageObject6392,
         useLookUp: true,
       });
     }
@@ -159,7 +159,7 @@ const populateResponseObject = ({
     additional.translations = createArrayOfObjects({
       object: translations,
       newObjProp: "lang",
-      lookUp: languageObject,
+      lookUp: languageObject6392,
       useLookUp: true,
     });
   }

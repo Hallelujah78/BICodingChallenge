@@ -1,4 +1,4 @@
-const languageObject = {
+const languageObject6392 = {
   bar: "Bavarian",
   bre: "Breton",
   per: "Persian",
@@ -157,4 +157,5 @@ const languageObject = {
   lit: "Lithuanian",
   cal: "Carolinian",
 };
-export default languageObject;
+
+export default languageObject6392;

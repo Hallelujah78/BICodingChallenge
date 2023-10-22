@@ -6,7 +6,7 @@ import {
   getData,
   restCountriesSingleCountryUrl,
   currencyObject,
-  languageObject,
+  languageObject6392,
   populateResponseObject,
   countryObject,
   restCountriesGetNamesUrl,
@@ -40,7 +40,7 @@ const getCountry = async (req, res) => {
   const response = populateResponseObject({
     object: result[0],
     createResponseObject,
-    languageObject,
+    languageObject6392,
     currencyObject,
     countryObject,
   });

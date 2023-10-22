@@ -66,3 +66,4 @@ npm start
 - switch from CRA to Vite
 - Deploy to Render.com
 - Finesse README.md
+- gini info is not showing up, logic is off probably on frontend
