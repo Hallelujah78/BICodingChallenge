@@ -29,6 +29,7 @@ const Search = ({ setCountry }) => {
         options={data}
         autoFocus={true}
         isLoading={isLoading}
+        aria-label="select an option"
       />
     </Wrapper>
   );
