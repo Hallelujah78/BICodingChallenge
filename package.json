@@ -4,7 +4,6 @@
   "description": "A coding challenge for a potential role.",
   "main": "index.js",
   "type": "module",
-  "homepage": "https://restcountries-react-front-end-node.onrender.com/",
   "author": {
     "name": "Gavan Browne",
     "email": "gavan.browne@gmail.com",
