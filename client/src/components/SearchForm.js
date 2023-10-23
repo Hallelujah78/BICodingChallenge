@@ -49,7 +49,7 @@ const SearchForm = forwardRef((props, ref) => {
           `${
             err?.response?.status
               ? err.response.status
-              : "No internet connection"
+              : "Cannot contact the server"
           }. Unable to retrieve country information right now. Please try again later!`
         );
       }

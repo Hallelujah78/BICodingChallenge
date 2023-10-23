@@ -20,8 +20,9 @@ const useAxiosFetch = (dataUrl) => {
       try {
         const { data } = await axios.get(url, {
           signal: controller.signal,
-          timeout: 3000,
+          timeout: 5000,
         });
+
         if (isMounted) {
           setData(data);
           setIsError(false);
@@ -34,7 +35,7 @@ const useAxiosFetch = (dataUrl) => {
             `${
               err?.response?.status
                 ? err.response.status
-                : "No internet connection"
+                : "The request timed out."
             }. Unable to retrieve a list of countries from the server. Please try again later!`
           );
         }

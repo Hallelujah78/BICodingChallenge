@@ -3,9 +3,9 @@ import Select from "react-select";
 import styled from "styled-components";
 
 // utils
-import URL from "../utils/config";
+import URL from "../utils/config.js";
 // hooks
-import useAxiosFetch from "../hooks/useAxios";
+import useAxiosFetch from "../hooks/useAxios.js";
 
 const Search = ({ setCountry }) => {
   const { data, isLoading } = useAxiosFetch(URL);
