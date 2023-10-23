@@ -3,12 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:5000",
+  "homepage": "https://restcountries-react-front-end-node.onrender.com/",
+  "author": {
+    "name": "Gavan Browne",
+    "email": "gavan.browne@gmail.com",
+    "url": "https://gwib-personal-portfolio-react.netlify.app/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Hallelujah78/BICodingChallenge"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.3.6",
-    "moment": "^2.29.4",
     "normalize.css": "^8.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -1,9 +1,19 @@
 {
   "name": "bi-coding-challenge",
   "version": "1.0.0",
-  "description": "A coding challenge for an internship position",
+  "description": "A coding challenge for a potential role.",
   "main": "index.js",
   "type": "module",
+  "homepage": "https://restcountries-react-front-end-node.onrender.com/",
+  "author": {
+    "name": "Gavan Browne",
+    "email": "gavan.browne@gmail.com",
+    "url": "https://gwib-personal-portfolio-react.netlify.app/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Hallelujah78/BICodingChallenge"
+  },
   "scripts": {
     "setup-production": "npm run install-client && npm run build-client && npm install",
     "install-client": "cd client && npm install",
@@ -13,7 +23,6 @@
     "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
   },
   "keywords": [],
-  "author": "Gavan Browne",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.5.1",
@@ -21,11 +30,9 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-async-errors": "^3.1.1",
-    "express-rate-limit": "^6.7.0",
     "helmet": "^7.0.0",
     "http-status-codes": "^2.2.0",
     "iso-language-codes": "^2.0.0",
-    "moment": "^2.29.4",
     "morgan": "^1.10.0",
     "xss-clean": "^0.1.1"
   },

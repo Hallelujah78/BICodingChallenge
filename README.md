@@ -70,6 +70,7 @@ When the app first loads, the user can either select a country from a dropdown m
 
 - the app is fully responsive, and so on a mobile device the layout is slightly different
 - on smaller screens all categories are shown expanded (they can't be minimized) and are displayed in a single column:
+
   ![Country Insights after searching for Austria on a mobile screen](https://res.cloudinary.com/duar7ipaf/image/upload/v1698066814/image_qgdrhi.png)
 
 ---
