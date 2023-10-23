@@ -6,7 +6,7 @@ const createArrayOfObjects = ({ object, newObjProp, lookUp, useLookUp }) => {
     const keys = Object.keys(object);
     keys.forEach((key) => {
       object[key][newObjProp] = useLookUp ? lookUp[key] : key;
-      if (newObjProp && newObjProp === "lang" && key.length === 3) {
+      if (newObjProp && newObjProp === "lang" && key?.length === 3) {
         object[key]["iso6391"] = by639_2T[key]?.iso639_1
           ? by639_2T[key].iso639_1
           : "";

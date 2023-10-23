@@ -525,7 +525,7 @@ const DynamicObjectRenderer = ({ data }) => {
                     </th>
                   </tr>
 
-                  {gini.year ? (
+                  {gini?.length > 0 ? (
                     gini.map((item) => {
                       return (
                         <tr key={item.year}>
@@ -564,11 +564,12 @@ const DynamicObjectRenderer = ({ data }) => {
                   </tr>
                   {demonyms?.length > 0 ? (
                     demonyms.map((demonym) => {
+                      const { iso6391, lang, m, f } = demonym;
                       return (
-                        <tr key={demonym.lang}>
-                          <td>{demonym.lang}</td>
-                          <td>{demonym.m}</td>
-                          <td>{demonym.f}</td>
+                        <tr key={lang}>
+                          <td>{lang}</td>
+                          <td lang={iso6391}>{m}</td>
+                          <td lang={iso6391}>{f}</td>
                         </tr>
                       );
                     })
