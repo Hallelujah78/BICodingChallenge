@@ -23,10 +23,6 @@ const BasicUI = () => {
   const [isError, setIsError] = useState(false);
   const { width } = useWindowSize();
 
-  // useEffect(() => {
-  //   // const searchForm = myRef.current;
-  // }, []);
-
   useEffect(() => {
     if (countryData && myRef.current) {
       myRef.current.classList.add("hide");
@@ -83,7 +79,12 @@ const BasicUI = () => {
           <section>
             <div className="img-container">
               <h5>a world of information</h5>
-              <img src={worldMap} alt="globe of the world" />
+              <img
+                width="460px"
+                height="460px"
+                src={worldMap}
+                alt="globe of the world"
+              />
             </div>
           </section>
         </>
@@ -108,7 +109,6 @@ const Wrapper = styled.section`
   .content-center {
     margin-top: 2rem;
     display: grid;
-
     width: 100%;
     .error {
       display: grid;
@@ -147,6 +147,10 @@ const Wrapper = styled.section`
         padding: 0.25rem 1rem;
         border-radius: var(--borderRadius);
         background: #e14ed2;
+      }
+      img {
+        max-width: 90vw;
+        height: auto;
       }
     }
   }

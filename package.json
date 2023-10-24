@@ -19,7 +19,8 @@
     "build-client": "cd client && npm run build",
     "server": "nodemon server.js --ignore client",
     "client": "cd client && npm run start",
-    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
+    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "demo": "npm run install-client && npm install && npm start"
   },
   "keywords": [],
   "license": "ISC",

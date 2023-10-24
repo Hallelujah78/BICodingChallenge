@@ -30,7 +30,13 @@ const Navbar = ({
           ) : (
             <>
               <img className="icon-small" src={icon} alt="" />
-              <img className="logo" src={image} alt="country insights logo" />
+              <img
+                height="44px"
+                width="124px"
+                className="logo"
+                src={image}
+                alt="country insights logo"
+              />
             </>
           )}
 

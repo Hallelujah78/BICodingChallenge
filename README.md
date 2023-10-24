@@ -6,7 +6,7 @@ Country Insights is a basic web application that consists of a React front end a
 
 Users can utilize the front end to request information about a country from the [REST Countries API](https://restcountries.com/). These requests for information go through a Node server - the back end part of Country Insights.
 
-The Node server receives the request from the front end, in turn makes a request to the REST Countries API using this endpoint: https://restcountries.com/v3.1/name/{name}?fullText=true, where {name} is the country name the user selected on the front end.
+The Node server receives the request from the front end and in turn makes a request to the REST Countries API using this endpoint: https://restcountries.com/v3.1/name/{name}?fullText=true, where {name} is the country name the user selected on the front end.
 
 Our Node server then organizes and cleans up the response from the REST Countries API, and sends that data back to the front end client so it can be rendered for the user.
 
@@ -21,8 +21,16 @@ Node will need to be installed on your machine. Download Node [here]("https://no
 - If you received an email with this project attached, download the attached folder and unzip. Alternatively, you can clone this repository.
 - Open a terminal window and change the working directory to the root of the newly unzipped folder. You can type 'cd ' at your terminal prompt, note the space, and drag the folder onto the terminal window and hit enter to achieve this easily.
 
-- If you are in the "BICodingChallenge" directory in your terminal window and you have Node installed, you can now install Node dependencies for the back end server.
-- Enter the following in your terminal window and hit enter
+- If you are in the "BICodingChallenge" directory in your terminal window and you have Node installed you can attempt to install all dependencies for client and server and start both using the following command:
+
+```
+npm run demo
+```
+
+- note, this will start the development version of the client
+
+- alternatively, you can go through the following steps
+- to install dependencies for the Node server, you can input the following in your terminal window and hit enter
 
 ```
 npm i
@@ -77,7 +85,7 @@ When the app first loads, the user can either select a country from a dropdown m
 
 ## To Do
 
-- switch from CRA to Vite
+- ~~switch from CRA to Vite~~ DONE!
 - ~~Finesse README.md~~ DONE!
 - ~~Fix development issue with NavSearchForm styling on code save~~ SEEMS FIXED
 - ~~Deploy to Render.com~~ DONE!
@@ -94,3 +102,5 @@ When the app first loads, the user can either select a country from a dropdown m
 - general reinforcement about HTML, CSS, and JavaScript syntax/usage
 - using AbortController and using timeout with axios
 - custom hooks are cool
+- how to migrate from create-react-app to Vite
+- various domain things about ISO country and language codes, latitude, longitude etc
