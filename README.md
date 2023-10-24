@@ -90,6 +90,7 @@ When the app first loads, the user can either select a country from a dropdown m
 - ~~Fix development issue with NavSearchForm styling on code save~~ SEEMS FIXED
 - ~~Deploy to Render.com~~ DONE!
 - ~~gini info is not showing up, logic is off probably on frontend~~ DONE!
+- Learn testing with Jest/Cypress!
 
 ---
 
@@ -104,3 +105,5 @@ When the app first loads, the user can either select a country from a dropdown m
 - custom hooks are cool
 - how to migrate from create-react-app to Vite
 - various domain things about ISO country and language codes, latitude, longitude etc
+- How to install and configure Jest and required dependencies
+  - how to write very basic tests
