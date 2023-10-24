@@ -25,8 +25,8 @@ test("we see a submit button", async () => {
 
 test("we see an SVG which is a globe of the world", async () => {
   render(<App />);
-  const buttons = await screen.getAllByText("submit");
-  expect(buttons).toHaveLength(1);
+  const svgs = await screen.getAllByAltText("globe of the world");
+  expect(svgs).toHaveLength(1);
 });
 
 {
@@ -38,5 +38,12 @@ core functionality
 * we see a submit button
 * we see an SVG which is a globe of the world
 
+
+Test Writing Process
+* Pick one component to test all by itself
+* Make a test file for the component if one does not exist
+* decide what the important parts of the component are
+* Write a test to make sure each part works as expected
+* run tests at the command line
 */
 }
