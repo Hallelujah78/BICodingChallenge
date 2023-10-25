@@ -17,3 +17,6 @@ export const titleToField = {
 };
 
 export default dataUrl;
+
+// localstorage
+// [['title', {customCategory object}, {display: true}], ['title', {customCategory object}]]

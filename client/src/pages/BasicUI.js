@@ -46,6 +46,7 @@ const BasicUI = () => {
         setIsLoading={setIsLoading}
         setIsError={setIsError}
       />
+
       {renderSearch ? (
         <SearchForm
           ref={myRef}
@@ -90,7 +91,7 @@ const BasicUI = () => {
           </section>
         </>
       )}
-      <CustomCategory countryData={countryData} />
+      <CustomCategory className="overlay-menu" countryData={countryData} />
     </Wrapper>
   );
 };
@@ -193,6 +194,6 @@ const Wrapper = styled.section`
     }
   }
   .search-form {
-    z-index: 9999999;
+    z-index: 999999;
   }
 `;
