@@ -3,12 +3,12 @@ import Select from "react-select";
 import styled from "styled-components";
 
 // utils
-import URL from "../utils/config.js";
+import dataUrl from "../utils/config.js";
 // hooks
 import useAxiosFetch from "../hooks/useAxios.js";
 
 const Search = ({ setCountry }) => {
-  const { data, isLoading } = useAxiosFetch(URL);
+  const { data, isLoading } = useAxiosFetch(dataUrl);
 
   const handleChange = (selectedOption) => {
     setCountry(selectedOption.value);

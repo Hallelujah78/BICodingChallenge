@@ -10,6 +10,4 @@ const restCountriesSingleCountryUrl = {
   queryParam: "?fullText=true",
 };
 
-// option for
-
 export { restCountriesGetNamesUrl, restCountriesSingleCountryUrl };

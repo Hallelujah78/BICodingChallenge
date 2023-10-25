@@ -91,6 +91,20 @@ When the app first loads, the user can either select a country from a dropdown m
 - ~~Deploy to Render.com~~ DONE!
 - ~~gini info is not showing up, logic is off probably on frontend~~ DONE!
 - Learn testing with Jest/Cypress!
+  - I have a couple of days left and I won't have time to learn much here
+- Try to implement ability for user to create their own categories using local storage to save settings
+
+---
+
+## Testing
+
+- I have never used a testing framework/library before and so I had to really try to learn as I went along on this project. This was made more difficult by the fact that the project was a refactor of an old create-react-app project that I migrated to Vite.
+- In the end I created a fresh Vite React project and followed a guide to set up Jest for that. Then I copied the necessary config files over and updated my package.json dependencies. Thankfully that worked and I was able to run my tests!
+- To run the tests, change the working directory to the client and run jest:
+
+```
+cd client && npm test
+```
 
 ---
 
@@ -98,7 +112,7 @@ When the app first loads, the user can either select a country from a dropdown m
 
 - consuming an API you don't control is hard
 - tables are pretty cool
-- how to componentize 'stuff'
+- how to componentize 'stuff,' albeit badly
 - always read the API docs!
 - general reinforcement about HTML, CSS, and JavaScript syntax/usage
 - using AbortController and using timeout with axios

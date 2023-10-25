@@ -13,6 +13,7 @@ import DynamicObjectRenderer from "../components/DynamicObjectRenderer.js";
 import SearchForm from "../components/SearchForm.js";
 import Loading from "../components/Loading.js";
 import Navbar from "../components/Navbar.js";
+import CustomCategory from "../components/CustomCategory.js";
 
 const BasicUI = () => {
   const [renderSearch, setRenderSearch] = useState(true);
@@ -89,6 +90,7 @@ const BasicUI = () => {
           </section>
         </>
       )}
+      <CustomCategory countryData={countryData} />
     </Wrapper>
   );
 };

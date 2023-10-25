@@ -23,6 +23,7 @@ function App() {
       />
 
       <BasicUI />
+
       <Footer />
       <ToastContainer
         position="top-right"
