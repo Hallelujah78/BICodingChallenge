@@ -44,6 +44,7 @@ const getCountry = async (req, res) => {
     currencyObject,
     countryObject,
   });
+
   res.status(StatusCodes.OK).json(response);
 };
 

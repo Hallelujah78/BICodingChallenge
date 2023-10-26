@@ -91,7 +91,7 @@ When the app first loads, the user can either select a country from a dropdown m
 - ~~Deploy to Render.com~~ DONE!
 - ~~gini info is not showing up, logic is off probably on frontend~~ DONE!
 - Learn testing with Jest/Cypress!
-  - I have a couple of days left and I won't have time to learn much here
+  - I have a couple of days left and I won't have time to learn much on testing
 - Try to implement ability for user to create their own categories using local storage to save settings
 
 ---

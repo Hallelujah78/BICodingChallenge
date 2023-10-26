@@ -25,7 +25,6 @@ const CustomCategory = ({ countryData }) => {
     const updatedObject = { ...fields };
 
     if (updatedObject.hasOwnProperty(itemProp)) {
-      console.log(true);
       delete updatedObject[itemProp];
     }
     setFields(updatedObject);

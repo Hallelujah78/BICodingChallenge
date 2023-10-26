@@ -1,13 +1,17 @@
 // libraries
 import styled from "styled-components";
+import { useLocalStorage } from "react-use";
 
 // components
 import InfoContainer from "./InfoContainer.js";
 import TableRow from "./TableRow.js";
 import TableElementWithToolTip from "./TableElementWithToolTip.js";
 import PostalCodeValidation from "./PostalCodeValidation.js";
+import CustomCategory from "./CustomCategory.js";
+import CustomCategoryRenderer from "./CustomCategoryRenderer.js";
 
 const DynamicObjectRenderer = ({ data }) => {
+  const [value, setValue, remove] = useLocalStorage("customCategories");
   return (
     <Wrapper>
       {Object.keys(data).map((key) => {
@@ -29,10 +33,7 @@ const DynamicObjectRenderer = ({ data }) => {
             <InfoContainer key={key} title={title}>
               <table className="table-2-col">
                 <tbody>
-                  <tr>
-                    <td>Formal Name</td>
-                    <td>{nameOfficial}</td>
-                  </tr>
+                  <TableRow label="Formal Name" property={nameOfficial} />
                   <tr>
                     <td>Informal name</td>
                     <td>{nameCommon}</td>
@@ -588,6 +589,34 @@ const DynamicObjectRenderer = ({ data }) => {
 
         return null;
       })}
+      {/* {value
+        ? value.map((category, index) => {
+            return (
+              <>
+                <InfoContainer key={index} title={category[0]}>
+                  {data
+                    ? Object.keys(category[1]).map((field) => {
+                        const keys = field.split(".");
+                        const [cat, catField] = keys;
+                        console.log(cat);
+
+                        return <div>{data[cat][catField]}</div>;
+                      })
+                    : null}
+                </InfoContainer>
+              </>
+            );
+          })
+        : null} */}
+      {value && data
+        ? value.map((category, index) => {
+            return (
+              <InfoContainer key={index} title={category[0]}>
+                <CustomCategoryRenderer propsObj={category[1]} data={data} />
+              </InfoContainer>
+            );
+          })
+        : null}
     </Wrapper>
   );
 };
