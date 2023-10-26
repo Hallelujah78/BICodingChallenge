@@ -9,6 +9,7 @@ import icon from "../assets/images/CI-small.png";
 import { NavSearchForm } from "./NavSearchForm";
 
 const Navbar = ({
+  isSidebarOpen,
   width,
   countryData,
   renderSearch,
@@ -53,6 +54,7 @@ const Navbar = ({
           ) : null}
         </div>
       </div>
+
       <div
         className={countryData ? "image-container hidden" : "image-container"}
       >
@@ -114,4 +116,19 @@ const Wrapper = styled.header`
   .logo {
     margin-top: 0.5rem;
   }
+  /* .button-container {
+    position: absolute;
+    top: 4rem;
+    right: 1.5rem;
+
+    .expand-icon {
+      font-size: 3rem;
+      fill: #e14ed2;
+      background-color: transparent;
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+      }
+    } */
+  /* } */
 `;

@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 // libraries
 import styled from "styled-components";
 import { useWindowSize } from "react-use";
+import { VscSettingsGear } from "react-icons/vsc";
 
 // assets
 import worldMap from "../assets/images/globe.svg";
@@ -13,7 +14,7 @@ import DynamicObjectRenderer from "../components/DynamicObjectRenderer.js";
 import SearchForm from "../components/SearchForm.js";
 import Loading from "../components/Loading.js";
 import Navbar from "../components/Navbar.js";
-import CustomCategory from "../components/CustomCategory.js";
+import Sidebar from "../components/Sidebar";
 
 const BasicUI = () => {
   const [renderSearch, setRenderSearch] = useState(true);
@@ -23,6 +24,11 @@ const BasicUI = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const { width } = useWindowSize();
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!isSidebarOpen);
+  };
 
   useEffect(() => {
     if (countryData && myRef.current) {
@@ -37,6 +43,7 @@ const BasicUI = () => {
   return (
     <Wrapper>
       <Navbar
+        isSidebarOpen={isSidebarOpen}
         width={width}
         countryData={countryData}
         renderSearch={renderSearch}
@@ -45,6 +52,12 @@ const BasicUI = () => {
         country={country}
         setIsLoading={setIsLoading}
         setIsError={setIsError}
+      />
+      <div className={isSidebarOpen ? "cover overlay" : "overlay"}></div>
+      <Sidebar isOpen={isSidebarOpen} onClose={toggleSidebar} />
+      <VscSettingsGear
+        onClick={() => toggleSidebar()}
+        className={isSidebarOpen ? "gear-icon open" : "gear-icon"}
       />
 
       {renderSearch ? (
@@ -91,7 +104,7 @@ const BasicUI = () => {
           </section>
         </>
       )}
-      <CustomCategory className="overlay-menu" countryData={countryData} />
+      {/* <CustomCategory className="overlay-menu" countryData={countryData} /> */}
     </Wrapper>
   );
 };
@@ -194,6 +207,35 @@ const Wrapper = styled.section`
     }
   }
   .search-form {
-    z-index: 999999;
+    z-index: 9;
   }
+
+  .gear-icon {
+    z-index: 12;
+    transform: rotate(-90deg);
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 2rem;
+    transition: linear 0.2s all;
+    &.open {
+      transform: rotate(90deg);
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  /* .overlay {
+    position: absolute;
+    top: -5vh;
+    left: -5vh;
+    z-index: 0;
+    width: 105vw;
+    height: 105vh;
+    &.cover {
+      z-index: 0;
+    }
+  } */
 `;

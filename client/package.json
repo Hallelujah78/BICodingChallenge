@@ -27,7 +27,7 @@
     "vite-plugin-svgr": "^4.1.0"
   },
   "scripts": {
-    "start": "vite",
+    "start": "vite --host",
     "build": "vite build",
     "preview": "vite preview",
     "test": "jest"

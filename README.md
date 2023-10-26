@@ -21,7 +21,7 @@ Node will need to be installed on your machine. Download Node [here]("https://no
 - If you received an email with this project attached, download the attached folder and unzip. Alternatively, you can clone this repository.
 - Open a terminal window and change the working directory to the root of the newly unzipped folder. You can type 'cd ' at your terminal prompt, note the space, and drag the folder onto the terminal window and hit enter to achieve this easily.
 
-- If you are in the "BICodingChallenge" directory in your terminal window and you have Node installed you can attempt to install all dependencies for client and server and start both using the following command:
+- If you are in the "BICodingChallenge" directory in your terminal window and you have Node installed you can bravely attempt to install all dependencies for client and server and start both using the following command:
 
 ```
 npm run demo
@@ -85,14 +85,13 @@ When the app first loads, the user can either select a country from a dropdown m
 
 ## To Do
 
-- ~~switch from CRA to Vite~~ DONE!
-- ~~Finesse README.md~~ DONE!
-- ~~Fix development issue with NavSearchForm styling on code save~~ SEEMS FIXED
-- ~~Deploy to Render.com~~ DONE!
-- ~~gini info is not showing up, logic is off probably on frontend~~ DONE!
 - Learn testing with Jest/Cypress!
   - I have a couple of days left and I won't have time to learn much on testing
 - Try to implement ability for user to create their own categories using local storage to save settings
+- Add jump to top button
+- Refactor DynamicObjectRenderer to use new field components
+- Add ability to reorder and show/hide all categories being displayed
+- search functionality for custom categories?
 
 ---
 
@@ -120,5 +119,5 @@ cd client && npm test
 - how to migrate from create-react-app to Vite
 - various domain things about ISO country and language codes, latitude, longitude etc
 - How to install and configure Jest and required dependencies
-  - how to write very basic tests
+  - how to write very (extremely) basic tests
 - component mapping!
