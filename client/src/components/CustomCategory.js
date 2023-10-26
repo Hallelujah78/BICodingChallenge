@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 import { titleToField } from "../utils/config";
 import FieldsList from "./FieldsList";
 
-const CustomCategory = ({ countryData }) => {
+const CustomCategory = () => {
   const [fields, setFields] = useState({});
   const [title, setTitle] = useState("");
   const [value, setValue, remove] = useLocalStorage("customCategories");

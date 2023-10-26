@@ -7,7 +7,6 @@ import InfoContainer from "./InfoContainer.js";
 import TableRow from "./TableRow.js";
 import TableElementWithToolTip from "./TableElementWithToolTip.js";
 import PostalCodeValidation from "./PostalCodeValidation.js";
-import CustomCategory from "./CustomCategory.js";
 import CustomCategoryRenderer from "./CustomCategoryRenderer.js";
 
 const DynamicObjectRenderer = ({ data }) => {
@@ -589,30 +588,12 @@ const DynamicObjectRenderer = ({ data }) => {
 
         return null;
       })}
-      {/* {value
-        ? value.map((category, index) => {
-            return (
-              <>
-                <InfoContainer key={index} title={category[0]}>
-                  {data
-                    ? Object.keys(category[1]).map((field) => {
-                        const keys = field.split(".");
-                        const [cat, catField] = keys;
-                        console.log(cat);
-
-                        return <div>{data[cat][catField]}</div>;
-                      })
-                    : null}
-                </InfoContainer>
-              </>
-            );
-          })
-        : null} */}
       {value && data
         ? value.map((category, index) => {
+            const [title, propsObj] = category;
             return (
-              <InfoContainer key={index} title={category[0]}>
-                <CustomCategoryRenderer propsObj={category[1]} data={data} />
+              <InfoContainer key={index} title={title}>
+                <CustomCategoryRenderer propsObj={propsObj} data={data} />
               </InfoContainer>
             );
           })

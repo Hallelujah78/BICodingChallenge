@@ -1,8 +1,8 @@
 import TableRow from "../TableRow";
 
-const NameCommon = (info) => {
-  const { info: nameCommon } = info;
-  console.log(`hi, this is ${nameCommon} in NameCommon`);
+const NameCommon = ({ data }) => {
+  const { nameCommon } = data.general;
+
   return (
     <table className="table-2-col">
       <tbody>

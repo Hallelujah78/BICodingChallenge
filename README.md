@@ -121,3 +121,4 @@ cd client && npm test
 - various domain things about ISO country and language codes, latitude, longitude etc
 - How to install and configure Jest and required dependencies
   - how to write very basic tests
+- component mapping!

@@ -1,31 +1,16 @@
 import componentMap from "../utils/componentMap.js";
 
-// propsArray = [general.nameOfficial, general.nameCommon]
-
 const CustomCategoryRenderer = ({ propsObj, data }) => {
-  const properties = Object.keys(propsObj);
-
-  const propsArray = [];
-  properties.forEach((prop) => {
-    const keys = prop.split(".");
-
-    const [category, field] = keys;
-    let tempObj = {};
-    tempObj.type = prop;
-    tempObj.info = data[category][field];
-    propsArray.push(tempObj);
-  });
-
+  const propsArray = Object.keys(propsObj);
+  console.log(propsArray);
   return (
     <>
       {propsArray.map((prop, index) => {
-        const Component = componentMap[prop.type];
-        const { info } = prop;
-
+        const Component = componentMap[prop];
+        console.log(componentMap[prop]);
         if (Component) {
-          return <Component key={index} info={info} />;
+          return <Component key={index} data={data} />;
         }
-        // Handle unsupported types or return a default component if necessary
         return null;
       })}
     </>

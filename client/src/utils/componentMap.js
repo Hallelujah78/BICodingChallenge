@@ -2,12 +2,20 @@ import {
   NameOfficial,
   NameCommon,
   NameNative,
+  CoatOfArms,
+  Currencies,
+  AltName,
+  Flag,
 } from "../components/field_components";
 
 const componentMap = {
-  "general.nameOfficial": NameOfficial,
-  "general.nameCommon": NameCommon,
-  "general.nameNative": NameNative,
+  nameOfficial: NameOfficial,
+  nameCommon: NameCommon,
+  nameNative: NameNative,
+  coatOfArmsSvgUrl: CoatOfArms,
+  currencies: Currencies,
+  flagSvg: Flag,
+  altSpellings: AltName,
   // Add more types and corresponding components as needed
 };
 

@@ -91,7 +91,7 @@ const BasicUI = () => {
           </section>
         </>
       )}
-      {/* <CustomCategory className="overlay-menu" countryData={countryData} /> */}
+      <CustomCategory className="overlay-menu" countryData={countryData} />
     </Wrapper>
   );
 };

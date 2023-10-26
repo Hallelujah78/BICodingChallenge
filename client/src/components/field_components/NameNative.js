@@ -1,7 +1,7 @@
 import TableRow from "../TableRow";
 
-const NameNative = (info) => {
-  const { info: nameNative } = info;
+const NameNative = ({ data }) => {
+  const { nameNative } = data.general;
   return (
     <table className="th-3-col">
       <tbody>

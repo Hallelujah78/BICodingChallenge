@@ -1,7 +1,7 @@
 import TableRow from "../TableRow";
 
-const NameOfficial = (info) => {
-  const { info: nameOfficial } = info;
+const NameOfficial = ({ data }) => {
+  const { nameOfficial } = data.general;
   return (
     <table className="table-2-col">
       <tbody>
