@@ -1,3 +1,4 @@
+// utils
 import componentMap from "../utils/componentMap.js";
 
 const CustomCategoryRenderer = ({ propsObj, data }) => {
@@ -18,9 +19,3 @@ const CustomCategoryRenderer = ({ propsObj, data }) => {
 };
 
 export default CustomCategoryRenderer;
-/*
-Object.keys(value[0]).map(()=>{
-    
-})
-
-*/

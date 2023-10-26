@@ -1,6 +1,5 @@
 // react
-
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 // libraries
 import styled from "styled-components";
@@ -9,6 +8,8 @@ import { toast } from "react-toastify";
 
 // utils
 import { titleToField } from "../utils/config";
+
+// components
 import FieldsList from "./FieldsList";
 
 const CustomCategory = () => {

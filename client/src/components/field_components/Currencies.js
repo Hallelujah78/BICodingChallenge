@@ -1,4 +1,6 @@
+// components
 import TableElementWithToolTip from "../TableElementWithToolTip";
+
 const Currencies = ({ data }) => {
   const { currencies } = data.general;
   return (

@@ -386,7 +386,7 @@ const DynamicObjectRenderer = ({ data }) => {
                 <tbody>
                   <TableRow label="Capital City" property={capital} />
                   <TableRow
-                    label="Capital Latitude and Longitude"
+                    label="Capital Latitude & Longitude"
                     property={capitalLatlng}
                   />
                   <TableRow
