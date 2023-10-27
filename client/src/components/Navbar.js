@@ -7,9 +7,9 @@ import icon from "../assets/images/CI-small.png";
 
 // components
 import { NavSearchForm } from "./NavSearchForm";
+import LinearGradient from "./LinearGradient.js";
 
 const Navbar = ({
-  isSidebarOpen,
   width,
   countryData,
   renderSearch,
@@ -22,7 +22,7 @@ const Navbar = ({
   return (
     <Wrapper>
       <div className={countryData ? "nav show" : "nav hidden"}>
-        <div className="gradient"></div>
+        <LinearGradient />
         <div className="nav-container">
           {width < 650 ? (
             <>
@@ -87,15 +87,6 @@ const Wrapper = styled.header`
     height: 4rem;
   }
 
-  .gradient {
-    height: 0.75rem;
-    background: rgb(225, 78, 210);
-    background: linear-gradient(
-      90deg,
-      rgba(225, 78, 210, 1) 0%,
-      rgba(237, 150, 229, 1) 100%
-    );
-  }
   .image-container {
     position: absolute;
     top: 1.25rem;
@@ -116,19 +107,4 @@ const Wrapper = styled.header`
   .logo {
     margin-top: 0.5rem;
   }
-  /* .button-container {
-    position: absolute;
-    top: 4rem;
-    right: 1.5rem;
-
-    .expand-icon {
-      font-size: 3rem;
-      fill: #e14ed2;
-      background-color: transparent;
-      &:hover {
-        cursor: pointer;
-        transform: scale(1.1);
-      }
-    } */
-  /* } */
 `;

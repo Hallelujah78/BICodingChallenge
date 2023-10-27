@@ -76,6 +76,10 @@
      color: var(--textColor);
  }
 
+ body:has(.new-insight.open) {
+     overflow: hidden;
+ }
+
  p {
      margin-bottom: 1.5rem;
      max-width: 40em;

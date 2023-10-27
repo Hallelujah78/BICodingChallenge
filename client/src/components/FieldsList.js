@@ -1,7 +1,9 @@
+import styled from "styled-components";
+
 const FieldsList = ({ fields, removeItem, moveItemUp, moveItemDown }) => {
   return (
-    <div>
-      <h2>Fields to Include</h2>
+    <Wrapper>
+      <h5>Fields to Include</h5>
       {fields
         ? Object.entries(fields).map((field, index) => {
             const objLength = Object.keys(fields).length;
@@ -26,7 +28,11 @@ const FieldsList = ({ fields, removeItem, moveItemUp, moveItemDown }) => {
             );
           })
         : null}
-    </div>
+    </Wrapper>
   );
 };
 export default FieldsList;
+
+const Wrapper = styled.div`
+  font-size: calc(0.85rem + 0.390625vw);
+`;

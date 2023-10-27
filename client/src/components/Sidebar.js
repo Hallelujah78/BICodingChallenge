@@ -1,10 +1,16 @@
 import styled from "styled-components";
 
-const Sidebar = ({ isOpen }) => {
+const Sidebar = ({ isOpen, setSidebarOpen, setIsNewInsightOpen }) => {
+  const openNewInsightWindow = () => {
+    setSidebarOpen(false);
+    setIsNewInsightOpen(true);
+  };
+
   return (
     <Wrapper className={isOpen ? "open" : ""}>
       <div className="content-center">
-        <button>Create</button>
+        <button onClick={openNewInsightWindow}>New Insight</button>
+        <button>Manage Insights</button>
       </div>
     </Wrapper>
   );
@@ -29,6 +35,7 @@ const Wrapper = styled.aside`
     opacity: 1;
   }
   button {
+    white-space: nowrap;
     cursor: pointer;
     border: transparent;
     width: 95%;
@@ -37,8 +44,8 @@ const Wrapper = styled.aside`
     color: white;
     text-transform: uppercase;
     padding: 15px 20px;
-    transition: all 0.3s;
-    margin: 0 auto;
+    transition: all 0.4s linear;
+    margin: 0.25rem auto;
 
     &:hover {
       background: white;

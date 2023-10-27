@@ -15,6 +15,7 @@ import SearchForm from "../components/SearchForm.js";
 import Loading from "../components/Loading.js";
 import Navbar from "../components/Navbar.js";
 import Sidebar from "../components/Sidebar";
+import CustomCategory from "../components/CustomCategory";
 
 const BasicUI = () => {
   const [renderSearch, setRenderSearch] = useState(true);
@@ -25,6 +26,7 @@ const BasicUI = () => {
   const [isError, setIsError] = useState(false);
   const { width } = useWindowSize();
   const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const [isNewInsightOpen, setIsNewInsightOpen] = useState(false);
 
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
@@ -53,8 +55,18 @@ const BasicUI = () => {
         setIsLoading={setIsLoading}
         setIsError={setIsError}
       />
+      <CustomCategory
+        isNewInsightOpen={isNewInsightOpen}
+        setIsNewInsightOpen={setIsNewInsightOpen}
+        countryData={countryData}
+      />
       <div className={isSidebarOpen ? "cover overlay" : "overlay"}></div>
-      <Sidebar isOpen={isSidebarOpen} onClose={toggleSidebar} />
+      <Sidebar
+        isOpen={isSidebarOpen}
+        onClose={toggleSidebar}
+        setSidebarOpen={setSidebarOpen}
+        setIsNewInsightOpen={setIsNewInsightOpen}
+      />
       <VscSettingsGear
         onClick={() => toggleSidebar()}
         className={isSidebarOpen ? "gear-icon open" : "gear-icon"}
@@ -104,7 +116,6 @@ const BasicUI = () => {
           </section>
         </>
       )}
-      {/* <CustomCategory className="overlay-menu" countryData={countryData} /> */}
     </Wrapper>
   );
 };
@@ -226,16 +237,4 @@ const Wrapper = styled.section`
       cursor: pointer;
     }
   }
-
-  /* .overlay {
-    position: absolute;
-    top: -5vh;
-    left: -5vh;
-    z-index: 0;
-    width: 105vw;
-    height: 105vh;
-    &.cover {
-      z-index: 0;
-    }
-  } */
 `;
