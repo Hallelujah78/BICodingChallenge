@@ -7,7 +7,7 @@ import dataUrl from "../utils/config.js";
 // hooks
 import useAxiosFetch from "../hooks/useAxios.js";
 
-const Search = ({ setCountry }) => {
+const Search = ({ setCountry, renderSearch }) => {
   const { data, isLoading } = useAxiosFetch(dataUrl);
 
   const handleChange = (selectedOption) => {
@@ -27,7 +27,7 @@ const Search = ({ setCountry }) => {
         onChange={handleChange}
         placeholder="Select a country"
         options={data}
-        autoFocus={true}
+        autoFocus={renderSearch}
         isLoading={isLoading}
         aria-label="select an option"
       />

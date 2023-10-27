@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { useWindowSize } from "react-use";
 import { VscSettingsGear } from "react-icons/vsc";
+import { useLocalStorage } from "react-use";
 
 // assets
 import worldMap from "../assets/images/globe.svg";
@@ -27,6 +28,7 @@ const BasicUI = () => {
   const { width } = useWindowSize();
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [isNewInsightOpen, setIsNewInsightOpen] = useState(false);
+  const [value, setValue, remove] = useLocalStorage("customCategories");
 
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
@@ -56,21 +58,30 @@ const BasicUI = () => {
         setIsError={setIsError}
       />
       <CustomCategory
+        value={value}
+        setValue={setValue}
         isNewInsightOpen={isNewInsightOpen}
         setIsNewInsightOpen={setIsNewInsightOpen}
         countryData={countryData}
       />
       <div className={isSidebarOpen ? "cover overlay" : "overlay"}></div>
       <Sidebar
+        remove={remove}
         isOpen={isSidebarOpen}
         onClose={toggleSidebar}
         setSidebarOpen={setSidebarOpen}
         setIsNewInsightOpen={setIsNewInsightOpen}
       />
-      <VscSettingsGear
-        onClick={() => toggleSidebar()}
-        className={isSidebarOpen ? "gear-icon open" : "gear-icon"}
-      />
+      <div
+        className={
+          width >= 800 ? "gear-container top-right" : "gear-container top-left"
+        }
+      >
+        <VscSettingsGear
+          onClick={() => toggleSidebar()}
+          className={isSidebarOpen ? "gear-icon open" : "gear-icon"}
+        />
+      </div>
 
       {renderSearch ? (
         <SearchForm
@@ -99,7 +110,7 @@ const BasicUI = () => {
       ) : !isLoading && !isError && countryData ? (
         <div className="content-center">
           <h2>{countryData?.general.nameOfficial}</h2>
-          <DynamicObjectRenderer data={countryData} />
+          <DynamicObjectRenderer data={countryData} value={value} />
         </div>
       ) : (
         <>
@@ -224,9 +235,7 @@ const Wrapper = styled.section`
   .gear-icon {
     z-index: 12;
     transform: rotate(-90deg);
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
+
     font-size: 2rem;
     transition: linear 0.2s all;
     &.open {
@@ -236,5 +245,15 @@ const Wrapper = styled.section`
     &:hover {
       cursor: pointer;
     }
+  }
+  .top-left {
+    position: absolute;
+    top: 5.5rem;
+    left: 1.25rem;
+  }
+  .top-right {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
   }
 `;

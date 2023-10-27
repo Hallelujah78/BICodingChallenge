@@ -1,6 +1,5 @@
 // libraries
 import styled from "styled-components";
-import { useLocalStorage } from "react-use";
 
 // components
 import InfoContainer from "./InfoContainer.js";
@@ -9,8 +8,7 @@ import TableElementWithToolTip from "./TableElementWithToolTip.js";
 import PostalCodeValidation from "./PostalCodeValidation.js";
 import CustomCategoryRenderer from "./CustomCategoryRenderer.js";
 
-const DynamicObjectRenderer = ({ data }) => {
-  const [value, setValue, remove] = useLocalStorage("customCategories");
+const DynamicObjectRenderer = ({ data, value }) => {
   return (
     <Wrapper>
       {Object.keys(data).map((key) => {

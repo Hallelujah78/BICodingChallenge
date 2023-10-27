@@ -26,23 +26,41 @@ const Navbar = ({
         <div className="nav-container">
           {width < 650 ? (
             <>
-              <img className="icon-small" src={icon} alt="" />
+              <img
+                onClick={() => {
+                  window.location.reload();
+                }}
+                className="icon-small"
+                src={icon}
+                alt=""
+              />
             </>
           ) : (
             <>
-              <img className="icon-small" src={icon} alt="" />
+              <img
+                onClick={() => {
+                  window.location.reload();
+                }}
+                className="icon-small"
+                src={icon}
+                alt=""
+              />
               <img
                 height="44px"
                 width="124px"
                 className="logo"
                 src={image}
                 alt="country insights logo"
+                onClick={() => {
+                  window.location.reload();
+                }}
               />
             </>
           )}
 
           {!renderSearch ? (
             <NavSearchForm
+              renderSearch={renderSearch}
               width={width}
               className="nav-search-form"
               setCountry={setCountry}
@@ -58,7 +76,14 @@ const Navbar = ({
       <div
         className={countryData ? "image-container hidden" : "image-container"}
       >
-        <img src={image} alt="country insights logo" />
+        <img
+          className="logo-main"
+          onClick={() => {
+            window.location.reload();
+          }}
+          src={image}
+          alt="country insights logo"
+        />
       </div>
     </Wrapper>
   );
@@ -98,6 +123,9 @@ const Wrapper = styled.header`
     margin: auto 0 auto 0;
     width: 2rem;
     height: 2rem;
+    &:hover {
+      cursor: pointer;
+    }
   }
   @media (min-width: 650px) {
     .nav-container {
@@ -106,5 +134,13 @@ const Wrapper = styled.header`
   }
   .logo {
     margin-top: 0.5rem;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .logo-main {
+    &:hover {
+      cursor: pointer;
+    }
   }
 `;

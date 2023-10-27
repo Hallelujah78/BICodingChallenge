@@ -1,6 +1,14 @@
+// libraries
+import { toast } from "react-toastify";
 import styled from "styled-components";
 
-const Sidebar = ({ isOpen, setSidebarOpen, setIsNewInsightOpen }) => {
+const Sidebar = ({ remove, isOpen, setSidebarOpen, setIsNewInsightOpen }) => {
+  const deleteAllCustomCategories = () => {
+    remove();
+    setSidebarOpen(false);
+    toast("All custom categories successfully deleted!");
+  };
+
   const openNewInsightWindow = () => {
     setSidebarOpen(false);
     setIsNewInsightOpen(true);
@@ -9,8 +17,8 @@ const Sidebar = ({ isOpen, setSidebarOpen, setIsNewInsightOpen }) => {
   return (
     <Wrapper className={isOpen ? "open" : ""}>
       <div className="content-center">
-        <button onClick={openNewInsightWindow}>New Insight</button>
-        <button>Manage Insights</button>
+        <button onClick={openNewInsightWindow}>New Category</button>
+        <button onClick={() => deleteAllCustomCategories()}>Delete All</button>
       </div>
     </Wrapper>
   );

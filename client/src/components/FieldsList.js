@@ -1,38 +1,70 @@
+// libraries
 import styled from "styled-components";
+import {
+  IoChevronDownCircleOutline,
+  IoChevronUpCircleOutline,
+} from "react-icons/io5";
 
-const FieldsList = ({ fields, removeItem, moveItemUp, moveItemDown }) => {
+const FieldsList = ({ fields, moveItemUp, moveItemDown }) => {
   return (
     <Wrapper>
-      <h5>Fields to Include</h5>
-      {fields
-        ? Object.entries(fields).map((field, index) => {
-            const objLength = Object.keys(fields).length;
-            console.log(objLength);
-            return (
-              <div key={field[1]}>
-                <button
-                  onClick={() => {
-                    removeItem(field[0]);
-                  }}
-                >
-                  x
-                </button>
-                {field[1]}
-                {index < objLength - 1 ? (
-                  <button onClick={() => moveItemDown(field[0])}>Down</button>
-                ) : null}
-                {index > 0 ? (
-                  <button onClick={() => moveItemUp(field[0])}>Up</button>
-                ) : null}
-              </div>
-            );
-          })
-        : null}
+      <h5>Fields Included</h5>
+      <div className="fields-container">
+        {fields
+          ? Object.entries(fields).map((field, index) => {
+              const objLength = Object.keys(fields).length;
+
+              return (
+                <div className="field" key={field[1]}>
+                  <div className="field-title">{field[1]}</div>
+                  <div>
+                    {index < objLength - 1 ? (
+                      <IoChevronDownCircleOutline
+                        className="move-icon"
+                        onClick={() => moveItemDown(field[0])}
+                      />
+                    ) : null}
+                    {index > 0 ? (
+                      <IoChevronUpCircleOutline
+                        className="move-icon"
+                        onClick={() => moveItemUp(field[0])}
+                      />
+                    ) : null}
+                  </div>
+                </div>
+              );
+            })
+          : null}
+      </div>
     </Wrapper>
   );
 };
 export default FieldsList;
 
 const Wrapper = styled.div`
+  border-left: lightgray solid 2px;
   font-size: calc(0.85rem + 0.390625vw);
+  .fields-container {
+    .field {
+      display: grid;
+      grid-template-columns: 60% 40%;
+      margin: 1rem auto;
+
+      align-content: space-between;
+    }
+    .field-title {
+      overflow-x: hidden;
+      white-space: nowrap;
+      margin-left: 1rem;
+    }
+  }
+  .move-icon {
+    font-size: 1.9rem;
+    margin: auto auto auto 0;
+    align-self: center;
+    margin-left: 0.75rem;
+    &:hover {
+      cursor: pointer;
+    }
+  }
 `;

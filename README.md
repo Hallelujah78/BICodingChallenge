@@ -81,13 +81,22 @@ When the app first loads, the user can either select a country from a dropdown m
 
   ![Country Insights after searching for Austria on a mobile screen](https://res.cloudinary.com/duar7ipaf/image/upload/v1698066814/image_qgdrhi.png)
 
+### Beyond requirements
+
+- If the user clicks on the gear icon, they can create custom categories. A custom category allows the user to group together fields that they might be interested in and display them together, similar to the Geography or Demographics category.
+- This custom category is stored in local storage
+- The user can delete all of their custom categories by clicking 'DELETE ALL' from the sidebar
+  - Obviously a delete all button is a bit crude but I didn't have time to create a separate screen where the user could manage their custom categories (edit, delete individual item, reorder, etc)
+
 ---
 
 ## To Do
 
+- styling and layout for new custom category page needs work
+- accessibility - items transitioned off screen can still be tabbed to
 - Learn testing with Jest/Cypress!
   - I have a couple of days left and I won't have time to learn much on testing
-- Try to implement ability for user to create their own categories using local storage to save settings
+- ~~Try to implement ability for user to create their own categories using local storage to save settings~~ DONE-ish
 - Add jump to top button
 - Refactor DynamicObjectRenderer to use new field components
 - Add ability to reorder and show/hide all categories being displayed
@@ -121,3 +130,5 @@ cd client && npm test
 - How to install and configure Jest and required dependencies
   - how to write very (extremely) basic tests
 - component mapping!
+- put aside a day before a deadline to simply go through the code and clean it up
+  - I was coding and adding 'features' right up to the point it needed to be submitted.
