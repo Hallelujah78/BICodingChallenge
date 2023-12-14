@@ -64,7 +64,7 @@ const SearchForm = forwardRef((props, ref) => {
   };
 
   return (
-    <Wrapper className={className} ref={ref}>
+    <Wrapper data-test="form-input" className={className} ref={ref}>
       <Search
         setCountry={setCountry}
         id="country name"
@@ -74,6 +74,7 @@ const SearchForm = forwardRef((props, ref) => {
 
       <div className="btn-container">
         <button
+          data-test="submit-button"
           disabled={!country}
           className="btn submit-btn"
           type="submit"
