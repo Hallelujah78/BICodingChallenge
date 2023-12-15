@@ -77,6 +77,7 @@ const Navbar = ({
         className={countryData ? "image-container hidden" : "image-container"}
       >
         <img
+          data-test="logo-main"
           className="logo-main"
           onClick={() => {
             window.location.reload();

@@ -2,7 +2,7 @@
 import styled from "styled-components";
 import { useWindowSize } from "react-use";
 
-const InfoContainer = ({ children, title }) => {
+const InfoContainer = ({ children, title, type }) => {
   const { width } = useWindowSize();
 
   const handleClick = (e) => {
@@ -15,6 +15,7 @@ const InfoContainer = ({ children, title }) => {
   return (
     <Wrapper>
       <header
+        data-test={`category-article-${type ?? title}`}
         onClick={(e) => {
           handleClick(e);
         }}

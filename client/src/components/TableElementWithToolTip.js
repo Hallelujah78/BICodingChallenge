@@ -12,6 +12,7 @@ const TableElementWithToolTip = ({
       <div className={isHeading ? "heading" : ""}>{headingText}</div>
       <div className="icon-container">
         <FaCircleInfo
+          data-test="tooltip-icon"
           className="info-icon"
           data-tooltip-id="my-tooltip"
           data-tooltip-place="left"

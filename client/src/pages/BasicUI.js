@@ -73,6 +73,7 @@ const BasicUI = () => {
         setIsNewInsightOpen={setIsNewInsightOpen}
       />
       <div
+        data-test="gear-icon-container"
         className={
           width >= 800 ? "gear-container top-right" : "gear-container top-left"
         }

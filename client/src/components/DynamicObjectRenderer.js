@@ -15,6 +15,7 @@ const DynamicObjectRenderer = ({ data, value }) => {
         const item = data[key];
         if (item.type === "general") {
           const {
+            type,
             nameOfficial,
             nameCommon,
             altSpellings,
@@ -27,7 +28,7 @@ const DynamicObjectRenderer = ({ data, value }) => {
             title,
           } = data.general;
           return (
-            <InfoContainer key={key} title={title}>
+            <InfoContainer key={key} title={title} type={type}>
               <table className="table-2-col">
                 <tbody>
                   <TableRow label="Formal Name" property={nameOfficial} />
@@ -124,6 +125,7 @@ const DynamicObjectRenderer = ({ data, value }) => {
           );
         } else if (item.type === "communicationsAndCodes") {
           const {
+            type,
             tld,
             idd,
             postalCode,
@@ -136,7 +138,7 @@ const DynamicObjectRenderer = ({ data, value }) => {
             fifa,
           } = data.communicationsAndCodes;
           return (
-            <InfoContainer key={key} title={title}>
+            <InfoContainer key={key} title={title} type={type}>
               <table className="table-2-col">
                 <tbody>
                   <TableRow
@@ -265,9 +267,10 @@ const DynamicObjectRenderer = ({ data, value }) => {
             </InfoContainer>
           );
         } else if (item.type === "intlRelations") {
-          const { independent, status, unMember, title } = data.intlRelations;
+          const { type, independent, status, unMember, title } =
+            data.intlRelations;
           return (
-            <InfoContainer key={key} title={title}>
+            <InfoContainer key={key} title={title} type={type}>
               <table className="table-2-col">
                 <tbody>
                   <tr>
@@ -293,10 +296,10 @@ const DynamicObjectRenderer = ({ data, value }) => {
             </InfoContainer>
           );
         } else if (item.type === "additional") {
-          const { carSigns, carSide, startOfWeek, translations, title } =
+          const { type, carSigns, carSide, startOfWeek, translations, title } =
             data.additional;
           return (
-            <InfoContainer key={key} title={title}>
+            <InfoContainer key={key} title={title} type={type}>
               <table className="table-2-col">
                 <tbody>
                   <tr>
@@ -364,6 +367,7 @@ const DynamicObjectRenderer = ({ data, value }) => {
           );
         } else if (item.type === "geography") {
           const {
+            type,
             title,
             continents,
             region,
@@ -379,7 +383,7 @@ const DynamicObjectRenderer = ({ data, value }) => {
             openStreetMaps,
           } = data.geography;
           return (
-            <InfoContainer key={key} title={title}>
+            <InfoContainer key={key} title={title} type={type}>
               <table className="table-2-col">
                 <tbody>
                   <TableRow label="Capital City" property={capital} />
@@ -462,10 +466,10 @@ const DynamicObjectRenderer = ({ data, value }) => {
             </InfoContainer>
           );
         } else if (item.type === "demographics") {
-          const { title, demonyms, population, gini, languages } =
+          const { type, title, demonyms, population, gini, languages } =
             data.demographics;
           return (
-            <InfoContainer key={key} title={title}>
+            <InfoContainer key={key} title={title} type={type}>
               <table className="table-2-col">
                 <tbody>
                   <TableRow label="Population" property={population} />

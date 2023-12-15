@@ -17,8 +17,15 @@ const Sidebar = ({ remove, isOpen, setSidebarOpen, setIsNewInsightOpen }) => {
   return (
     <Wrapper className={isOpen ? "open" : ""}>
       <div className="content-center">
-        <button onClick={openNewInsightWindow}>New Category</button>
-        <button onClick={() => deleteAllCustomCategories()}>Delete All</button>
+        <button data-test="new-category-button" onClick={openNewInsightWindow}>
+          New Category
+        </button>
+        <button
+          data-test="delete-all-button"
+          onClick={() => deleteAllCustomCategories()}
+        >
+          Delete All
+        </button>
       </div>
     </Wrapper>
   );
