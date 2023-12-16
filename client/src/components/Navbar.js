@@ -27,6 +27,7 @@ const Navbar = ({
           {width < 650 ? (
             <>
               <img
+                data-test="small-icon-logo"
                 onClick={() => {
                   window.location.reload();
                 }}
@@ -46,6 +47,7 @@ const Navbar = ({
                 alt=""
               />
               <img
+                data-test="country-insights-logo"
                 height="44px"
                 width="124px"
                 className="logo"

@@ -2,7 +2,7 @@ describe("testing country insights application", () => {
   it("renders a number of components on the main page", () => {
     cy.visit("http://localhost:3000/");
     // aliases
-    cy.get('[data-test="form-input"]').as("formInput");
+    cy.get('[data-test="form-input"]').as("formContainer");
     cy.get('[data-test="logo-main"]').as("logoMain");
     cy.get('[data-test="gear-icon-container"]')
       .within(() => {
@@ -15,12 +15,14 @@ describe("testing country insights application", () => {
     // end of aliases
 
     // items are rendered
-    cy.get("@formInput").should("exist");
+    cy.get("@logoMain").should("exist");
     cy.get("@gearIcon").should("exist");
-    cy.get("@formInput").should("exist");
+    cy.get("@formContainer").within(() => {
+      cy.get("input").should("exist");
+    });
     cy.get("@submitButton").should("exist").and("be.disabled");
 
-    // clicking gear icon opens a menu, then the 'new category' and 'delete all' buttons visible. Clicking the gear icon again, the buttons should not be visible
+    // clicking gear icon opens a menu, then the 'new category' and 'delete all' buttons are visible. Clicking the gear icon again, the buttons should not be visible
 
     cy.get("@newCategoryButton").should("not.be.visible");
     cy.get("@deleteAllButton").should("not.be.visible");
@@ -30,6 +32,12 @@ describe("testing country insights application", () => {
     cy.get("@gearIcon").click();
     cy.get("@newCategoryButton").should("not.be.visible");
     cy.get("@deleteAllButton").should("not.be.visible");
+
+    // input a value in select box
+    cy.get("@formContainer").within(() => {
+      cy.get("input").type("Nigeria{enter}");
+    });
+    cy.get("@submitButton").should("not.be.disabled").click();
   });
 });
 
