@@ -12,6 +12,7 @@ describe("testing country insights application", () => {
     cy.get('[data-test="submit-button"]').as("submitButton");
     cy.get('[data-test="new-category-button"]').as("newCategoryButton");
     cy.get('[data-test="delete-all-button"]').as("deleteAllButton");
+
     // end of aliases
 
     // items are rendered
@@ -38,6 +39,14 @@ describe("testing country insights application", () => {
       cy.get("input").type("Nigeria{enter}");
     });
     cy.get("@submitButton").should("not.be.disabled").click();
+    cy.get('[data-test^="category-article"]').should("have.length", 6);
+    cy.contains("formal name").should("not.be.visible");
+    cy.get('[data-test="category-article-general"]').click();
+    cy.contains("formal name").should("be.visible");
+    cy.get('[data-test="tooltip-icon"]')
+      .filter(":visible")
+      .trigger("mouseover");
+    cy.contains("The 3-letter currency");
   });
 });
 
