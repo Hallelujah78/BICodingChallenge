@@ -14,6 +14,7 @@ function App() {
   return (
     <Wrapper>
       <Tooltip
+        data-test="tooltip-text"
         id="my-tooltip"
         style={{
           backgroundColor: "black",

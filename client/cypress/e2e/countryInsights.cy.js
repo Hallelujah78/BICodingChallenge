@@ -1,3 +1,5 @@
+import "cypress-real-events";
+
 describe("testing country insights application", () => {
   it("renders a number of components on the main page", () => {
     cy.visit("http://localhost:3000/");
@@ -43,10 +45,9 @@ describe("testing country insights application", () => {
     cy.contains("formal name").should("not.be.visible");
     cy.get('[data-test="category-article-general"]').click();
     cy.contains("formal name").should("be.visible");
-    cy.get('[data-test="tooltip-icon"]')
-      .filter(":visible")
-      .trigger("mouseover");
-    cy.contains("The 3-letter currency");
+    cy.get('[data-test="tooltip-text"]').should("not.exist");
+    cy.get('[data-test="tooltip-icon"]').filter(":visible").realHover();
+    cy.get('[data-test="tooltip-text"]').should("exist");
   });
 });
 

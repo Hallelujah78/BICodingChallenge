@@ -16,7 +16,7 @@ const TableElementWithToolTip = ({
           className="info-icon"
           data-tooltip-id="my-tooltip"
           data-tooltip-place="left"
-          data-tooltip-html={toolTipText}
+          data-tooltip-html={`<p data-test="tooltip-text">${toolTipText}</p>`}
         />
       </div>
     </Wrapper>
