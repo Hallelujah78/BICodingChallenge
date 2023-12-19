@@ -13,6 +13,7 @@ const Field = ({ item, addItem, removeItem }) => {
         <p>{item[1]}</p>
         {!isIncluded ? (
           <FcPlus
+            data-test="add-remove-icon"
             className="add-remove-icon"
             onClick={(e) => {
               setIsIncluded(true);
@@ -21,6 +22,7 @@ const Field = ({ item, addItem, removeItem }) => {
           />
         ) : (
           <FcCancel
+            data-test="add-remove-icon"
             className="add-remove-icon"
             onClick={() => {
               setIsIncluded(false);

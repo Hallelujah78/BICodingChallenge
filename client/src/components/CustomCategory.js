@@ -143,8 +143,9 @@ const CustomCategory = ({
       </div>
 
       <div className="btn-container">
-        <label htmlFor="cateogry-title">Enter a Title</label>
+        <label htmlFor="category-title">Enter a Title</label>
         <input
+          data-test="category-title-input"
           value={title}
           id="category-title"
           type="text"

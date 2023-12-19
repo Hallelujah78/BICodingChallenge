@@ -117,7 +117,7 @@ const BasicUI = () => {
         <>
           <section>
             <div className="img-container">
-              <h5>a world of information</h5>
+              <h5 data-test="landing-tag-line">a world of information</h5>
               <img
                 width="460px"
                 height="460px"

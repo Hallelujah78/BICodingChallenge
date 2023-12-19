@@ -6,14 +6,14 @@ describe("testing country insights application", () => {
     // aliases
     cy.get('[data-test="form-input"]').as("formContainer");
     cy.get('[data-test="logo-main"]').as("logoMain");
-    cy.get('[data-test="gear-icon-container"]')
-      .within(() => {
-        cy.get("svg");
-      })
-      .as("gearIcon");
+    cy.get('[data-test="gear-icon-container"]').within(() => {
+      cy.get("svg").as("gearIcon");
+    });
+
     cy.get('[data-test="submit-button"]').as("submitButton");
     cy.get('[data-test="new-category-button"]').as("newCategoryButton");
     cy.get('[data-test="delete-all-button"]').as("deleteAllButton");
+    cy.get('[data-test="add-remove-icon"]').as("addRemoveIcon");
 
     // end of aliases
 
@@ -55,12 +55,23 @@ describe("testing country insights application", () => {
     // clicking CI icon or country insights logo image should return to 'landing' page
     //  - category article will no longer be visible
     //  - 'a world of information' is visible
-    cy.contains("a world of information").should("not.exist");
+    cy.get('[data-test="landing-tag-line"]').should("not.exist");
     cy.get('[data-test="small-icon-logo"]').click();
-    cy.get("h5")
-      .filter(":visible")
-      .should("contain.text", "a world of information")
-      .should("exist");
+    cy.get('[data-test="landing-tag-line"]').should(
+      "contain.text",
+      "a world of information"
+    );
+
+    // creating a new category
+    cy.get("@gearIcon").click();
+    cy.get("@newCategoryButton").click();
+    cy.get('[data-test="field-title"]').should("not.exist");
+    cy.get("@addRemoveIcon").eq(0).click();
+    cy.get('[data-test="field-title"]').should("have.length", 1);
+    cy.get("@addRemoveIcon").eq(1).click();
+    cy.get('[data-test="field-title"]').should("have.length", 2);
+    cy.get("@addRemoveIcon").eq(2).click();
+    cy.get('[data-test="field-title"]').should("have.length", 3);
   });
 });
 
@@ -75,3 +86,6 @@ describe("testing country insights application", () => {
 // tooltip-icon - displays tool tip on mouseover
 // country-insights-logo - logo in the  navbar
 // small-icon-logo - the 'CI' logo in the navbar
+
+// add-remove-icon
+// category-title-input

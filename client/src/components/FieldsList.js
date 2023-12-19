@@ -16,7 +16,9 @@ const FieldsList = ({ fields, moveItemUp, moveItemDown }) => {
 
               return (
                 <div className="field" key={field[1]}>
-                  <div className="field-title">{field[1]}</div>
+                  <div data-test="field-title" className="field-title">
+                    {field[1]}
+                  </div>
                   <div>
                     {index < objLength - 1 ? (
                       <IoChevronDownCircleOutline
