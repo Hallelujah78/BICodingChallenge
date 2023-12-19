@@ -14,8 +14,9 @@
   <meta name="description" content="Web site created using create-react-app" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
-
+  <link media="print" onload="this.onload=null;this.removeAttribute('media')"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap">
 
 
 
@@ -24,7 +25,8 @@
 
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
-  <div id="root"></div>
+  <div id="root">
+  </div>
   <script type="module" src="/src/index.js"></script>
 </body>
 

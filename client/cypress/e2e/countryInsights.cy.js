@@ -72,6 +72,30 @@ describe("testing country insights application", () => {
     cy.get('[data-test="field-title"]').should("have.length", 2);
     cy.get("@addRemoveIcon").eq(2).click();
     cy.get('[data-test="field-title"]').should("have.length", 3);
+
+    // change the order of the fields
+    cy.get('[data-test="field-title"]')
+      .eq(0)
+      .should("have.text", "Formal Name");
+    cy.get('[data-test="field-title"]')
+      .eq(1)
+      .should("have.text", "Informal Name");
+    cy.get('[data-test="field-title"]')
+      .eq(2)
+      .should("have.text", "Name in Official Language(s)");
+    cy.get('[data-test="move-down-icon"]').eq(0).click();
+    cy.get('[data-test="move-up-icon"]').eq(1).click();
+    cy.get('[data-test="field-title"]')
+      .eq(0)
+      .should("have.text", "Informal Name");
+    cy.get('[data-test="field-title"]')
+      .eq(1)
+      .should("have.text", "Name in Official Language(s)");
+    cy.get('[data-test="field-title"]')
+      .eq(2)
+      .should("have.text", "Formal Name");
+    cy.get("@addRemoveIcon").eq(2).click();
+    cy.get('[data-test="field-title"]').should("have.length", 2);
   });
 });
 

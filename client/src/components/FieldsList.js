@@ -22,12 +22,14 @@ const FieldsList = ({ fields, moveItemUp, moveItemDown }) => {
                   <div>
                     {index < objLength - 1 ? (
                       <IoChevronDownCircleOutline
+                        data-test="move-down-icon"
                         className="move-icon"
                         onClick={() => moveItemDown(field[0])}
                       />
                     ) : null}
                     {index > 0 ? (
                       <IoChevronUpCircleOutline
+                        data-test="move-up-icon"
                         className="move-icon"
                         onClick={() => moveItemUp(field[0])}
                       />
