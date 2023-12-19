@@ -6,6 +6,7 @@ const InfoContainer = ({ children, title, type }) => {
   const { width } = useWindowSize();
 
   const handleClick = (e) => {
+    e.preventDefault();
     e.currentTarget
       .closest("article")
       .querySelector(".center.content")

@@ -1,3 +1,6 @@
+// react
+import { useEffect } from "react";
+
 // libraries
 import { Tooltip } from "react-tooltip";
 import { ToastContainer } from "react-toastify";
@@ -11,6 +14,23 @@ import Footer from "./components/Footer.js";
 import BasicUI from "./pages/BasicUI.js";
 
 function App() {
+  useEffect(() => {
+    const preventDoubleClickSelection = (e) => {
+      if (e.detail > 1) {
+        e.preventDefault();
+      }
+    };
+
+    document.body.addEventListener("mousedown", preventDoubleClickSelection);
+
+    return () => {
+      document.body.removeEventListener(
+        "mousedown",
+        preventDoubleClickSelection
+      );
+    };
+  }, []);
+
   return (
     <Wrapper>
       <Tooltip

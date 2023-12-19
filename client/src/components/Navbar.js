@@ -39,6 +39,7 @@ const Navbar = ({
           ) : (
             <>
               <img
+                data-test="small-icon-logo"
                 onClick={() => {
                   window.location.reload();
                 }}
@@ -79,6 +80,8 @@ const Navbar = ({
         className={countryData ? "image-container hidden" : "image-container"}
       >
         <img
+          width="124px"
+          height="44px"
           data-test="logo-main"
           className="logo-main"
           onClick={() => {
