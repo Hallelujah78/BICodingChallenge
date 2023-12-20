@@ -96,6 +96,13 @@ describe("testing country insights application", () => {
       .should("have.text", "Formal Name");
     cy.get("@addRemoveIcon").eq(2).click();
     cy.get('[data-test="field-title"]').should("have.length", 2);
+
+    // enter the category title and create it
+    cy.get('[data-test="category-title-input"]').type("Test Category");
+    cy.get("div.Toastify__toast-container").should("not.exist");
+
+    cy.get('[data-test="create-category-button"]').click();
+    cy.get("div.Toastify__toast-container").should("exist");
   });
 });
 

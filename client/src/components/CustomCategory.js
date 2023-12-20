@@ -154,6 +154,7 @@ const CustomCategory = ({
         />
 
         <button
+          data-test="create-category-button"
           className="create-button"
           onClick={(e) => {
             createCategory(title, fields);
