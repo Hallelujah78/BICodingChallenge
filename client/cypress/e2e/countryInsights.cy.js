@@ -103,6 +103,16 @@ describe("testing country insights application", () => {
 
     cy.get('[data-test="create-category-button"]').click();
     cy.get("div.Toastify__toast-container").should("exist");
+
+    // check our new category exists
+    cy.get("@formContainer").within(() => {
+      cy.get("input").type("Nigeria{enter}");
+    });
+    cy.get("@submitButton").click();
+    cy.get('[data-test^="category-article"]').should("have.length", 7);
+    cy.get('[data-test="category-article-Test Category"]').should("exist");
+
+    // delete all and make sure test category no longer exists
   });
 });
 
