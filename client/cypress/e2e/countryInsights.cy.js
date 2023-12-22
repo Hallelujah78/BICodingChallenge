@@ -113,20 +113,8 @@ describe("testing country insights application", () => {
     cy.get('[data-test="category-article-Test Category"]').should("exist");
 
     // delete all and make sure test category no longer exists
+    cy.get("@gearIcon").click({ force: true });
+    cy.get("@deleteAllButton").click({ force: true });
+    cy.get('[data-test="category-article-Test Category"]').should("not.exist");
   });
 });
-
-// data-test values
-// form-input - combo box
-// submit-button
-// logo-main - click to reload page (brings you back to 'landing' page)
-// gear-icon-container (will use .within and .get(svg))
-// delete-all-button (category)
-// new-category-button (category)
-// category-article - clickable heading (expand/collapse) for each category
-// tooltip-icon - displays tool tip on mouseover
-// country-insights-logo - logo in the  navbar
-// small-icon-logo - the 'CI' logo in the navbar
-
-// add-remove-icon
-// category-title-input
