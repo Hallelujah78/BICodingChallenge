@@ -92,8 +92,6 @@ When the app first loads, the user can either select a country from a dropdown m
 
 ## To Do
 
-- issue with scrolling being enabled when the gear icon menu is open
-  - scrolling and then clicking 'create new category' will mean the user can't interact with the custom category menu!
 - styling and layout for new custom category page needs work
 - accessibility - items transitioned off screen can still be tabbed to
 - Learn testing with Jest/Cypress!

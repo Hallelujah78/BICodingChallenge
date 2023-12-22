@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 
 // libraries
 import styled from "styled-components";
-
 import { toast } from "react-toastify";
 import { IoClose } from "react-icons/io5";
 

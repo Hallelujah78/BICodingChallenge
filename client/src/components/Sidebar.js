@@ -12,6 +12,8 @@ const Sidebar = ({ remove, isOpen, setSidebarOpen, setIsNewInsightOpen }) => {
   const openNewInsightWindow = () => {
     setSidebarOpen(false);
     setIsNewInsightOpen(true);
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   };
 
   return (
