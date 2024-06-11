@@ -5,7 +5,7 @@ const getData = async (country, urlObject) => {
   const options = {
     method: "GET",
     url: `${baseUrl}${country}${queryParam}`,
-    timeout: 5000,
+    timeout: 10000,
     headers: {
       "Content-Type": "application/json",
     },
@@ -24,7 +24,7 @@ const getNames = async (urlObject) => {
   const { baseUrl, queryParam } = urlObject;
   const options = {
     method: "GET",
-    timeout: 5000,
+    timeout: 10000,
     url: `${baseUrl}${queryParam}`,
     headers: {
       "Content-Type": "application/json",

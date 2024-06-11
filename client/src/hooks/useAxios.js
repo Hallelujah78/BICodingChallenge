@@ -20,7 +20,7 @@ const useAxiosFetch = (dataUrl) => {
       try {
         const { data } = await axios.get(url, {
           signal: controller.signal,
-          timeout: 5000,
+          timeout: 10000,
         });
 
         if (isMounted) {
